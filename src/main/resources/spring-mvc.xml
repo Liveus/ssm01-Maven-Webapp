@@ -27,6 +27,7 @@
     <mvc:resources location="/image/" mapping="/image/**"></mvc:resources>
     <mvc:resources location="/fonts/" mapping="/fonts/**"></mvc:resources>
     <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+    <mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
     <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
     <mvc:resources location="/" mapping="*.html"></mvc:resources><!-- .html文件放在根目录下 -->
     

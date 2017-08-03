@@ -28,4 +28,35 @@
 	        });
 	    }
 	    
+	    
+		function picdelivery(){
+			
+			$('#searchCountry').click(function(){
+				picdeliveryAjax();
+				return false;
+			});
+		}
+		picdelivery();
+	    function picdeliveryAjax(){
+	    	var id = $("#countryid").val();
+		    var data = {
+		    		id:id
+			    };
+	        $.ajax({
+	            url:'country/oneCountryById',
+	            type:'post',
+	            data:data,
+	            success:function(data){
+	                console.log(data);
+	                console.log(data.mianpic);
+	                $(function(){
+	                	  $('#aa').attr("src",data.mianpic);
+	                	});
+	            },
+	            error:function(err){
+	                console.log(err);
+	            }
+	        });
+	    }
+	    
 })();

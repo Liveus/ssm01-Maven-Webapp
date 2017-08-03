@@ -43,9 +43,19 @@
 		<input type="file" name = "file2" id = "file2"><br>
 		<input type="submit" id = "submit" name = "submit">
 	</form>
+	
+	图片路径测试：
+	<form action="">
+		<input type="text" name = "id" id = "countryid"><br><br>
+		<input type="button" id = "searchCountry" value="changepwd">
+	</form>
+	
+	<div id = "pic">
+		<img alt="" src="" id = "aa"></div>
 <script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/src/show_detail.js"></script>
 <script type="text/javascript" src="js/src/changePwd.js"></script>
+
 <script type="text/javascript">
 	function reloadCode(){
 		var time = new Date().getTime();

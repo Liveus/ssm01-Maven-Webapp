@@ -20,7 +20,6 @@ public class CountryController {
 	@RequestMapping(value="/oneCountryById")
 	public CountryWithBLOBs getOneCountryById(HttpServletRequest request){
 		int countryId = Integer.valueOf(request.getParameter("id"));
-		System.out.println("aaa");
 		return this.countryService.getOneCountryById(countryId);
 	}
 }
