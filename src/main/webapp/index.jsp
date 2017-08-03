@@ -32,8 +32,17 @@
 	
 	<a href="user/exit">user-exit</a><br>
 	
-	<a href ="user/registerPage">user-registerPage</a>
+	<a href ="user/registerPage">user-registerPage</a><br><br>
 	
+	
+	文件上传：
+	<form action="file/upload" method="post" enctype="multipart/form-data">
+		<input type="text" name = "txt" id = "txt"><br>
+		<input type="text" name = "txt2" id = "txt2"><br>		
+		<input type="file" name = "file" id = "file"><br>
+		<input type="file" name = "file2" id = "file2"><br>
+		<input type="submit" id = "submit" name = "submit">
+	</form>
 <script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/src/show_detail.js"></script>
 <script type="text/javascript" src="js/src/changePwd.js"></script>
