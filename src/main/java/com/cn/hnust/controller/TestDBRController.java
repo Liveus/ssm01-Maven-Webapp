@@ -21,7 +21,9 @@ public class TestDBRController {
 		this.dbrService.getInfo();
 		
 	}
-	
+	/**
+	 * 用户登录时推荐用户以类似的用户
+	 */
 	@RequestMapping("/login")
 	public void login(){
 		User user = new User();
