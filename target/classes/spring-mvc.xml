@@ -23,11 +23,12 @@
     <mvc:resources location="/themes/" mapping="/themes/**"></mvc:resources>
     <mvc:resources location="/jsp/" mapping="/jsp/**"></mvc:resources>
     
-    
+    <!-- 静态资源 -->
     <mvc:resources location="/image/" mapping="/image/**"></mvc:resources>
     <mvc:resources location="/fonts/" mapping="/fonts/**"></mvc:resources>
-    <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
-    <mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
+    <mvc:resources location="/static/css/" mapping="/static/css/**"></mvc:resources>
+    <mvc:resources location="/static/img/" mapping="/static/img/**"></mvc:resources>
+    <mvc:resources location="/static/js/" mapping="/static/js/**"></mvc:resources>
     <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
     <mvc:resources location="/" mapping="*.html"></mvc:resources><!-- .html文件放在根目录下 -->
     

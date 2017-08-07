@@ -68,7 +68,7 @@ public class Sendmail extends Thread {
         message.setFrom(new InternetAddress(from));
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getUseremail()));
         message.setSubject("用户注册邮件");
-        String info = "你好："+user.getUseremail()+"!"+"<br>"+"你需要点击以下链接来激活你的账户:"+"<br>"+"http://localhost:8000/ssm01/user/verification?key="+user.getKeyval();
+        String info = "你好："+user.getUseremail()+"!"+"<br>"+"你需要点击以下链接来激活你的账户:"+"<br>"+"http://localhost:8000/ssm01/user/verification?key="+user.getKeyval()+"&from="+user.getUseremail();
         message.setContent(info, "text/html;charset=UTF-8");
         message.saveChanges();
         return message;

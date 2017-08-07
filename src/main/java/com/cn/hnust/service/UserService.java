@@ -33,4 +33,16 @@ public interface UserService {
     
 /*    public String updateUser(User user);
     */
+    /**
+     * change user's active
+     * @param user
+     */
+    public void changeVal(User user);
+    
+    /**
+     * 根据邮箱查找用户
+     * @param user
+     * @return
+     */
+    public User getUserByEmial(User user);
 }

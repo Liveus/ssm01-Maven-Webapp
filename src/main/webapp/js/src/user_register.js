@@ -10,10 +10,12 @@
 	    	var email = $("#email").val();
 	    	var username = $("#username").val();
 	    	var pwd = $("#password").val();
+	    	var checkcode = $("#checkcode").val();
 		    var data = {
 		    		useremail:email,
 		    		username:username,
-		    		userpassword:pwd
+		    		userpassword:pwd,
+		    		checkcode:checkcode
 			    };
 	        $.ajax({
 	            url:'user/register',
