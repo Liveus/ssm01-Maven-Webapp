@@ -59,6 +59,7 @@ public class UserController {
 			user = this.userService.getUserByPwd(user);
 			if(user!=null){
 				model.addAttribute("user",user);
+				System.out.println("success");
 				user.setUserpassword(""); //删除传输给前端用户信息中的密码项
 				object.put("user", user);
 				try {
@@ -228,10 +229,6 @@ public class UserController {
 		User user = new User();
 		String waitingEmial = (String)model.get("waitingEmial");
 		String waitingEmial2 = (String)request.getSession().getAttribute("waitingEmial");
-		
-		
-		System.out.println("dddd:"+waitingEmial2);
-		System.out.println("qqqq:"+waitingEmial);
 		
 		
 		user.setUseremail(waitingEmial);
