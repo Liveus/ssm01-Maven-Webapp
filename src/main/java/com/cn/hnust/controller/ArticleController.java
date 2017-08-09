@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,14 +26,10 @@ public class ArticleController {
 
 	@ResponseBody
 	@RequestMapping(value = "/newArticle", produces = "text/json;charset=UTF-8")
-	public String newArticle(HttpServletRequest request,Map<String, Object> map,ModelMap model) {
+	public String newArticle(HttpServletRequest request,Map<String, Object> map,ModelMap model,HttpSession session) {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
-		User user = (User)map.get("user");
-		User user2 = (User)model.get("user");
-		
-		System.out.println("2:"+user2);
-		System.out.println("1:"+user);
+		User user = (User)session.getAttribute("user");
 		String title = request.getParameter("title");
 		String location = request.getParameter("location");
 		String value = request.getParameter("value");

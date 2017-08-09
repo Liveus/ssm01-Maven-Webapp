@@ -38,7 +38,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping("/login")
-	public void  login(HttpServletRequest request,HttpServletResponse response, ModelMap model) {
+	public void  login(HttpServletRequest request,HttpServletResponse response, ModelMap model,HttpSession session) {
 		User user = new User();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -59,6 +59,7 @@ public class UserController {
 			user = this.userService.getUserByPwd(user);
 			if(user!=null){
 				model.addAttribute("user",user);
+				session.setAttribute("user", user);
 				System.out.println("success");
 				user.setUserpassword(""); //删除传输给前端用户信息中的密码项
 				object.put("user", user);
