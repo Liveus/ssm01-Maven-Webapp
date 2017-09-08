@@ -23,6 +23,14 @@ public class Country {
 
     private Integer hotels;
 
+    private Integer restaurants;
+
+    private Integer examine;
+
+    private Integer userid;
+
+    private String username;
+
     public Integer getId() {
         return id;
     }
@@ -109,5 +117,37 @@ public class Country {
 
     public void setHotels(Integer hotels) {
         this.hotels = hotels;
+    }
+
+    public Integer getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(Integer restaurants) {
+        this.restaurants = restaurants;
+    }
+
+    public Integer getExamine() {
+        return examine;
+    }
+
+    public void setExamine(Integer examine) {
+        this.examine = examine;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 }

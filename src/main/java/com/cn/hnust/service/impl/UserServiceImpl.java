@@ -78,6 +78,13 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return this.userDao.selectByEmail(user);
 	}
-	
+
+	@Override
+	public User changeUserInfo(User user) {
+		// TODO Auto-generated method stub
+		this.userDao.updateByPrimaryKeySelective(user);
+		user = this.userDao.selectByPrimaryKey(user.getUserid());
+		return user;
+	}
 	
 }

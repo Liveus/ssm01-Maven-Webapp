@@ -13,6 +13,10 @@
     <result column="SCORE" property="score" jdbcType="DOUBLE" />
     <result column="mianPic" property="mianpic" jdbcType="VARCHAR" />
     <result column="hotels" property="hotels" jdbcType="INTEGER" />
+    <result column="restaurants" property="restaurants" jdbcType="INTEGER" />
+    <result column="examine" property="examine" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.cn.hnust.pojo.CountryWithBLOBs" extends="BaseResultMap" >
     <result column="introduce" property="introduce" jdbcType="LONGVARCHAR" />
@@ -20,7 +24,8 @@
     <result column="activities" property="activities" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, sights, location, AC, RC, CC, TARGETSUM, SCORE, mianPic, hotels
+    id, name, sights, location, AC, RC, CC, TARGETSUM, SCORE, mianPic, hotels, restaurants, 
+    examine, userid, username
   </sql>
   <sql id="Blob_Column_List" >
     introduce, culture, activities
@@ -33,6 +38,17 @@
     from country
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="getUserCountrysides" resultType="com.cn.hnust.pojo.CountryWithBLOBs">
+  SELECT *
+  FROM country
+  WHERE id in
+  <foreach item="item" index="index" collection="list"
+      open="(" separator="," close=")">
+        #{item}
+  </foreach>
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from country
     where id = #{id,jdbcType=INTEGER}
@@ -41,13 +57,15 @@
     insert into country (id, name, sights, 
       location, AC, RC, CC, 
       TARGETSUM, SCORE, mianPic, 
-      hotels, introduce, culture, 
-      activities)
+      hotels, restaurants, examine, 
+      userid, username, introduce, 
+      culture, activities)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sights,jdbcType=INTEGER}, 
       #{location,jdbcType=VARCHAR}, #{ac,jdbcType=VARCHAR}, #{rc,jdbcType=VARCHAR}, #{cc,jdbcType=VARCHAR}, 
       #{targetsum,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{mianpic,jdbcType=VARCHAR}, 
-      #{hotels,jdbcType=INTEGER}, #{introduce,jdbcType=LONGVARCHAR}, #{culture,jdbcType=LONGVARCHAR}, 
-      #{activities,jdbcType=LONGVARCHAR})
+      #{hotels,jdbcType=INTEGER}, #{restaurants,jdbcType=INTEGER}, #{examine,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{introduce,jdbcType=LONGVARCHAR}, 
+      #{culture,jdbcType=LONGVARCHAR}, #{activities,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cn.hnust.pojo.CountryWithBLOBs" >
     insert into country
@@ -84,6 +102,18 @@
       </if>
       <if test="hotels != null" >
         hotels,
+      </if>
+      <if test="restaurants != null" >
+        restaurants,
+      </if>
+      <if test="examine != null" >
+        examine,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="username != null" >
+        username,
       </if>
       <if test="introduce != null" >
         introduce,
@@ -129,6 +159,18 @@
       <if test="hotels != null" >
         #{hotels,jdbcType=INTEGER},
       </if>
+      <if test="restaurants != null" >
+        #{restaurants,jdbcType=INTEGER},
+      </if>
+      <if test="examine != null" >
+        #{examine,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
       <if test="introduce != null" >
         #{introduce,jdbcType=LONGVARCHAR},
       </if>
@@ -173,6 +215,18 @@
       <if test="hotels != null" >
         hotels = #{hotels,jdbcType=INTEGER},
       </if>
+      <if test="restaurants != null" >
+        restaurants = #{restaurants,jdbcType=INTEGER},
+      </if>
+      <if test="examine != null" >
+        examine = #{examine,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
       <if test="introduce != null" >
         introduce = #{introduce,jdbcType=LONGVARCHAR},
       </if>
@@ -197,6 +251,10 @@
       SCORE = #{score,jdbcType=DOUBLE},
       mianPic = #{mianpic,jdbcType=VARCHAR},
       hotels = #{hotels,jdbcType=INTEGER},
+      restaurants = #{restaurants,jdbcType=INTEGER},
+      examine = #{examine,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
       introduce = #{introduce,jdbcType=LONGVARCHAR},
       culture = #{culture,jdbcType=LONGVARCHAR},
       activities = #{activities,jdbcType=LONGVARCHAR}
@@ -213,7 +271,11 @@
       TARGETSUM = #{targetsum,jdbcType=INTEGER},
       SCORE = #{score,jdbcType=DOUBLE},
       mianPic = #{mianpic,jdbcType=VARCHAR},
-      hotels = #{hotels,jdbcType=INTEGER}
+      hotels = #{hotels,jdbcType=INTEGER},
+      restaurants = #{restaurants,jdbcType=INTEGER},
+      examine = #{examine,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

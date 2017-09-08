@@ -28,6 +28,25 @@
     from article
     where idarticle = #{idarticle,jdbcType=INTEGER}
   </select>
+  
+  <select id="getUserArticles" resultMap="ResultMapWithBLOBs" parameterType="com.cn.hnust.pojo.User" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where user_userid = #{userid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getCountrysideArticles" resultMap="ResultMapWithBLOBs" parameterType="com.cn.hnust.pojo.CountryWithBLOBs" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where location = #{location,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from article
     where idarticle = #{idarticle,jdbcType=INTEGER}

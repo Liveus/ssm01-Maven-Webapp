@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.Test;
 import org.springframework.stereotype.Service;
 
 import com.cn.hnust.dao.UserMapper;

@@ -101,6 +101,10 @@ public class Article {
 		this.content = content;
 	}
 
+	public Article() {
+		super();
+	}
+
 	@Override
 	public String toString() {
 		return "Article [idarticle=" + idarticle + ", name=" + name + ", username=" + username + ", articletime="

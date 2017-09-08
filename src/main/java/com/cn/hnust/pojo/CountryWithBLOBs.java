@@ -27,7 +27,19 @@ public class CountryWithBLOBs extends Country {
         return activities;
     }
 
-    public void setActivities(String activities) {
+    @Override
+	public String toString() {
+		return "CountryWithBLOBs [introduce=" + introduce + ", culture=" + culture + ", activities=" + activities
+				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getSights()=" + getSights()
+				+ ", getLocation()=" + getLocation() + ", getAc()=" + getAc() + ", getRc()=" + getRc() + ", getCc()="
+				+ getCc() + ", getTargetsum()=" + getTargetsum() + ", getScore()=" + getScore() + ", getMianpic()="
+				+ getMianpic() + ", getHotels()=" + getHotels() + ", getRestaurants()=" + getRestaurants()
+				+ ", getExamine()=" + getExamine() + ", getUserid()=" + getUserid() + ", getUsername()=" + getUsername()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
+	public void setActivities(String activities) {
         this.activities = activities == null ? null : activities.trim();
     }
 }

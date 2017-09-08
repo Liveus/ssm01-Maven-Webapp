@@ -7,10 +7,6 @@
 <html>
 
 <body>
-	<!-- <h2>Hello World!</h2>
-<a href="user/userinfo">user.jsp</a><br><br>
-<a href="download/allUser">all-user-downloads</a> -->
-
 	<form action="">
 		username:<input type="text" name="username" id="username"><br>
 		password:<input type="password" name="password" id="password"><br>

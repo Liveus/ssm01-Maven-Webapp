@@ -1,5 +1,7 @@
 package com.cn.hnust.dao;
 
+import java.util.List;
+
 import com.cn.hnust.pojo.Country;
 import com.cn.hnust.pojo.CountryWithBLOBs;
 
@@ -17,4 +19,6 @@ public interface CountryMapper {
     int updateByPrimaryKeyWithBLOBs(CountryWithBLOBs record);
 
     int updateByPrimaryKey(Country record);
+	
+    List<CountryWithBLOBs> getUserCountrysides(List<Integer> ids);
 }

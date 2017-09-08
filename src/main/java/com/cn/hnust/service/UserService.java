@@ -45,4 +45,10 @@ public interface UserService {
      * @return
      */
     public User getUserByEmial(User user);
+    
+    /**
+     * 修改用户信息
+     * @param user
+     */
+    public User changeUserInfo(User user);
 }

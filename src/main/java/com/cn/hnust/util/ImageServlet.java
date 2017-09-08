@@ -32,6 +32,7 @@ public class ImageServlet extends HttpServlet {
 			g.drawString(ch[index]+"", (i*15)+3, 18);
 			sb.append(ch[index]);
 		}
+		System.out.println("piccode:"+sb.toString());
 		request.getSession().setAttribute("piccode", sb.toString());
 		ImageIO.write(bi, "JPG", response.getOutputStream());
 	}
