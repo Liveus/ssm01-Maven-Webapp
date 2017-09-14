@@ -20,4 +20,12 @@ public interface CountryService {
 	 * @return
 	 */
 	public List<CountryWithBLOBs> getUserCountrysides(HttpSession session);
+	
+	/**
+	 * 根据种类获取乡村
+	 * @param type
+	 * @return
+	 */
+	public List<CountryWithBLOBs> getCountrysByType(String type,Integer page,String content);
+	
 }

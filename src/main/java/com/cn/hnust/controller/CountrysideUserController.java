@@ -16,10 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cn.hnust.pojo.CountryWithBLOBs;
 import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.service.CountryService;
 import com.cn.hnust.service.CountrysideUserService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+
+@Api(value="CountrysideUser")
 @Controller
 @RequestMapping(value="/CountrysideUser")
 public class CountrysideUserController {
@@ -61,6 +64,7 @@ public class CountrysideUserController {
 		}
 	}
 	
+	@ApiOperation(value="获取用户信息",httpMethod="GET",notes="get info")
 	@ResponseBody
 	@RequestMapping(value="/info",produces = "text/json;charset=UTF-8")
 	public void userinfo(HttpSession session,HttpServletResponse response){
@@ -87,5 +91,40 @@ public class CountrysideUserController {
 		countrysideUser.setName(request.getParameter("name"));
 		countrysideUser.setUserpassword(request.getParameter("userpassword"));
 		return this.countrysideUserService.getUser(countrysideUser, request.getSession());
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/changeInfo",produces="text/json;charset=utf-8")
+	public String changeUserInfo(HttpSession session){
+		CountrysideUser user = new CountrysideUser();
+		user.setName("2221");
+		user.setUserphone("1546");
+		return this.countrysideUserService.changeUserInfo(user, session);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/changePwd",produces="text/json;charset=utf-8")
+	public String changePwd(HttpSession session,HttpServletRequest request){
+		String pwd = "";
+		String newpwd = "";
+		StringBuffer requestBody;
+		try {
+			BufferedReader reader = request.getReader();
+			String input = null;
+			requestBody = new StringBuffer();
+			while ((input = reader.readLine()) != null) {
+				requestBody.append(input);
+				JSONObject jsonObject = new JSONObject(input);
+				pwd = jsonObject.get("pwd").toString();
+				newpwd = jsonObject.get("newpwd").toString();
+			}
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return this.countrysideUserService.changePwd(pwd, newpwd, session);
 	}
 }

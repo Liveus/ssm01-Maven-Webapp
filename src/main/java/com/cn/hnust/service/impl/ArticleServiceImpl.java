@@ -1,6 +1,8 @@
 package com.cn.hnust.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -45,5 +47,14 @@ public class ArticleServiceImpl implements ArticleService {
 		System.out.println("info:"+articles.toString());
 		return articles;
 	}
-	
+
+	@Override
+	public List<Article> getArticlesByPage(User user, Integer page) {
+		// TODO Auto-generated method stub
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("start",page*12);
+        map.put("pagesize",12);
+        List<Article> articles = this.articleDao.selectArticleByMap(map);  
+		return articles;
+	}
 }

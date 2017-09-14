@@ -1,8 +1,9 @@
 package com.cn.hnust.service.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -36,6 +37,22 @@ public class CountryServiceImpl implements CountryService {
 		}
 		List<CountryWithBLOBs> bloBs = this.countryMapper.getUserCountrysides(integers);
 		return bloBs;
+	}
+
+	@Override
+	public List<CountryWithBLOBs> getCountrysByType(String type,Integer page,String content) {
+		// TODO Auto-generated method stub
+		CountryWithBLOBs bloBs = new CountryWithBLOBs();
+		bloBs.setCountrytype(type);
+		List<CountryWithBLOBs> list = new ArrayList<CountryWithBLOBs>();
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("start",page*8);
+        map.put("pagesize",8);
+        map.put("type",type);
+        map.put("content",content);
+        System.out.println("sss:"+content);
+		list = this.countryMapper.getCountrysByType(map);
+		return list;
 	}
 
 }

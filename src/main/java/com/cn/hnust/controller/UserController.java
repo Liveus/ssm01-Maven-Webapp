@@ -14,15 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -39,7 +34,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cn.hnust.pojo.User;
 import com.cn.hnust.service.UserService;
 import com.cn.hnust.util.MD5Util;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
+@Api(value="user")
 @Controller
 @RequestMapping("/user")
 @SessionAttributes("user")
@@ -48,6 +46,7 @@ public class UserController {
 	private UserService userService;
 
 	@ResponseBody
+	@ApiOperation(value="获取session用户信息",httpMethod="GET",notes="get user in session",response=User.class)  
 	@RequestMapping(value = "/info", produces = "text/json;charset=UTF-8")
 	public void userinfo(HttpSession session, HttpServletResponse response) {
 		User user = (User) session.getAttribute("user");
@@ -82,6 +81,8 @@ public class UserController {
 		String password = "";
 		String checkcode = "0";
 		StringBuffer requestBody;
+		response.setContentType("text/json;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		try {
 			BufferedReader reader = request.getReader();
 			String input = null;
@@ -103,7 +104,6 @@ public class UserController {
 		System.out.println("checkcode-----" + checkcode + ":" + piccode);
 		checkcode = checkcode.toUpperCase();
 		JSONObject object = new JSONObject();
-		response.setCharacterEncoding("utf-8");
 		if (piccode.equals(checkcode)) {
 			try {
 				password = MD5Util.encrypt(password);// MD5加密
@@ -119,10 +119,8 @@ public class UserController {
 				session.setAttribute("user", user);
 				System.out.println("success:");
 				// user.setUserpassword(""); //删除传输给前端用户信息中的密码项
-				object.put("user", user);
+				object.put("info", "登陆成功");
 				try {
-					response.setContentType("text/json;charset=UTF-8");
-					response.setCharacterEncoding("UTF-8");
 					response.getWriter().write(object.toString());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -337,7 +335,6 @@ public class UserController {
 		User user = new User();
 		String waitingEmial = (String) model.get("waitingEmial");
 		String waitingEmial2 = (String) request.getSession().getAttribute("waitingEmial");
-
 		user.setUseremail(waitingEmial);
 		user = this.userService.getUserByEmial(user);
 		if (user != null) {
@@ -414,7 +411,6 @@ public class UserController {
 			// 获取multiRequest 中所有的文件名
 			Iterator iter = multiRequest.getFileNames();
 			while (iter.hasNext()) {
-				System.out.println("aaa");
 				// 一次遍历所有文件
 				MultipartFile file = multiRequest.getFile(iter.next().toString());
 				if (file != null) {
@@ -442,7 +438,6 @@ public class UserController {
 		list.add(user);
 		jsonObject.put("user", list);
 		jsonObject.put("info", "修改成功");
-		
 		try {
 			response.getWriter().print(jsonObject);
 		} catch (IOException e) {

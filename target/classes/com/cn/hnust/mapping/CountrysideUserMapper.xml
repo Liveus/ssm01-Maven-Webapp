@@ -32,6 +32,25 @@
   </select>
   
   
+  <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from countrysideuser
+    where userphone = #{userphone,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectCountByName" resultType="java.lang.Integer" parameterType="com.cn.hnust.pojo.CountrysideUser" >
+    select count(*)
+    from countrysideuser
+    where name = #{name,jdbcType=VARCHAR} AND idcountrysideuser !=#{idcountrysideuser}
+  </select>
+  
+    <select id="selectCountByPhone" resultType="java.lang.Integer" parameterType="com.cn.hnust.pojo.CountrysideUser" >
+    select count(*)
+    from countrysideuser
+    where userphone = #{userphone,jdbcType=VARCHAR} AND idcountrysideuser !=#{idcountrysideuser}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from countrysideuser
     where idcountrysideUser = #{idcountrysideuser,jdbcType=INTEGER}

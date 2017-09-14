@@ -38,5 +38,35 @@ public class CountrysideUserServiceImpl implements CountrysideUserService {
 		}
 		return "登录失败";
 	}
+
+	@Override
+	public String changeUserInfo(CountrysideUser user, HttpSession session) {
+		// TODO Auto-generated method stub		
+/*		CountrysideUser sessionUser = (CountrysideUser)session.getAttribute("countrysideUser");
+		sessionUser.setName(user.getName());
+		sessionUser.setUserphone(user.getUserphone());
+		this.countrysideUserMapper.updateByPrimaryKeySelective(user);*/
+		return "";
+	}
+
+	@Override
+	public String changePwd(String pwd,String newpwd, HttpSession session) {
+		// TODO Auto-generated method stub
+		CountrysideUser sessionUser = (CountrysideUser)session.getAttribute("countrysideUser");
+		try {
+			if(MD5Util.encrypt(pwd).equals(sessionUser.getUserpassword())){
+				sessionUser.setUserpassword(MD5Util.encrypt(newpwd));
+				session.setAttribute("countrysideUser", sessionUser);
+				this.countrysideUserMapper.updateByPrimaryKey(sessionUser);
+				return "修改成功";
+			}else{
+				return "旧密码输入不正确";
+			}
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "修改失败";
+	}
 	
 }

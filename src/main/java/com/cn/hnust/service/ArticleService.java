@@ -21,4 +21,5 @@ public interface ArticleService {
 	
 	public List<Article> getCountrysideArticles(CountryWithBLOBs bloBs);
 	
+	public List<Article> getArticlesByPage(User user,Integer page);
 }

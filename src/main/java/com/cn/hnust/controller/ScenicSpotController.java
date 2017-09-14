@@ -1,6 +1,5 @@
 package com.cn.hnust.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,16 +20,19 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.cn.hnust.pojo.CountryWithBLOBs;
-import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.pojo.ScenicSpot;
 import com.cn.hnust.service.ScenicSpotService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
+@Api(value="ScenicSpot")
 @Controller
 @RequestMapping(value="/ScenicSpot")
 public class ScenicSpotController {
 	@Resource 
 	private ScenicSpotService scenicSpotService;
 	
+	@ApiOperation(value="获取乡村所有的景点",httpMethod="GET",notes="get all Spots")
 	@ResponseBody
 	@RequestMapping(value="/getSpots", produces = "text/json;charset=UTF-8")
 	public void getUser(HttpSession session,HttpServletResponse response){
@@ -62,7 +64,7 @@ public class ScenicSpotController {
 		spot.setSynosis(request.getParameter("jianjie"));
 		Calendar date = Calendar.getInstance();
 		spot.setCinformation(request.getParameter("phone"));
-		 
+		
 		if (multipartResolver.isMultipart(request)) {
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 			Iterator iter = multiRequest.getFileNames();

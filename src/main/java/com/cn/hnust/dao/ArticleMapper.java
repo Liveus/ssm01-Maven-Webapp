@@ -1,6 +1,7 @@
 package com.cn.hnust.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cn.hnust.pojo.Article;
 import com.cn.hnust.pojo.CountryWithBLOBs;
@@ -24,4 +25,6 @@ public interface ArticleMapper {
     List<Article> getUserArticles(User user);
     
     List<Article> getCountrysideArticles(CountryWithBLOBs bloBs);
+    
+    List<Article> selectArticleByMap(Map<String,Object> map); 
 }

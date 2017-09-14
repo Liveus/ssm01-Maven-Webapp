@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cn.hnust.pojo.CountryWithBLOBs;
 import com.cn.hnust.pojo.Restaurant;
 import com.cn.hnust.service.RestaurantService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
+@Api(value="restaurant")
 @Controller
 @RequestMapping(value="/restaurant")
 public class RestaurantController {
@@ -28,6 +31,7 @@ public class RestaurantController {
 	 * @param session
 	 */
 	@ResponseBody
+	@ApiOperation(value="获取乡村所有的餐馆",httpMethod="GET",notes="get all Restaurants")
 	@RequestMapping(value="/allRestaurants", produces = "text/json;charset=UTF-8")
 	public void getCountryRests(HttpSession session,HttpServletResponse response){
 		response.setContentType("text/json;charset=UTF-8");

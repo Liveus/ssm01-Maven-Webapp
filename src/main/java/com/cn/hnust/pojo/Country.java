@@ -31,6 +31,8 @@ public class Country {
 
     private String username;
 
+    private String countrytype;
+
     public Integer getId() {
         return id;
     }
@@ -149,5 +151,13 @@ public class Country {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public String getCountrytype() {
+        return countrytype;
+    }
+
+    public void setCountrytype(String countrytype) {
+        this.countrytype = countrytype == null ? null : countrytype.trim();
     }
 }

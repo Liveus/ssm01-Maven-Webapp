@@ -765,7 +765,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '最新的用户名',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '/static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -2026,8 +2026,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.userInfo2.phone = this.phone;
       this.userInfo2.wechat = this.wechat;
       console.log('要上传的数据：{用户名：' + this.userInfo2.username + ',性别： ' + this.userInfo2.sex + ',生日： ' + this.userInfo2.birth + ',城市： ' + this.userInfo2.city + ',个性签名： ' + this.userInfo2.signature + ',头像： ' + this.userInfo2.headpic + ',手机： ' + this.userInfo2.phone + ',微信： ' + this.userInfo2.wechat);
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/changeUserInfo', userInfo2).then(function (res) {
-        if (res.data.info === '修改成功') {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://127.0.0.1:8000/ssm01/user/changeUserInfo', userInfo2).then(function (res) {
+        if (res.data === '修改成功') {
           window.alert('修改成功~');
         } else if (res.data === '用户名已存在') {
           window.alert('用户名已存在~');
@@ -2628,12 +2628,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         checkcode: '',
         type: '0'
       },
-      yanzhensrc: 'servlet/ImageServlet'
+      yanzhensrc: 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet'
     };
   },
   methods: {
     postData(data) {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('user/login', data, {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('ssm01/user/register', data, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
@@ -2649,7 +2649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     reloadCode() {
       var time = new Date().getTime();
-      this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+      this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
     },
     changeType(str) {
       this.user.type = str;
@@ -2786,8 +2786,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       console.log(str);
     },
     getData() {
-    	/*第二个人中心获取用户信息*/
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/info').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/info1').then(function (res) {
         console.log('成功获取info1数据：' + res);
         this.userInfo2.userName = res.data.username;
         this.userInfo2.userPic = res.data.headpic;
@@ -3064,7 +3063,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '阿水12344',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '../../../static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -3203,10 +3202,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('userarticle/newarticle2', this.sendData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then(function (res) {
-        if (res.data === '发表成功') {
-          window.alert('发表游记成功');
+        if (res.data === '发布成功') {
+          window.alert('发布游记成功');
         } else {
-          window.alert('发表游记失败');
+          window.alert('发布游记失败');
         }
       }).catch(function (err) {
         console.log(err);
@@ -3217,7 +3216,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       const self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('userarticle/UserArticles').then(function (res) {
         self.youji = res.data.articles;
-        console.log(self.youji)
         for (var i = 0; i < self.youji.length; i++) {
           self.youji[i].articletime = self.dateFormat(self.youji[i].articletime);
         }
@@ -3229,7 +3227,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     /* 获取个人收藏 */
     getPersonShoucang() {
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('CountrysideColl/allColls').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/countrysideColls').then(function (res) {
         self.shoucang = res.data.shoucang;
         console.log('获取个人收藏成功！');
       }).catch(function (err) {
@@ -3239,7 +3237,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     /* 获取个人资料 */
     getPersonInfo() {
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/info').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/UserInfo').then(function (res) {
         console.log('第二成功获取info1数据：' + res);
         self.userInfo.userName = res.data.user[0].username;
         self.userInfo.userPic = 'img/headpic/' + res.data.user[0].headpic;
@@ -3248,7 +3246,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         } else {
           self.userInfo.sex = '1';
         }
-        self.userInfo.birthday = self.dateFormat(res.data.user[0].birth);
+        self.userInfo.birthday = this.dateFormat(res.data.user[0].birth);
         self.userInfo.city = res.data.user[0].city;
         self.userInfo.signature = res.data.user[0].signature;
         self.userInfo.phone = res.data.user[0].phone;
@@ -3279,10 +3277,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.param.append('phone', this.userInfo2.phone);
       this.param.append('wechat', this.userInfo2.wechat);
       console.log('要上传的数据：{用户名：' + this.userInfo2.username + ',性别： ' + this.userInfo2.sex + ',生日： ' + this.userInfo2.birth + ',城市： ' + this.userInfo2.city + ',个性签名： ' + this.userInfo2.signature + ',头像： ' + this.userInfo2.headpic + ',手机： ' + this.userInfo2.phone + ',微信： ' + this.userInfo2.wechat);
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('user/changeUserInfo', this.param, {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('http://127.0.0.1:8000/ssm01/user/changeuserInfo', this.param, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then(function (res) {
-        if (res.data.info === '修改成功') {
+        if (res.data === '修改成功') {
           window.alert('修改成功~');
         } else if (res.data === '用户名已存在') {
           window.alert('用户名已存在~');
@@ -3496,7 +3494,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     reloadCode() {
       var time = new Date().getTime();
-      this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+      this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
     },
     changeType(str) {
       this.user.type = str;
@@ -5499,9 +5497,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.sendData.mainpic = this.yjAdd.fengmian;
       this.sendData.content = this.yjAdd.zhengwen;
       console.log('要提交的数据是： { 标题: ' + this.sendData.name + ' ,隶属: ' + this.sendData.location + ' ,封面: ' + this.sendData.mainpic + ' ,正文： ' + this.sendData.content + ' }');
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('userarticle/newarticle2', this.sendData).then(function (res) {
-    	 
-    	  if (res.data === '发布成功') {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://127.0.0.1:8000/ssm01/userarticle/newarticle2', this.sendData).then(function (res) {
+        if (res.data === '发布成功') {
           window.alert('发布成功');
         } else {
           window.alert('发布失败');
@@ -5511,7 +5508,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     getData() {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('userarticle/UserArticles').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://127.0.0.1:8000/ssm01/userarticle/UserArticles').then(function (res) {
         this.youji = res.data;
       }).catch(function (err) {
         console.log('获取个人游记失败：' + err);
@@ -6156,13 +6153,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/bgimage.f35ea6a.jpg";
+module.exports = __webpack_require__.p + "static/img/bgimage.f35ea6a.jpg";
 
 /***/ }),
 /* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/evidence1.fcd5db9.jpg";
+module.exports = __webpack_require__.p + "static/img/evidence1.fcd5db9.jpg";
 
 /***/ }),
 /* 129 */
@@ -6174,7 +6171,7 @@ module.exports = __webpack_require__.p + "static/img/finderror.81918eb.jpg";
 /* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/hp1.213b1fc.jpg";
+module.exports = __webpack_require__.p + "static/img/hp1.213b1fc.jpg";
 
 /***/ }),
 /* 131 */
@@ -6186,7 +6183,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAGrCAYAAAA8
 /* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/loadbg1.a85a227.jpg";
+module.exports = __webpack_require__.p + "static/img/loadbg1.a85a227.jpg";
 
 /***/ }),
 /* 133 */
@@ -9573,7 +9570,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "title",
       domProps: {
         "textContent": _vm._s(yj.yjName)
-      }	
+      }
     })]), _vm._v(" "), _c('p', {
       staticClass: "time",
       domProps: {

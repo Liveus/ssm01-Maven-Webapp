@@ -16,4 +16,10 @@ public interface CountrysideUserMapper {
     int updateByPrimaryKey(CountrysideUser record);
     
     CountrysideUser selectByName(String username);
+    
+    int selectCountByName(CountrysideUser user);
+    
+    int selectCountByPhone(CountrysideUser user);
+    
+    CountrysideUser selectByPhone(String phone);
 }

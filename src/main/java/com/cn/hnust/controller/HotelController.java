@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cn.hnust.pojo.CountryWithBLOBs;
 import com.cn.hnust.pojo.Hotel;
-import com.cn.hnust.pojo.Restaurant;
 import com.cn.hnust.service.HotelService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
+@Api(value="Hotel")
 @Controller
 @RequestMapping(value="/Hotel")
 public class HotelController {
@@ -24,6 +26,7 @@ public class HotelController {
 	@Resource
 	private HotelService hotelService;
 	
+	@ApiOperation(value="获取乡村所有的住宿",httpMethod="GET",notes="get all CountryHotels")
 	@ResponseBody
 	@RequestMapping(value="/allCountryHotels", produces = "text/json;charset=UTF-8")
 	public void getAllCountryHotels(HttpSession session,HttpServletResponse response){
@@ -40,4 +43,12 @@ public class HotelController {
 			e.printStackTrace();
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/changeHotelInfo",produces="text/json;charset=utf-8")
+	public String changeHotelInfo(Hotel hotel){
+		
+		return "修改失败";
+	}
+	
 }
