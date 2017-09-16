@@ -1,22 +1,7 @@
 package com.cn.hnust.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class CountryWithBLOBs extends Country {
-    @Override
-	public String toString() {
-		return "CountryWithBLOBs [introduce=" + introduce + ", culture=" + culture + ", activities=" + activities
-				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getSights()=" + getSights()
-				+ ", getLocation()=" + getLocation() + ", getAc()=" + getAc() + ", getRc()=" + getRc() + ", getCc()="
-				+ getCc() + ", getTargetsum()=" + getTargetsum() + ", getScore()=" + getScore() + ", getMianpic()="
-				+ getMianpic() + ", getHotels()=" + getHotels() + ", getRestaurants()=" + getRestaurants()
-				+ ", getExamine()=" + getExamine() + ", getUserid()=" + getUserid() + ", getUsername()=" + getUsername()
-				+ ", getCountrytype()=" + getCountrytype() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
-	}
-
-	private String introduce;
+    private String introduce;
 
     private String culture;
 

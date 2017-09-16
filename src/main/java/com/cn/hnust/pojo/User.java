@@ -1,24 +1,28 @@
 package com.cn.hnust.pojo;
 
+import java.sql.Time;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class User {
-    private Integer userid;
-
-    private String useremail;
-
-    private String userpassword;
-
     @Override
 	public String toString() {
 		return "User [userid=" + userid + ", useremail=" + useremail + ", userpassword=" + userpassword + ", level="
 				+ level + ", fans=" + fans + ", experience=" + experience + ", headpic=" + headpic + ", sex=" + sex
 				+ ", birth=" + birth + ", signature=" + signature + ", attention=" + attention + ", city=" + city
 				+ ", phone=" + phone + ", wechat=" + wechat + ", favorite=" + favorite + ", articles=" + articles
-				+ ", routes=" + routes + ", username=" + username + ", keyval=" + keyval + ", active=" + active + "]";
+				+ ", routes=" + routes + ", username=" + username + ", keyval=" + keyval + ", active=" + active
+				+ ", alltime=" + alltime + ", lasttime=" + lasttime + "]";
 	}
 
-	private Integer level;
+	private Integer userid;
+
+    private String useremail;
+
+    private String userpassword;
+
+    private Integer level;
 
     private Integer fans;
 
@@ -51,6 +55,11 @@ public class User {
     private String keyval;
 
     private Byte active;
+
+	@DateTimeFormat(pattern = "yy-mm-dd")
+	private Time alltime;
+
+    private Date lasttime;
 
     public Integer getUserid() {
         return userid;
@@ -129,7 +138,7 @@ public class User {
     }
 
     public void setSignature(String signature) {
-        this.signature = signature ;
+        this.signature = signature == null ? null : signature.trim();
     }
 
     public Integer getAttention() {
@@ -210,5 +219,21 @@ public class User {
 
     public void setActive(Byte active) {
         this.active = active;
+    }
+
+    public Date getAlltime() {
+        return alltime;
+    }
+
+    public void setAlltime(Time alltime) {
+        this.alltime = alltime;
+    }
+
+    public Date getLasttime() {
+        return lasttime;
+    }
+
+    public void setLasttime(Date lasttime) {
+        this.lasttime = lasttime;
     }
 }

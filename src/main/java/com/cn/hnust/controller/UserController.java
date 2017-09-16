@@ -74,7 +74,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/login", produces = "text/json;charset=UTF-8")
-	public void login(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session) {
+	public String login(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session) {
 		User user = new User();
 		String piccode = (String) request.getSession().getAttribute("piccode");
 		String username = "";
@@ -120,32 +120,37 @@ public class UserController {
 				System.out.println("success:");
 				// user.setUserpassword(""); //删除传输给前端用户信息中的密码项
 				object.put("info", "登陆成功");
-				try {
+/*				try {
 					response.getWriter().write(object.toString());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-				return;
+				}*/
+				/*return;
+				*/
+				return "登陆成功";
 			} else {
-				object.put("info", "用户名或者密码不正确");
+/*				object.put("info", "用户名或者密码不正确");
 				try {
 					response.getWriter().write(object.toString());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-				return;
+				}*/
+				/*return;
+				*/
+				return "用户名或者密码不正确";
 			}
 		} else {
-			object.put("info", "验证码不正确");
+/*			object.put("info", "验证码不正确");
 			try {
 				response.getWriter().write(object.toString());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			return;
+			}*//*
+			return;*/
+			return "验证码不正确";
 		}
 	}
 

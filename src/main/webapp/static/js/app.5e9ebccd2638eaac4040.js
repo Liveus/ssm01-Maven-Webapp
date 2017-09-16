@@ -2824,7 +2824,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
           }
         }).then(function (data) {
-          console.log(data.info);
+        console.log(data.info);
+        console.log(data.info);
           if (data.info === '登陆成功') {
             this.noticeText = '登陆成功';
             this.turnOrNot = true;
@@ -3758,7 +3759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
       }).then(function (data) {
-        console.log(data);
+        console.log(data.data);
         if (data === '验证码错误') {
           this.noticeText = '验证码错误';
         } else {

@@ -16,7 +16,10 @@
 	<mvc:annotation-driven />
 	<!-- ueditor -->
 	<mvc:resources location="/lang/" mapping="/lang/**"></mvc:resources>
+		<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
+	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+	
 	<mvc:resources location="/" mapping="/ueditor.**.js"></mvc:resources>
 	<mvc:resources location="/dialogs/" mapping="/dialogs/**"></mvc:resources>
 	<mvc:resources location="/third-party/" mapping="/third-party/**"></mvc:resources>

@@ -1,5 +1,7 @@
 package com.cn.hnust.pojo;
 
+import java.util.Date;
+
 public class Country {
     private Integer id;
 
@@ -32,6 +34,8 @@ public class Country {
     private String username;
 
     private String countrytype;
+
+    private Date addtime;
 
     public Integer getId() {
         return id;
@@ -159,5 +163,13 @@ public class Country {
 
     public void setCountrytype(String countrytype) {
         this.countrytype = countrytype == null ? null : countrytype.trim();
+    }
+
+    public Date getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(Date addtime) {
+        this.addtime = addtime;
     }
 }
