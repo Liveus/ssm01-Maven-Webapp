@@ -46,15 +46,20 @@ public class CountryServiceImpl implements CountryService {
 		bloBs.setCountrytype(type);
 		List<CountryWithBLOBs> list = new ArrayList<CountryWithBLOBs>();
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("start",page*8);
-        map.put("pagesize",8);
+
+        map.put("start",page*6);
+        map.put("pagesize",6);
         map.put("type",type);
         map.put("content",content);
-        System.out.println("sss:"+content);
-		list = this.countryMapper.getCountrysByType(map);
+        if(type.equals("È«²¿")){
+        	list = this.countryMapper.getCountrysByType2(map);
+        }else{
+    		list = this.countryMapper.getCountrysByType(map);
+        }
 		return list;
 	}
 
+	
 	@Override
 	public List<CountryWithBLOBs> getAllCountry(Integer page) {
 		// TODO Auto-generated method stub

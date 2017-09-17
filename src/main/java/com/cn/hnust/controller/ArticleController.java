@@ -38,18 +38,18 @@ public class ArticleController {
 
 	@Resource
 	private ArticleService articleService;
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/newArticle", produces = "text/json;charset=UTF-8")
-	public String newArticle(HttpServletRequest request,Map<String, Object> map,ModelMap model,HttpSession session) {
+	public String newArticle(HttpServletRequest request, Map<String, Object> map, ModelMap model, HttpSession session) {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
-		User user = (User)session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		String title = request.getParameter("title");
 		String location = request.getParameter("location");
 		String value = request.getParameter("value");
 		Date date = new Date();
-		String mainpic  = null;
+		String mainpic = null;
 		if (multipartResolver.isMultipart(request)) {
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 			Iterator iter = multiRequest.getFileNames();
@@ -57,7 +57,7 @@ public class ArticleController {
 				MultipartFile file = multiRequest.getFile(iter.next().toString());
 				if (file != null) {
 					mainpic = file.getOriginalFilename();
-					mainpic = date.getTime()+mainpic.substring(mainpic.lastIndexOf("."), mainpic.length());
+					mainpic = date.getTime() + mainpic.substring(mainpic.lastIndexOf("."), mainpic.length());
 					String path = "E:/springUpload/" + mainpic;
 					try {
 						file.transferTo(new File(path));
@@ -75,10 +75,10 @@ public class ArticleController {
 		System.out.println(article);
 		return "发布成功";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/newarticle2", produces = "text/json;charset=UTF-8")
-	public String newarticle2(HttpServletRequest request,HttpServletResponse response,HttpSession session){
+	@RequestMapping(value = "/newarticle2", produces = "text/json;charset=UTF-8")
+	public String newarticle2(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		Article article = new Article();
 		response.setContentType("text/json;charset=UTF-8");
@@ -91,7 +91,8 @@ public class ArticleController {
 			article.setLocation(request.getParameter("location"));
 			article.setContent(request.getParameter("content"));
 			try {
-				FileWriter fw = new FileWriter(request.getServletContext().getRealPath("/img/upload")+"/"+String.valueOf(date.getTime()) + ".txt",true);
+				FileWriter fw = new FileWriter(request.getServletContext().getRealPath("/img/upload") + "/"
+						+ String.valueOf(date.getTime()) + ".txt", true);
 				BufferedWriter bw = new BufferedWriter(fw);
 				bw.write(request.getParameter("content"));// 往已有的文件上添加字符串
 				article.setContent(String.valueOf(date.getTime()) + ".txt");
@@ -137,38 +138,38 @@ public class ArticleController {
 		this.articleService.newArticle(article);
 		return "发表成功";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/UserArticles", produces = "text/json;charset=UTF-8")
-	public void getUserArticles(HttpServletResponse response,HttpServletRequest request,HttpSession session){
-		User user = (User)request.getSession().getAttribute("user");
+	public void getUserArticles(HttpServletResponse response, HttpServletRequest request, HttpSession session) {
+		User user = (User) request.getSession().getAttribute("user");
 		List<Article> articles = this.articleService.getUserArticles(user);
 		Iterator<Article> iterator = articles.iterator();
 		while (iterator.hasNext()) {
 			Article article = (Article) iterator.next();
 			String path = article.getContent();
-			File file = new File(request.getServletContext().getRealPath("/img/upload")+"/"+path);//定义一个file对象，用来初始化FileReader
-	       FileReader reader = null;
+			File file = new File(request.getServletContext().getRealPath("/img/upload") + "/" + path);// 定义一个file对象，用来初始化FileReader
+			FileReader reader = null;
 			try {
 				reader = new FileReader(file);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}//定义一个fileReader对象，用来初始化BufferedReader
-	        BufferedReader bReader = new BufferedReader(reader);//new一个BufferedReader对象，将文件内容读取到缓存
-	        StringBuilder sb = new StringBuilder();//定义一个字符串缓存，将字符串存放缓存中
-	        String s = "";
-	        try {
-				while ((s =bReader.readLine()) != null) {//逐行读取文件内容，不读取换行符和末尾的空格
-				    sb.append(s + "\n");//将读取的字符串添加换行符后累加存放在缓存中
+			} // 定义一个fileReader对象，用来初始化BufferedReader
+			BufferedReader bReader = new BufferedReader(reader);// new一个BufferedReader对象，将文件内容读取到缓存
+			StringBuilder sb = new StringBuilder();// 定义一个字符串缓存，将字符串存放缓存中
+			String s = "";
+			try {
+				while ((s = bReader.readLine()) != null) {// 逐行读取文件内容，不读取换行符和末尾的空格
+					sb.append(s + "\n");// 将读取的字符串添加换行符后累加存放在缓存中
 				}
 				bReader.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        String str = sb.toString();
-	        article.setContent(str);
+			String str = sb.toString();
+			article.setContent(str);
 		}
 		response.setContentType("text/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -181,40 +182,40 @@ public class ArticleController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/Bypage",produces="text/json;charset=utf-8")
-	public void getArticleByPage(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value = "/Bypage", produces = "text/json;charset=utf-8")
+	public void getArticleByPage(HttpServletRequest request, HttpServletResponse response) {
 		Integer page = Integer.valueOf(request.getParameter("page"));
-		User user = (User)request.getSession().getAttribute("user");
+		User user = (User) request.getSession().getAttribute("user");
 		response.setCharacterEncoding("text/json;charset=utf-8");
 		List<Article> articles = this.articleService.getArticlesByPage(user, page);
 		Iterator<Article> iterator = articles.iterator();
 		while (iterator.hasNext()) {
 			Article article = (Article) iterator.next();
 			String path = article.getContent();
-			File file = new File(request.getServletContext().getRealPath("/img/upload")+"/"+path);//定义一个file对象，用来初始化FileReader
-	       FileReader reader = null;
+			File file = new File(request.getServletContext().getRealPath("/img/upload") + "/" + path);// 定义一个file对象，用来初始化FileReader
+			FileReader reader = null;
 			try {
 				reader = new FileReader(file);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}//定义一个fileReader对象，用来初始化BufferedReader
-	        BufferedReader bReader = new BufferedReader(reader);//new一个BufferedReader对象，将文件内容读取到缓存
-	        StringBuilder sb = new StringBuilder();//定义一个字符串缓存，将字符串存放缓存中
-	        String s = "";
-	        try {
-				while ((s =bReader.readLine()) != null) {//逐行读取文件内容，不读取换行符和末尾的空格
-				    sb.append(s + "\n");//将读取的字符串添加换行符后累加存放在缓存中
+			} // 定义一个fileReader对象，用来初始化BufferedReader
+			BufferedReader bReader = new BufferedReader(reader);// new一个BufferedReader对象，将文件内容读取到缓存
+			StringBuilder sb = new StringBuilder();// 定义一个字符串缓存，将字符串存放缓存中
+			String s = "";
+			try {
+				while ((s = bReader.readLine()) != null) {// 逐行读取文件内容，不读取换行符和末尾的空格
+					sb.append(s + "\n");// 将读取的字符串添加换行符后累加存放在缓存中
 				}
 				bReader.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        String str = sb.toString();
-	        article.setContent(str);
+			String str = sb.toString();
+			article.setContent(str);
 		}
 		response.setContentType("text/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -227,10 +228,10 @@ public class ArticleController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/view",produces="text/json;charset=utf-8")
-	public void view(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value = "/view", produces = "text/json;charset=utf-8")
+	public void view(HttpServletRequest request, HttpServletResponse response) {
 		Article article = new Article();
 		response.setContentType("text/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -275,15 +276,15 @@ public class ArticleController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/getOneArticleById",produces="application/json;charset=utf-8")
-	public Article getOneArticleById(HttpServletRequest request){
+	@RequestMapping(value = "/getOneArticleById", produces = "application/json;charset=utf-8")
+	public Article getOneArticleById(HttpServletRequest request) {
 		Article article = new Article();
 		int id = 1;
-/*		try {
+		try {
 			BufferedReader reader = request.getReader();
 			id = Integer.valueOf(reader.readLine());
 		} catch (JSONException e1) {
@@ -292,8 +293,31 @@ public class ArticleController {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}*/
+		}
 		article = this.articleService.one(id);
+		String path = article.getContent();
+		File file = new File(request.getServletContext().getRealPath("/img/upload") + "/" + path);// 定义一个file对象，用来初始化FileReader
+		FileReader reader = null;
+		try {
+			reader = new FileReader(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // 定义一个fileReader对象，用来初始化BufferedReader
+		BufferedReader bReader = new BufferedReader(reader);// new一个BufferedReader对象，将文件内容读取到缓存
+		StringBuilder sb = new StringBuilder();// 定义一个字符串缓存，将字符串存放缓存中
+		String s = "";
+		try {
+			while ((s = bReader.readLine()) != null) {// 逐行读取文件内容，不读取换行符和末尾的空格
+				sb.append(s + "\n");// 将读取的字符串添加换行符后累加存放在缓存中
+			}
+			bReader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String str = sb.toString();
+		article.setContent(str);
 		return article;
 	}
 }

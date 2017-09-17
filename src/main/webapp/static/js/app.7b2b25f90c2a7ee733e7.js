@@ -280,13 +280,13 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABX
 /* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/photo1.c8f9407.jpg";
+module.exports = __webpack_require__.p + "static/img/photo1.c8f9407.jpg";
 
 /***/ }),
 /* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/spotcover2.9dbf5d7.jpg";
+module.exports = __webpack_require__.p + "static/img/spotcover2.9dbf5d7.jpg";
 
 /***/ }),
 /* 170 */,
@@ -457,7 +457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '最新的用户名',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '/static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -945,12 +945,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getData() {
       const self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('restaurant/allRestaurants').then(function (res) {
-        console.log('获取个人餐馆成功sss！');
-        var data1_cg = self.myCanguan;
-        console.log('aaa' + data1_cg[0].cgName);
-        var data2_cg = res.data.restaurants;
+        console.log('获取个人餐馆成功！');
+        var data1_cg = self.myJingdian;
+        var data2_cg = res.data.ScenicSpots;
         for (var datacgI = 0; datacgI < data2_cg.length; datacgI++) {
-          console.log('bbbb' + data1_cg[datacgI].cgName + 'ccc' + datacgI);
           data1_cg[datacgI].cgName = data2_cg[datacgI].name;
           data1_cg[datacgI].cgImg = data2_cg[datacgI].cover;
           data1_cg[datacgI].cgId = data2_cg[datacgI].restaurantid;
@@ -1772,116 +1770,116 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       country2: [{
         id: '1',
         name: '高家堂村',
-        mianpic: 'static/c1.jpg',
+        mianpic: '../../static/c1.jpg',
         countrytype: '文化传承型'
       }, {
         id: '2',
         name: '高家堂村',
-        mianpic: 'static/c2.jpg'
+        mianpic: '../../static/c2.jpg'
       }, {
         id: '3',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '4',
         name: '高家堂村',
-        mianpic: 'static/c4.jpg'
+        mianpic: '../../static/c4.jpg'
       }, {
         id: '5',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '6',
         name: '高家堂村',
-        mianpic: 'static/c6.jpg'
+        mianpic: '../../static/c6.jpg'
       }, {
         id: '7',
         name: '高家堂村',
-        mianpic: 'static/c7.jpg'
+        mianpic: '../../static/c7.jpg'
       }, {
         id: '8',
         name: '高家堂村',
-        mianpic: 'static/c0.jpg'
+        mianpic: '../../static/c0.jpg'
       }, {
         id: '9',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '10',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '2',
         name: '高家堂村',
-        mianpic: 'static/c2.jpg'
+        mianpic: '../../static/c2.jpg'
       }, {
         id: '3',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '4',
         name: '高家堂村',
-        mianpic: 'static/c4.jpg'
+        mianpic: '../../static/c4.jpg'
       }, {
         id: '5',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '6',
         name: '高家堂村',
-        mianpic: 'static/c6.jpg'
+        mianpic: '../../static/c6.jpg'
       }, {
         id: '7',
         name: '高家堂村',
-        mianpic: 'static/c7.jpg'
+        mianpic: '../../static/c7.jpg'
       }, {
         id: '8',
         name: '高家堂村',
-        mianpic: 'static/c0.jpg'
+        mianpic: '../../static/c0.jpg'
       }, {
         id: '9',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '10',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '2',
         name: '高家堂村',
-        mianpic: 'static/c1.jpg'
+        mianpic: '../../static/c1.jpg'
       }, {
         id: '3',
         name: '高家堂村',
-        mianpic: 'static/c2.jpg'
+        mianpic: '../../static/c2.jpg'
       }, {
         id: '4',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '5',
         name: '高家堂村',
-        mianpic: 'static/c4.jpg'
+        mianpic: '../../static/c4.jpg'
       }, {
         id: '6',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '7',
         name: '高家堂村',
-        mianpic: 'static/c6.jpg'
+        mianpic: '../../static/c6.jpg'
       }, {
         id: '8',
         name: '高家堂村',
-        mianpic: 'static/c7.jpg'
+        mianpic: '../../static/c7.jpg'
       }, {
         id: '9',
         name: '高家堂村',
-        mianpic: 'static/c0.jpg'
+        mianpic: '../../static/c0.jpg'
       }, {
         id: '10',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }],
       scroll: 0,
       sxValue: {
@@ -1924,7 +1922,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getXc() {
       this.showWait = true;
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('country/getAllXc', this.getXcIndex, {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('getAllXc', this.getXcIndex, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
@@ -1987,7 +1985,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       console.log('发送的信息：');
       console.log(this.sxValue);
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('country/ByType', this.sxValue, {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('sx', this.sxValue, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
@@ -2467,7 +2465,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo3: {
         userName: '阿水12344',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '../../../static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -2486,7 +2484,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         birth: '2017-01-01',
         city: '杭州',
         signature: '无',
-        headPic: 'static/mrtx.jpg',
+        headPic: '../../../static/mrtx.jpg',
         phone: '1782680****',
         wechat: 'wm1782680****',
         level: '0',
@@ -2543,38 +2541,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       }
     },
-    /* 获取个人资料 */
-    getData () {
-      console.log('成功从person父组件中取到数据')
-      this.userInfo2.username = this.userInfo.userName
-      this.userInfo2.sex = this.userInfo.sex
-      this.userInfo2.city = this.userInfo.city
-      this.userInfo2.headPic = this.userInfo.userPic
-      this.userInfo2.phone = this.userInfo.phone
-      this.userInfo2.idcard = this.userInfo.idcard
-    },
     /* 获取个人资料 （待修改） */
     getPersonInfo() {
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('CountrysideUser/info').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/info').then(function (res) {
         console.log('第二成功获取info1数据：' + res);
-        self.userInfo.userName = res.data.countrysideUser[0].username;
-        self.userInfo.userPic = 'img/headpic/' + res.data.uscountrysideUserer[0].headpic;
-        if (res.data.countrysideUser[0].sex === '男') {
+        self.userInfo.userName = res.data.user[0].username;
+        self.userInfo.userPic = 'img/headpic/' + res.data.user[0].headpic;
+        if (res.data.user[0].sex === '男') {
           self.userInfo.sex = '0';
         } else {
           self.userInfo.sex = '1';
         }
-        self.userInfo.birthday = self.dateFormat(res.data.countrysideUser[0].birth);
-        self.userInfo.city = res.data.countrysideUser[0].city;
-        self.userInfo.signature = res.data.countrysideUser[0].signature;
-        self.userInfo.phone = res.data.countrysideUser[0].phone;
-        self.userInfo.wechat = res.data.countrysideUser[0].wechat;
-        self.userInfo.dengji = res.data.countrysideUser[0].level;
-        self.userInfo.jingyan = res.data.countrysideUser[0].experience;
-        self.userInfo.fensi = res.data.countrysideUser[0].fans;
-        self.userInfo.guanzu = res.data.countrysideUser[0].attention;
-        self.userInfo2.username = self.countrysideUser.userName;
+        self.userInfo.birthday = self.dateFormat(res.data.user[0].birth);
+        self.userInfo.city = res.data.user[0].city;
+        self.userInfo.signature = res.data.user[0].signature;
+        self.userInfo.phone = res.data.user[0].phone;
+        self.userInfo.wechat = res.data.user[0].wechat;
+        self.userInfo.dengji = res.data.user[0].level;
+        self.userInfo.jingyan = res.data.user[0].experience;
+        self.userInfo.fensi = res.data.user[0].fans;
+        self.userInfo.guanzu = res.data.user[0].attention;
+        self.userInfo2.username = self.userInfo.userName;
         self.userInfo2.sex = self.userInfo.sex;
         self.userInfo2.city = self.userInfo.city;
         self.userInfo2.headPic = self.userInfo.userPic;
@@ -2654,7 +2642,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   props: ['userInfo'],
   created() {
-    this.getData();
+    this.getPersonInfo();
   }
 });
 
@@ -3512,7 +3500,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         checkcode: '',
         type: '0'
       },
-      yanzhensrc: 'servlet/ImageServlet',
+      yanzhensrc: 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet',
       showModalValue: '',
       noticeText: '',
       turnOrNot: false,
@@ -3521,34 +3509,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     postData(data) {
-    	window.alert(1111)
-    	window.alert(this.user.email === '')
-		if (this.user.email === '') {
-			this.noticeText = '用户名不能为空！'
-			this.showModalValue = 'modal-alter'
-		} else if (this.user.password === '') {
-			this.noticeText = '密码不能为空！'
-			this.showModalValue = 'modal-alter'
-		} else if (this.user.checkcode === '') {
-			this.noticeText = '验证码不能为空！'
-			this.showModalValue = 'modal-alter'
-		} else{
-			const self = this
-			if (self.user.type === '0') {
+      if (this.user.type === '0') {
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('user/login', data, {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
           }
         }).then(function (data) {
-          console.log(data.data);
-          if (data.data == '登陆成功') {
-        	  self.noticeText = '登陆成功';
-        	  self.turnOrNot = true;
-        	  self.aHref = 'http://localhost:8000/ssm01/#/index';
+          console.log(data);
+          if (data === '登陆成功') {
+            this.noticeText = '登陆成功';
+            this.turnOrNot = true;
+            this.aHref = 'http://localhost:8080/#/index';
           } else {
-        	  self.noticeText = data.data;
+            this.noticeText = data;
           }
-          self.showModalValue = 'modal-alter';
+          this.showModalValue = 'modal-alter';
           console.log(data.data);
           if (data.data.errno === 0) {
             console.log('上传成功');
@@ -3563,25 +3538,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           }
         }).then(function (data) {
           console.log(data);
-          if (data.data == '登陆成功') {
-        	  self.noticeText = '登陆成功';
-        	  self.turnOrNot = true;
-        	  self.aHref = 'http://localhost:8000/ssm01/#/person/xiangcun';
-          } else {
-        	  self.noticeText = data.data;
-          }
-          self.showModalValue = 'modal-alter';
+          console.log(data.data);
           if (data.data.errno === 0) {
             console.log('上传成功');
           }
         }).catch(function (err) {
           console.log(err);
         });
-      }}
+      }
     },
     reloadCode() {
       var time = new Date().getTime();
-      this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+      this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
     },
     changeType(str) {
       this.user.type = str;
@@ -3738,12 +3706,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       const self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('CountrysideUser/info').then(function (res) {
         console.log('成功获取info1数据：' + res);
-        console.log(res.data.countrysideUser[0].headpic);
-        self.userInfo2.city = res.data.countrysideUser[0].city;
-        self.userInfo2.phone = res.data.countrysideUser[0].userphone;
-        self.userInfo2.sex = res.data.countrysideUser[0].sex;
-        self.userInfo2.userName = res.data.countrysideUser[0].name;
-        self.userInfo2.userPic = 'img/countrysideUser/headPic/' + res.data.countrysideUser[0].headpic;
+        self.userInfo2.city = res.data.countrysideUser.city;
+        self.userInfo2.phone = res.data.countrysideUser.userphone;
+        self.userInfo2.sex = res.data.countrysideUser.sex;
+        self.userInfo2.userName = res.data.countrysideUser.name;
+        self.userInfo2.userPic = res.data.countrysideUser.headpic;
         // self.userInfo2.birthday = res.data.countrysideUser.birth
         // self.userInfo2.signature = res.data.countrysideUser.signature
         // self.userInfo2.wechat = res.data.countrysideUser.wechat
@@ -4015,7 +3982,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '阿水12344',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '../../../static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -4033,7 +4000,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         birth: '2017-01-01',
         city: '杭州',
         signature: '无',
-        headPic: 'static/mrtx.jpg',
+        headPic: '../../../static/mrtx.jpg',
         phone: '1782680****',
         wechat: 'wm1782680****',
         level: '0',
@@ -4201,22 +4168,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       const self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/info').then(function (res) {
         console.log('第二成功获取info1数据：' + res);
-        self.userInfo.userName = res.data.countrysideUser[0].name;
-        self.userInfo.userPic = 'img/headpic/' + res.data.countrysideUser[0].headpic;
-        if (res.data.countrysideUser[0].sex === '男') {
+        self.userInfo.userName = res.data.user[0].username;
+        self.userInfo.userPic = 'img/headpic/' + res.data.user[0].headpic;
+        if (res.data.user[0].sex === '男') {
           self.userInfo.sex = '0';
         } else {
           self.userInfo.sex = '1';
         }
-        self.userInfo.birthday = self.dateFormat(res.data.ucountrysideUserer[0].birth);
-        self.userInfo.city = res.data.countrysideUser[0].city;
-        self.userInfo.signature = res.data.countrysideUser[0].signature;
-        self.userInfo.phone = res.data.countrysideUser[0].phone;
-        self.userInfo.wechat = res.data.countrysideUser[0].wechat;
-        self.userInfo.dengji = res.data.countrysideUser[0].level;
-        self.userInfo.jingyan = res.data.countrysideUser[0].experience;
-        self.userInfo.fensi = res.data.countrysideUser[0].fans;
-        self.userInfo.guanzu = res.data.countrysideUser[0].attention;
+        self.userInfo.birthday = self.dateFormat(res.data.user[0].birth);
+        self.userInfo.city = res.data.user[0].city;
+        self.userInfo.signature = res.data.user[0].signature;
+        self.userInfo.phone = res.data.user[0].phone;
+        self.userInfo.wechat = res.data.user[0].wechat;
+        self.userInfo.dengji = res.data.user[0].level;
+        self.userInfo.jingyan = res.data.user[0].experience;
+        self.userInfo.fensi = res.data.user[0].fans;
+        self.userInfo.guanzu = res.data.user[0].attention;
         self.userInfo2.username = self.userInfo.userName;
         self.userInfo2.sex = self.userInfo.sex;
         self.userInfo2.city = self.userInfo.city;
@@ -4343,7 +4310,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   created() {
     this.getPersonYouji();
-    /* this.getPersonInfo() ;*/
+    this.getPersonInfo();
     this.getPersonShoucang();
   }
 });
@@ -4491,7 +4458,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         } else {
           this.noticeText = '恭喜你注册成功，一封邮件已经发往你的邮箱，请点击邮箱中的链接进行验证！';
           this.turnOrNot = true;
-          this.aHref = 'http://localhost:8000/ssm01/#/loadandreg/load';
+          this.aHref = 'http://localhost:8080/#/loadandreg/load';
         }
         this.showModalValue = 'modal-alter';
         // console.log(data.data)
@@ -4509,7 +4476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     reloadCode() {
       var time = new Date().getTime();
-      this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+      this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
     },
     changeType(str) {
       this.user.type = str;
@@ -5987,18 +5954,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       const self = this;
       __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('country/UserCountrysides').then(function (res) {
         console.log('成功获取商业用户的信息');
-        self.myCountry.xcId = res.data.CountryWithBLOBs[0].id;
-        self.myCountry.xcName = res.data.CountryWithBLOBs[0].name;
-        self.myCountry.xcTime = res.data.CountryWithBLOBs[0].time;
-        self.myCountry.xcImg = 'img/countryside/mainPic/'+res.data.CountryWithBLOBs[0].mianpic;
-        if (res.data.CountryWithBLOBs[0].id) {
+        self.myCountry.xcId = res.data.countrysides.id;
+        self.myCountry.xcName = res.data.countrysides.name;
+        self.myCountry.xcTime = res.data.countrysides.time;
+        self.myCountry.xcImg = res.data.countrysides.mianpic;
+        if (res.data.countrysides.id) {
           self.showtab = false;
-          self.numChange(self.myCountry.xcColl, 'xcColl2');
-          self.numChange(self.myCountry.xcLiuLan, 'xcLiuLan2');
-          console.log('成功：' + self.showtab);
+          self.numChange(this.myCountry.xcColl, 'xcColl2');
+          self.numChange(this.myCountry.xcLiuLan, 'xcLiuLan2');
+          console.log('成功：' + this.showtab);
         } else {
           self.showtab = true;
-          console.log('失败1：' + self.showtab);
+          console.log('失败1：' + this.showtab);
         }
       }).catch(function (err) {
         console.log('失败获取商业用户的信息');
@@ -8637,7 +8604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data() {
     return {
       mapPA: '0',
-      bgnone: ['static/c1.jpg', 'static/c2.jpg', 'static/c3.jpg', 'static/c4.jpg', 'static/c5.jpg', 'static/c6.jpg', 'static/c7.jpg', 'static/c0.jpg'],
+      bgnone: ['/static/c1.jpg', '/static/c2.jpg', '/static/c3.jpg', '/static/c4.jpg', '/static/c5.jpg', '/static/c6.jpg', '/static/c7.jpg', '/static/c0.jpg'],
       showbg1: true,
       showbg2: false,
       showtj11: false,
@@ -8658,29 +8625,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       nowCountryImgshow1: true,
       nowCountryImgshow2: false,
       showArea: 6,
-      countryInfor: [{ bgImg: 'static/c1.jpg', name: '横山坞村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。0' }, { bgImg: 'static/c2.jpg', name: '双一村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。1' }, { bgImg: 'static/c3.jpg', name: '刘家塘村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。2' }, { bgImg: 'static/c4.jpg', name: '余村村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。3' }, { bgImg: 'static/c5.jpg', name: '马家弄村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。4' }, {
-        bgImg: 'static/c6.jpg',
+      countryInfor: [{ bgImg: '/static/c1.jpg', name: '横山坞村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。0' }, { bgImg: '/static/c2.jpg', name: '双一村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。1' }, { bgImg: '/static/c3.jpg', name: '刘家塘村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。2' }, { bgImg: '/static/c4.jpg', name: '余村村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。3' }, { bgImg: '/static/c5.jpg', name: '马家弄村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。4' }, {
+        bgImg: '/static/c6.jpg',
         name: '高家堂村',
         introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 5'
       }, {
-        bgImg: 'static/c7.jpg',
+        bgImg: '/static/c7.jpg',
         name: '尚书干村',
         introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 6'
       }, {
-        bgImg: 'static/',
+        bgImg: '/static/c0.jpg',
         name: '长林垓村',
         introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 7'
       }],
       showCountry: '横山坞村',
       showText: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。',
-      nowCountryImg: 'static/c1.jpg',
-      imgArea: [{ src: 'static/area1.png', num: 1 }, { src: 'static/area2.png', num: 2 }, { src: 'static/area3.png', num: 3 }, { src: 'static/area4.png', num: 4 }, { src: 'static/area5.png', num: 5 }, { src: 'static/area6.png', num: 6 }, { src: 'static/area7.png', num: 7 }, { src: 'static/area8.png', num: 8 }, { src: 'static/area9.png', num: 9 }, { src: 'static/area10.png', num: 10 }, { src: 'static/area11.png', num: 11 }, { src: 'static/area12.png', num: 12 }, { src: 'static/area13.png', num: 13 }, { src: 'static/area14.png', num: 14 }, { src: 'static/area15.png', num: 15 }],
+      nowCountryImg: '/static/c1.jpg',
+      imgArea: [{ src: '/static/area1.png', num: 1 }, { src: '/static/area2.png', num: 2 }, { src: '/static/area3.png', num: 3 }, { src: '/static/area4.png', num: 4 }, { src: '/static/area5.png', num: 5 }, { src: '/static/area6.png', num: 6 }, { src: '/static/area7.png', num: 7 }, { src: '/static/area8.png', num: 8 }, { src: '/static/area9.png', num: 9 }, { src: '/static/area10.png', num: 10 }, { src: '/static/area11.png', num: 11 }, { src: '/static/area12.png', num: 12 }, { src: '/static/area13.png', num: 13 }, { src: '/static/area14.png', num: 14 }, { src: '/static/area15.png', num: 15 }],
       // 模态框中有的
       showModalValue: '',
       showButtonValue: false,
       showImgIndex: 0,
-      imgInfo: ['static/special1.jpg', 'static/special2.jpg', 'static/special3.jpg'],
-      videoInfo: { src: 'static/mp4_video.mp4', title: '壮丽河山', cover: 'static/fallback.jpg' },
+      imgInfo: ['/static/special1.jpg', '/static/special2.jpg', '/static/special3.jpg'],
+      videoInfo: { src: '/static/mp4_video.mp4', title: '壮丽河山', cover: '/static/fallback.jpg' },
       destination: [{ country: '高家堂村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }, { country: '余村村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }, { country: '横山坞村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }]
     };
   },
@@ -9803,13 +9770,13 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADh
 /* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/allArea.b8d7879.png";
+module.exports = __webpack_require__.p + "static/img/allArea.b8d7879.png";
 
 /***/ }),
 /* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/bgimage.f35ea6a.jpg";
+module.exports = __webpack_require__.p + "static/img/bgimage.f35ea6a.jpg";
 
 /***/ }),
 /* 546 */
@@ -9839,7 +9806,7 @@ module.exports = __webpack_require__.p + "static/img/finderror.81918eb.jpg";
 /* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/hp1.213b1fc.jpg";
+module.exports = __webpack_require__.p + "static/img/hp1.213b1fc.jpg";
 
 /***/ }),
 /* 551 */
@@ -9851,7 +9818,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAGrCAYAAAA8
 /* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/loadbg1.a85a227.jpg";
+module.exports = __webpack_require__.p + "static/img/loadbg1.a85a227.jpg";
 
 /***/ }),
 /* 553 */
@@ -9887,7 +9854,7 @@ module.exports = __webpack_require__.p + "static/img/special4.a10d3ae.jpg";
 /* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/view.c83e324.jpg";
+module.exports = __webpack_require__.p + "static/img/view.c83e324.jpg";
 
 /***/ }),
 /* 559 */
@@ -18653,7 +18620,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.showbg1) ? _c('div', {
     staticClass: "vidbg-box map-bg-img",
     attrs: {
-      "data-vidbg-bg": "mp4: static/mp4_video.mp4, webm: /static/webm_video.webm, poster: static/fallback.jpg",
+      "data-vidbg-bg": "mp4: /static/mp4_video.mp4, webm: /static/webm_video.webm, poster: /static/fallback.jpg",
       "data-vidbg-options": "loop: true, muted: true, overlay: true, volume: 1, playbackRate: 1, position: '50% 50%', resizing: false"
     }
   }) : _vm._e(), _vm._v(" "), (_vm.showbg2) ? _c('div', [_c('transition', {

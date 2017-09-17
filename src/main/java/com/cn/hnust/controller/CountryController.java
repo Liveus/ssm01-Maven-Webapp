@@ -198,14 +198,12 @@ public class CountryController {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
-		if(countrytype.equals("È«²¿")){
-			countrytype = "";
-		}
-		System.out.println(countrytype);
-		System.out.println(page);
-		System.out.println(content);
+		}		
+		System.out.println("aa:"+countrytype);
+		System.out.println("bb:"+page);
+		System.out.println("cc:"+content);
 		List<CountryWithBLOBs> bloBs = this.countryService.getCountrysByType(countrytype, page,content);
+		System.out.println("blogs:"+bloBs);
 		if (bloBs.size() == 0) {
 			return null;
 		} else {

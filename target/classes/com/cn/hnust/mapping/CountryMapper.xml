@@ -53,8 +53,18 @@
 
 	<select id="getCountrysByType" resultMap="ResultMapWithBLOBs"
 		parameterType="Map">
-		SELECT id,name,mianpic FROM country WHERE FIND_IN_SET(#{type},countryType)
+		SELECT id,name,mianpic,countryType FROM country WHERE FIND_IN_SET(#{type},countryType)
 		And ( name like CONCAT(CONCAT('%', #{content}), '%') OR location like CONCAT(CONCAT('%', #{content}), '%') )
+		<if test="start!=null and pagesize!=null">
+			limit #{start},#{pagesize}
+		</if>
+	</select>
+	
+	
+	<select id="getCountrysByType2" resultMap="ResultMapWithBLOBs"
+		parameterType="Map">
+		SELECT id,name,mianpic,countryType FROM country WHERE 
+		 name like CONCAT(CONCAT('%', #{content}), '%') OR location like CONCAT(CONCAT('%', #{content}), '%') 
 		<if test="start!=null and pagesize!=null">
 			limit #{start},#{pagesize}
 		</if>
