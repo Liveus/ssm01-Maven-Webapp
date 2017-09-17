@@ -45,8 +45,8 @@ public class CountrysideUserController {
 			while ((input = reader.readLine()) != null) {
 				requestBody.append(input);
 				JSONObject jsonObject = new JSONObject(input);
-				user.setName(jsonObject.get("name").toString());
-				user.setName(jsonObject.get("password").toString());
+				user.setName(jsonObject.get("email").toString());
+				user.setUserpassword(jsonObject.get("password").toString());
 				checkcode = jsonObject.get("checkcode").toString();
 			}
 		} catch (JSONException e1) {

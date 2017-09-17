@@ -55,4 +55,15 @@ public class CountryServiceImpl implements CountryService {
 		return list;
 	}
 
+	@Override
+	public List<CountryWithBLOBs> getAllCountry(Integer page) {
+		// TODO Auto-generated method stub
+		List<CountryWithBLOBs> bs = new ArrayList<CountryWithBLOBs>();
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("start",page*6);
+        map.put("pagesize",6);
+        bs = this.countryMapper.getCountryByPage(map);
+		return bs;
+	}
+
 }

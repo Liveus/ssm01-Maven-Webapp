@@ -17,6 +17,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -274,5 +276,24 @@ public class ArticleController {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getOneArticleById",produces="application/json;charset=utf-8")
+	public Article getOneArticleById(HttpServletRequest request){
+		Article article = new Article();
+		int id = 1;
+/*		try {
+			BufferedReader reader = request.getReader();
+			id = Integer.valueOf(reader.readLine());
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+		article = this.articleService.one(id);
+		return article;
 	}
 }

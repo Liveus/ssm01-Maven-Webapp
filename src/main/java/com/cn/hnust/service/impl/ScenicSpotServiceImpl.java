@@ -23,5 +23,11 @@ public class ScenicSpotServiceImpl implements ScenicSpotService {
 		System.out.println(list.toString());
 		return list;
 	}
+	@Override
+	public ScenicSpot getDetail(Integer id) {
+		// TODO Auto-generated method stub
+		ScenicSpot spot = this.scenicSpotMapper.selectByPrimaryKey(id);
+		return spot;
+	}
 
 }

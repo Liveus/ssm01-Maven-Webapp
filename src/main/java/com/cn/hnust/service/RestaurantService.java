@@ -11,4 +11,6 @@ public interface RestaurantService {
 	 * @return
 	 */
 	public List<Restaurant> getCountryRestaurant(CountryWithBLOBs countryWithBLOBs);
+	
+	public Restaurant getRestDetail(Integer id);
 }

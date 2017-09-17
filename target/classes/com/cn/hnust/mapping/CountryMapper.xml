@@ -60,6 +60,14 @@
 		</if>
 	</select>
 	
+	<select id="getCountryByPage" resultMap="ResultMapWithBLOBs"
+		parameterType="Map">
+		SELECT * FROM country
+		<if test="start!=null and pagesize!=null">
+			limit #{start},#{pagesize}
+		</if>
+	</select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from country
     where id = #{id,jdbcType=INTEGER}

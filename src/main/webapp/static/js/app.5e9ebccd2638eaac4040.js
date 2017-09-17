@@ -71,7 +71,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADE
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/spotcover2.9dbf5d7.jpg";
+module.exports = __webpack_require__.p + "static/img/spotcover2.9dbf5d7.jpg";
 
 /***/ }),
 /* 15 */,
@@ -109,7 +109,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/special4.a10d3ae.jpg";
+module.exports = __webpack_require__.p + "static/img/special4.a10d3ae.jpg";
 
 /***/ }),
 /* 23 */,
@@ -168,13 +168,13 @@ module.exports = __webpack_require__.p + "static/img/photo1.c8f9407.jpg";
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/special1.096f352.jpg";
+module.exports = __webpack_require__.p + "static/img/special1.096f352.jpg";
 
 /***/ }),
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/special3.dc38325.jpg";
+module.exports = __webpack_require__.p + "static/img/special3.dc38325.jpg";
 
 /***/ }),
 /* 38 */,
@@ -326,7 +326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '最新的用户名',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '/static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -456,7 +456,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     getData() {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('restaurant/allRestaurants').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/canguan1').then(function (res) {
         this.myJingdian = res.data;
       }).catch(function (err) {
         console.log(err);
@@ -1838,7 +1838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '阿水12344',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '../../../static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -1857,7 +1857,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         birth: '2017-01-01',
         city: '杭州',
         signature: '无',
-        headPic: 'static/mrtx.jpg',
+        headPic: '../../../static/mrtx.jpg',
         phone: '1782680****',
         wechat: 'wm1782680****',
         level: '0',
@@ -2360,7 +2360,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     /* 获取 引dateFormat */
     getPersonJingdian() {
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('ScenicSpot/getSpots').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('userJingdian/UserJingdians').then(function (res) {
         self.myJingdian = res.data.Jingdian;
         for (var i = 0; i < self.myJingdian.length; i++) {
           self.myJingdian[i].jdTime = self.dateFormat(self.myJingdian[i].jdTime);
@@ -2809,7 +2809,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         checkcode: '',
         type: '0'
       },
-      yanzhensrc: 'servlet/ImageServlet',
+      yanzhensrc: 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet',
       showModalValue: '',
       noticeText: '',
       turnOrNot: false,
@@ -2824,14 +2824,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
           }
         }).then(function (data) {
-        console.log(data.info);
-        console.log(data.info);
-          if (data.info === '登陆成功') {
+          console.log(data);
+          if (data === '登陆成功') {
             this.noticeText = '登陆成功';
             this.turnOrNot = true;
             this.aHref = 'http://localhost:8080/#/index';
           } else {
-            this.noticeText = data.info;
+            this.noticeText = data;
           }
           this.showModalValue = 'modal-alter';
           console.log(data.data);
@@ -2859,7 +2858,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     reloadCode() {
       var time = new Date().getTime();
-      this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+      this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
     },
     changeType(str) {
       this.user.type = str;
@@ -3291,7 +3290,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '阿水12344',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '../../../static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -3309,7 +3308,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         birth: '2017-01-01',
         city: '杭州',
         signature: '无',
-        headPic: 'static/mrtx.jpg',
+        headPic: '../../../static/mrtx.jpg',
         phone: '1782680****',
         wechat: 'wm1782680****',
         level: '0',
@@ -3759,7 +3758,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
       }).then(function (data) {
-        console.log(data.data);
+        console.log(data);
         if (data === '验证码错误') {
           this.noticeText = '验证码错误';
         } else {
@@ -3783,7 +3782,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     reloadCode() {
       var time = new Date().getTime();
-      this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+      this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
     },
     changeType(str) {
       this.user.type = str;
@@ -7240,7 +7239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     getData() {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('Hotel/allCountryHotels').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/zhusu1').then(function (res) {
         this.myJingdian = res.data;
       }).catch(function (err) {
         console.log(err);
@@ -7657,17 +7656,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data() {
     return {
       showArea: 6,
-      countryInfor: [{ bgImg: 'static/c1.jpg', name: '横山坞村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。0' }, { bgImg: '/static/c2.jpg', name: '双一村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。1' }, { bgImg: '/static/c3.jpg', name: '刘家塘村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。2' }, { bgImg: '/static/c4.jpg', name: '余村村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。3' }, { bgImg: '/static/c5.jpg', name: '马家弄村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。4' }, { bgImg: '/static/c6.jpg', name: '高家堂村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 5' }, { bgImg: '/static/c7.jpg', name: '尚书干村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 6' }, { bgImg: '/static/c0.jpg', name: '长林垓村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 7' }],
+      countryInfor: [{ bgImg: '/static/c1.jpg', name: '横山坞村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。0' }, { bgImg: '/static/c2.jpg', name: '双一村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。1' }, { bgImg: '/static/c3.jpg', name: '刘家塘村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。2' }, { bgImg: '/static/c4.jpg', name: '余村村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。3' }, { bgImg: '/static/c5.jpg', name: '马家弄村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。4' }, { bgImg: '/static/c6.jpg', name: '高家堂村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 5' }, { bgImg: '/static/c7.jpg', name: '尚书干村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 6' }, { bgImg: '/static/c0.jpg', name: '长林垓村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 7' }],
       showCountry: '横山坞村',
       showText: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。',
-      nowCountryImg: 'static/c1.jpg',
-      imgArea: [{ src: 'static/area1.png', num: 1 }, { src: 'static/area2.png', num: 2 }, { src: 'static/area3.png', num: 3 }, { src: 'static/area4.png', num: 4 }, { src: 'static/area5.png', num: 5 }, { src: 'static/area6.png', num: 6 }, { src: 'static/area7.png', num: 7 }, { src: 'static/area8.png', num: 8 }, { src: 'static/area9.png', num: 9 }, { src: 'static/area10.png', num: 10 }, { src: 'static/area11.png', num: 11 }, { src: 'static/area12.png', num: 12 }, { src: 'static/area13.png', num: 13 }, { src: 'static/area14.png', num: 14 }, { src: 'static/area15.png', num: 15 }],
+      nowCountryImg: '/static/c1.jpg',
+      imgArea: [{ src: '/static/area1.png', num: 1 }, { src: '/static/area2.png', num: 2 }, { src: '/static/area3.png', num: 3 }, { src: '/static/area4.png', num: 4 }, { src: '/static/area5.png', num: 5 }, { src: '/static/area6.png', num: 6 }, { src: '/static/area7.png', num: 7 }, { src: '/static/area8.png', num: 8 }, { src: '/static/area9.png', num: 9 }, { src: '/static/area10.png', num: 10 }, { src: '/static/area11.png', num: 11 }, { src: '/static/area12.png', num: 12 }, { src: '/static/area13.png', num: 13 }, { src: '/static/area14.png', num: 14 }, { src: '/static/area15.png', num: 15 }],
       // 模态框中有的
       showModalValue: '',
       showButtonValue: false,
       showImgIndex: 0,
       imgInfo: ['/static/special1.jpg', '/static/special2.jpg', '/static/special3.jpg'],
-      videoInfo: { src: '/static/mp4_video.mp4', title: '壮丽河山', cover: 'static/fallback.jpg' },
+      videoInfo: { src: '/static/mp4_video.mp4', title: '壮丽河山', cover: '/static/fallback.jpg' },
       destination: [{ country: '高家堂村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }, { country: '余村村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }, { country: '横山坞村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }],
       iconMove1: false,
       iconMove2: false,
@@ -8487,19 +8486,19 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADh
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/allArea.b8d7879.png";
+module.exports = __webpack_require__.p + "static/img/allArea.b8d7879.png";
 
 /***/ }),
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/bgimage.f35ea6a.jpg";
+module.exports = __webpack_require__.p + "static/img/bgimage.f35ea6a.jpg";
 
 /***/ }),
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/cover1.e85fc24.jpg";
+module.exports = __webpack_require__.p + "static/img/cover1.e85fc24.jpg";
 
 /***/ }),
 /* 147 */
@@ -8517,7 +8516,7 @@ module.exports = __webpack_require__.p + "static/img/finderror.81918eb.jpg";
 /* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/hp1.213b1fc.jpg";
+module.exports = __webpack_require__.p + "static/img/hp1.213b1fc.jpg";
 
 /***/ }),
 /* 150 */
@@ -8529,13 +8528,13 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAGrCAYAAAA8
 /* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/loadbg1.a85a227.jpg";
+module.exports = __webpack_require__.p + "static/img/loadbg1.a85a227.jpg";
 
 /***/ }),
 /* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/special2.9dbf5d7.jpg";
+module.exports = __webpack_require__.p + "static/img/special2.9dbf5d7.jpg";
 
 /***/ }),
 /* 153 */

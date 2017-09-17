@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -47,5 +48,23 @@ public class RestaurantController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	@ResponseBody
+	@RequestMapping(value="/detail")
+	public Restaurant getDetail(HttpServletRequest request){
+		Restaurant restaurant = new Restaurant();
+		int id = 123;
+		/*		try {
+					BufferedReader reader = request.getReader();
+					id = Integer.valueOf(reader.readLine());
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}*/
+		restaurant = this.restaurantService.getRestDetail(id);
+		return restaurant;
 	}
 }

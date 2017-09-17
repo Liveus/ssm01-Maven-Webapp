@@ -13,4 +13,6 @@ public interface ScenicSpotService {
 	 */
 	public List<ScenicSpot> getCountrysideSpots(CountryWithBLOBs country);
 	
+	public ScenicSpot getDetail(Integer id);
+	
 }

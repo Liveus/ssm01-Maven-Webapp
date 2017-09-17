@@ -12,4 +12,7 @@ public interface HotelService {
 	 * @return
 	 */
 	public List<Hotel> getCountryHotels(CountryWithBLOBs countryWithBLOBs);
+	
+	
+	public Hotel getHotelDetail(Integer id);
 }

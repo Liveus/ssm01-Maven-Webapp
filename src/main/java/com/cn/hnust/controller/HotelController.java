@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -51,4 +52,22 @@ public class HotelController {
 		return "ÐÞ¸ÄÊ§°Ü";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/detail")
+	public Hotel getHotelDetail(HttpServletRequest request){
+		Hotel hotel = new Hotel();
+		int id = 123;
+/*		try {
+			BufferedReader reader = request.getReader();
+			id = Integer.valueOf(reader.readLine());
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+		hotel = this.hotelService.getHotelDetail(id);
+		return hotel;
+	}
 }

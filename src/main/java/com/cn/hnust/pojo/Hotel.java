@@ -3,7 +3,16 @@ package com.cn.hnust.pojo;
 public class Hotel {
     private Integer idhotel;
 
-    private String hotelname;
+    @Override
+	public String toString() {
+		return "Hotel [idhotel=" + idhotel + ", hotelname=" + hotelname + ", score=" + score + ", mainpic=" + mainpic
+				+ ", lowprice=" + lowprice + ", location=" + location + ", phone=" + phone + ", video=" + video
+				+ ", detaillocation=" + detaillocation + ", passengersum=" + passengersum + ", countryId=" + countryId
+				+ ", addtime=" + addtime + ", pice=" + pice + ", examine=" + examine + ", userid=" + userid
+				+ ", username=" + username + ", introduce=" + introduce + "]";
+	}
+
+	private String hotelname;
 
     private Double score;
 

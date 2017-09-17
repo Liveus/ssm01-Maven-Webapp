@@ -93,4 +93,23 @@ public class ScenicSpotController {
 			}
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/detail")
+	public ScenicSpot getSpotDetail(HttpServletRequest request){
+		int id = 123;
+/*		try {
+			BufferedReader reader = request.getReader();
+			id = Integer.valueOf(reader.readLine());
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+		ScenicSpot scenicSpot = new ScenicSpot();
+		scenicSpot = this.scenicSpotService.getDetail(id);
+		return scenicSpot;
+	}
 }

@@ -24,4 +24,6 @@ public interface CountryMapper {
     List<CountryWithBLOBs> getUserCountrysides(List<Integer> ids);
     
     List<CountryWithBLOBs> getCountrysByType(Map<String,Object> map);
+    
+    List<CountryWithBLOBs> getCountryByPage(Map<String,Object> map);
 }

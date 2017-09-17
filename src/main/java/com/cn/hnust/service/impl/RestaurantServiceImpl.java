@@ -24,4 +24,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return list;
 	}
 
+	@Override
+	public Restaurant getRestDetail(Integer id) {
+		// TODO Auto-generated method stub
+		Restaurant restaurant = new Restaurant();
+		restaurant  = this.restaurantMapper.selectByPrimaryKey(id);
+		return restaurant;
+	}
+
 }

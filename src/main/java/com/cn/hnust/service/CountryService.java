@@ -28,4 +28,10 @@ public interface CountryService {
 	 */
 	public List<CountryWithBLOBs> getCountrysByType(String type,Integer page,String content);
 	
+	/**
+	 * ∑÷“≥ªÒ»°
+	 * @param page
+	 * @return
+	 */
+	public List<CountryWithBLOBs> getAllCountry(Integer page);
 }

@@ -22,5 +22,10 @@ public class HotelServiceImpl implements HotelService {
 		System.out.println("hotels:"+hotels.toString());
 		return hotels;
 	}
+	@Override
+	public Hotel getHotelDetail(Integer id) {
+		// TODO Auto-generated method stub
+		return this.hotelmapper.selectByPrimaryKey(id);
+	}
 
 }
