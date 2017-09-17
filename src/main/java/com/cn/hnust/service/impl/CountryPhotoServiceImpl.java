@@ -22,4 +22,10 @@ public class CountryPhotoServiceImpl implements CountryPhotoService {
 		return photos;
 	}
 
+	@Override
+	public int newPhotos(CountryPhoto photo) {
+		// TODO Auto-generated method stub
+		return this.countryPhotoMapper.insertSelective(photo);
+	}
+
 }

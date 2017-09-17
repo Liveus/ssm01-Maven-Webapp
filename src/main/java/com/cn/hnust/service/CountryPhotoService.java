@@ -13,4 +13,6 @@ public interface CountryPhotoService {
 	 * @return
 	 */
 	public List<CountryPhoto> getCountryPhotos(Country country);
+	
+	public int newPhotos(CountryPhoto photo);
 }

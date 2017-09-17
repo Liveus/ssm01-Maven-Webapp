@@ -34,4 +34,11 @@ public interface CountryService {
 	 * @return
 	 */
 	public List<CountryWithBLOBs> getAllCountry(Integer page);
+	
+	/**
+	 * 添加新乡村
+	 * @param bloBs
+	 * @return
+	 */
+	public int newCountry(CountryWithBLOBs bloBs);
 }

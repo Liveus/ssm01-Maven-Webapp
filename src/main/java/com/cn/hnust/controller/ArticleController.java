@@ -111,7 +111,6 @@ public class ArticleController {
 			// 获取multiRequest 中所有的文件名
 			Iterator iter = multiRequest.getFileNames();
 			while (iter.hasNext()) {
-				System.out.println("aaa");
 				// 一次遍历所有文件
 				MultipartFile file = multiRequest.getFile(iter.next().toString());
 				if (file != null) {

@@ -1,7 +1,15 @@
 package com.cn.hnust.pojo;
 
 public class Restaurant {
-    private Integer restaurantid;
+    @Override
+	public String toString() {
+		return "Restaurant [restaurantid=" + restaurantid + ", name=" + name + ", location=" + location + ", perprice="
+				+ perprice + ", cinformation=" + cinformation + ", address=" + address + ", cover=" + cover + ", pices="
+				+ pices + ", video=" + video + ", countryId=" + countryId + ", addtime=" + addtime + ", examine="
+				+ examine + ", userid=" + userid + ", username=" + username + ", synopsis=" + synopsis + "]";
+	}
+
+	private Integer restaurantid;
 
     private String name;
 

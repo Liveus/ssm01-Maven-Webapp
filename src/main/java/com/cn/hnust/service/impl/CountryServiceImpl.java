@@ -71,4 +71,10 @@ public class CountryServiceImpl implements CountryService {
 		return bs;
 	}
 
+	@Override
+	public int newCountry(CountryWithBLOBs bloBs) {
+		// TODO Auto-generated method stub
+		return this.countryMapper.insertSelective(bloBs);
+	}
+
 }

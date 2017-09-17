@@ -22,4 +22,10 @@ public class CountryVideoServiceImpl implements CountryVideoService {
 		List<CountryVideo> videos = this.countryVideoMapper.getCountrysideVideos(country);
 		return videos;
 	}
+
+	@Override
+	public int newVideos(CountryVideo video) {
+		// TODO Auto-generated method stub
+		return this.countryVideoMapper.insertSelective(video);
+	}
 }

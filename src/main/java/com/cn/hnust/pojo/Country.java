@@ -172,4 +172,12 @@ public class Country {
     public void setAddtime(Date addtime) {
         this.addtime = addtime;
     }
+
+	@Override
+	public String toString() {
+		return "Country [id=" + id + ", name=" + name + ", sights=" + sights + ", location=" + location + ", ac=" + ac
+				+ ", rc=" + rc + ", cc=" + cc + ", targetsum=" + targetsum + ", score=" + score + ", mianpic=" + mianpic
+				+ ", hotels=" + hotels + ", restaurants=" + restaurants + ", examine=" + examine + ", userid=" + userid
+				+ ", username=" + username + ", countrytype=" + countrytype + ", addtime=" + addtime + "]";
+	}
 }

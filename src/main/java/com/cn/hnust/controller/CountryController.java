@@ -1,9 +1,16 @@
 package com.cn.hnust.controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +24,9 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
@@ -29,6 +39,7 @@ import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.pojo.Hotel;
 import com.cn.hnust.pojo.Restaurant;
 import com.cn.hnust.pojo.ScenicSpot;
+import com.cn.hnust.pojo.User;
 import com.cn.hnust.service.ArticleService;
 import com.cn.hnust.service.CountryCommentService;
 import com.cn.hnust.service.CountryPhotoService;
@@ -37,6 +48,7 @@ import com.cn.hnust.service.CountryVideoService;
 import com.cn.hnust.service.HotelService;
 import com.cn.hnust.service.RestaurantService;
 import com.cn.hnust.service.ScenicSpotService;
+import com.mysql.fabric.xmlrpc.base.Data;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
@@ -124,35 +136,76 @@ public class CountryController {
 	 */
 	@ApiOperation(value = "获取乡村所有信息", httpMethod = "GET", notes = "get country all info", response = List.class)
 	@ResponseBody
-	@RequestMapping(value = "/allInfo", produces = "text/json;charset=UTF-8")
+	@RequestMapping(value = "/allInfo")
 	public void getAllInfo(HttpServletRequest request, HttpServletResponse response) {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/json;charset=UTF-8");
 		JSONObject object = new JSONObject();
 		CountryWithBLOBs bloBs = new CountryWithBLOBs();
-		/*
-		 * StringBuffer requestBody; try { BufferedReader reader =
-		 * request.getReader(); String input = null; requestBody = new
-		 * StringBuffer(); while ((input = reader.readLine()) != null) {
-		 * requestBody.append(input); JSONObject jsonObject = new
-		 * JSONObject(input);
-		 * bloBs.setId(Integer.valueOf(jsonObject.get("id").toString())); } }
-		 * catch (JSONException e1) { // TODO Auto-generated catch block
-		 * e1.printStackTrace(); object.put("info", "获取信息失败"); } catch
-		 * (IOException e1) { // TODO Auto-generated catch block
-		 * e1.printStackTrace(); object.put("info", "获取信息失败"); }
-		 */
+		System.out.println(request.getParameter("id"));
+		try {
+			BufferedReader reader = request.getReader();
+			System.out.println(reader.readLine());
+/*			Integer id = Integer.valueOf(reader.readLine());
+			System.out.println("id:"+id);*/
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		bloBs.setId(1);
 		bloBs = this.countryService.getOneCountryById(bloBs.getId());
 		List<CountryWithBLOBs> bloBs2 = new ArrayList<CountryWithBLOBs>();
 		List<CountryPhoto> photos = this.countryPhotoService.getCountryPhotos(bloBs);
 		List<CountryVideo> videos = this.countryVideoService.getcountrysideVideos(bloBs);
-		List<Article> articles = this.articleService.getCountrysideArticles(bloBs);
+		List<Article> articles = this.articleService.getCountrysideArticles(bloBs,request);
 		List<ScenicSpot> scenicSpots = this.scenicSpotService.getCountrysideSpots(bloBs);
 		List<Hotel> hotels = this.hotelService.getCountryHotels(bloBs);
 		List<Restaurant> restaurants = this.restaurantService.getCountryRestaurant(bloBs);
 		List<CountryComment> comments = this.commentService.getCountryComments(bloBs);
 		bloBs2.add(bloBs);
+		CountryWithBLOBs bs = bloBs2.get(0);
+		String path = bs.getCulture();
+		String path2 = bs.getActivities();
+		File file = new File(request.getServletContext().getRealPath("/img/upload") + "/" + path);// 定义一个file对象，用来初始化FileReader
+		FileReader reader = null;
+		File file2 = new File(request.getServletContext().getRealPath("/img/upload") + "/" + path2);// 定义一个file对象，用来初始化FileReader
+		FileReader reader2 = null;
+		try {
+			reader = new FileReader(file);
+			reader2 = new FileReader(file2);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // 定义一个fileReader对象，用来初始化BufferedReader
+		BufferedReader bReader = new BufferedReader(reader);// new一个BufferedReader对象，将文件内容读取到缓存
+		StringBuilder sb = new StringBuilder();// 定义一个字符串缓存，将字符串存放缓存中
+		String s = "";
+		BufferedReader bReader2 = new BufferedReader(reader2);// new一个BufferedReader对象，将文件内容读取到缓存
+		StringBuilder sb2 = new StringBuilder();// 定义一个字符串缓存，将字符串存放缓存中
+		String s2 = "";
+		try {
+			while ((s = bReader.readLine()) != null) {// 逐行读取文件内容，不读取换行符和末尾的空格
+				sb.append(s + "\n");// 将读取的字符串添加换行符后累加存放在缓存中
+			}
+			bReader.close();
+			while ((s2 = bReader2.readLine()) != null) {// 逐行读取文件内容，不读取换行符和末尾的空格
+				sb2.append(s2 + "\n");// 将读取的字符串添加换行符后累加存放在缓存中
+			}
+			bReader2.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String str = sb.toString();
+		String str2 = sb2.toString();
+		bs.setCulture(str);
+		bs.setActivities(str2);
+		bloBs2.clear();
+		bloBs2.add(bs);
 		object.put("info", "获取信息成功");
 		object.put("country", bloBs2);
 		object.put("photos", photos);
@@ -173,8 +226,13 @@ public class CountryController {
 	@ApiOperation(value = "根据类别获取乡村", httpMethod = "GET", notes = "get user in session", response = List.class)
 	@ResponseBody
 	@RequestMapping(value = "/ByType", produces = "application/json;charset=UTF-8")
-	public List<CountryWithBLOBs> getCountryByType(/*@RequestParam("countryType") String countrytype,
-			@RequestParam("page") Integer page, @RequestParam("content") String content, */HttpServletRequest request,HttpServletResponse response) {
+	public List<CountryWithBLOBs> getCountryByType(
+			/*
+			 * @RequestParam("countryType") String countrytype,
+			 * 
+			 * @RequestParam("page") Integer page, @RequestParam("content")
+			 * String content,
+			 */HttpServletRequest request, HttpServletResponse response) {
 		String countrytype = "";
 		Integer page = 0;
 		String content = "";
@@ -198,12 +256,12 @@ public class CountryController {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}		
-		System.out.println("aa:"+countrytype);
-		System.out.println("bb:"+page);
-		System.out.println("cc:"+content);
-		List<CountryWithBLOBs> bloBs = this.countryService.getCountrysByType(countrytype, page,content);
-		System.out.println("blogs:"+bloBs);
+		}
+		System.out.println("aa:" + countrytype);
+		System.out.println("bb:" + page);
+		System.out.println("cc:" + content);
+		List<CountryWithBLOBs> bloBs = this.countryService.getCountrysByType(countrytype, page, content);
+		System.out.println("blogs:" + bloBs);
 		if (bloBs.size() == 0) {
 			return null;
 		} else {
@@ -212,8 +270,8 @@ public class CountryController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value="/getAllXc",produces = "application/json;charset=UTF-8")
-	public String getAllCountrysides(HttpServletRequest request){
+	@RequestMapping(value = "/getAllXc", produces = "application/json;charset=UTF-8")
+	public String getAllCountrysides(HttpServletRequest request) {
 		List<CountryWithBLOBs> bs = new ArrayList<CountryWithBLOBs>();
 		int page = 0;
 		try {
@@ -227,24 +285,136 @@ public class CountryController {
 			e1.printStackTrace();
 		}
 		bs = this.countryService.getAllCountry(page);
-	    SimplePropertyPreFilter filter = new SimplePropertyPreFilter(); // 构造方法里，也可以直接传需要序列化的属性名字
-	    filter.getExcludes().add("introduce");
-	    filter.getExcludes().add("culture");
-	    filter.getExcludes().add("activities");
-	    filter.getExcludes().add("ac");
-	    filter.getExcludes().add("rc");
-	    filter.getExcludes().add("cc");
-	    filter.getExcludes().add("score");
-	    filter.getExcludes().add("targetsum");
-	    filter.getExcludes().add("hotels");
-	    filter.getExcludes().add("restaurants");
-	    filter.getExcludes().add("examine");
-	    filter.getExcludes().add("userid");
-	    filter.getExcludes().add("username");
-	    filter.getExcludes().add("addtime");
-	    filter.getExcludes().add("sights");
-	    filter.getExcludes().add("location");
-	    return JSON.toJSONString(bs, filter);
-/*		return bs;*/
+		SimplePropertyPreFilter filter = new SimplePropertyPreFilter(); // 构造方法里，也可以直接传需要序列化的属性名字
+		filter.getExcludes().add("introduce");
+		filter.getExcludes().add("culture");
+		filter.getExcludes().add("activities");
+		filter.getExcludes().add("ac");
+		filter.getExcludes().add("rc");
+		filter.getExcludes().add("cc");
+		filter.getExcludes().add("score");
+		filter.getExcludes().add("targetsum");
+		filter.getExcludes().add("hotels");
+		filter.getExcludes().add("restaurants");
+		filter.getExcludes().add("examine");
+		filter.getExcludes().add("userid");
+		filter.getExcludes().add("username");
+		filter.getExcludes().add("addtime");
+		filter.getExcludes().add("sights");
+		filter.getExcludes().add("location");
+		return JSON.toJSONString(bs, filter);
+		/* return bs; */
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/newCountry")
+	public String newCountryside(HttpServletRequest request, HttpSession session) {
+		CountryWithBLOBs bs = new CountryWithBLOBs();
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+				request.getSession().getServletContext());
+		CountrysideUser user = (CountrysideUser) session.getAttribute("countrysideUser");
+		Date date = new Date();
+		bs.setName(request.getParameter("name"));
+		bs.setIntroduce(request.getParameter("introduce"));
+		bs.setLocation(request.getParameter("location"));
+		bs.setCountrytype(request.getParameter("countrytype"));
+		bs.setUserid(user.getIdcountrysideuser());
+		bs.setUsername(user.getName());
+		String cover = null;
+		String pics = "";
+		String videos = "";
+		String[] speciality;
+		String path;
+		Date date2 = new Date();
+		date2.setTime(2l + date.getTime());
+		List<String> list = new ArrayList<String>();
+		if (multipartResolver.isMultipart(request)) {
+			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+			// 处理编辑器内容
+			try {
+				FileWriter fw = new FileWriter(request.getServletContext().getRealPath("/img/upload") + "/"
+						+ String.valueOf(date.getTime()) + ".txt", true);
+				FileWriter fw2 = new FileWriter(request.getServletContext().getRealPath("/img/upload") + "/"
+						+ String.valueOf(date2.getTime()) + ".txt", true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				BufferedWriter bw2 = new BufferedWriter(fw2);
+				bw.write(request.getParameter("culture"));
+				bw2.write(request.getParameter("activities"));
+				bw.close();
+				bw2.close();
+				fw.close();
+				fw2.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				return "添加乡村失败";
+			}
+			bs.setActivities(String.valueOf(date.getTime()) + ".txt");
+			bs.setCulture(String.valueOf(date2.getTime()) + ".txt");
+
+			// 处理请求中的文件
+			Iterator iter = multiRequest.getFileNames();
+			while (iter.hasNext()) {
+				MultipartFile file = multiRequest.getFile(iter.next().toString());
+				if (file != null) {
+					Date date3 = new Date();
+					if (file.getName().equals("mianpic")) {
+						cover = file.getOriginalFilename();
+						path = request.getServletContext().getRealPath("/img/countryside/mainPic") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						cover = String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+					} else if (file.getName().startsWith("techang")) {
+						path = request.getServletContext().getRealPath("/img/countryside/pics") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						list.add(String.valueOf(date3.getTime()) + "." + file.getOriginalFilename()
+								.substring(file.getOriginalFilename().lastIndexOf(".") + 1));
+					} else if (file.getName().startsWith("meijing/pic")) {
+						path = request.getServletContext().getRealPath("/img/countryside/pics") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						pics = pics + ";" + String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						;
+					} else {
+						path = request.getServletContext().getRealPath("/img/countryside/videos") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						videos = videos + ";" + String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+					}
+					try {
+						file.transferTo(new File(path));
+					} catch (IllegalStateException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						return "添加乡村失败";
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						return "添加乡村失败";
+					}
+				}
+			}
+			bs.setMianpic(cover);
+		}
+		CountryPhoto countryPhoto = new CountryPhoto();
+		CountryVideo countryVideo = new CountryVideo();
+		countryPhoto.setCountryId(bs.getId());
+		countryPhoto.setSrc(pics);
+		countryVideo.setCountryId(bs.getId());
+		countryVideo.setSrc(videos);
+		if (this.countryService.newCountry(bs) == 1) {
+			List<CountryWithBLOBs> bloBs = this.countryService.getUserCountrysides(session);
+			countryPhoto.setCountryId(bloBs.get(0).getId());
+			countryVideo.setCountryId(bloBs.get(0).getId());
+			this.countryVideoService.newVideos(countryVideo);
+			this.countryPhotoService.newPhotos(countryPhoto);
+			return "添加成功";
+		} else {
+			return "添加失败";
+		}
 	}
 }

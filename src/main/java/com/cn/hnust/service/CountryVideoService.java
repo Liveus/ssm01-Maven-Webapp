@@ -12,4 +12,6 @@ public interface CountryVideoService {
 	 * @return
 	 */
 	public List<CountryVideo> getcountrysideVideos(Country country);
+	
+	public int newVideos(CountryVideo video);
 }
