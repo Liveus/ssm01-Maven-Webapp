@@ -1128,7 +1128,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						videocell: {
 								src : '',
 								title : ''
-							}
+							},
+							celljingdian: {}
 				};
 		},
 		computed: {
@@ -1153,6 +1154,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 		},
 		mounted() {
+			
 				/* 地图 */
 				var map = new AMap.Map("container", {
 						resizeEnable: true
@@ -1168,6 +1170,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						//关键字查询
 						self.placeSearch = placeSearch;
 				});
+
+				if (this.jingdian.length > 0) {
+					this.searchPleace(this.jingdian[0].name)
+				} else {
+					this.searchPleace('安吉县')
+				}
 		},
 		methods: {
 				/* 获取乡村信息 */
@@ -1207,7 +1215,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								}
 								console.log('videoInfo:')
 								console.log(self.videoInfo)
-								
+								var jingdianData = res.data.scenicSpots
+								self.jingdian = []
+								for (var jingdianI = 0; jingdianI < jingdianData.length; jingdianI++) {
+									self.celljingdian = {}
+									self.celljingdian.src = '#/displayremark/restaurant?id=' + jingdianData[jingdianI].scenicspotid + '&type=sight'
+									self.celljingdian.name = jingdianData[jingdianI].name
+									self.jingdian[jingdianI] = self.celljingdian
+								}
+								console.log('jingdian:')
+								console.log(self.jingdian)
+								var canguanData = res.data.restaurants
+								self.canguan = []
+								for (var canguanI = 0; canguanI < canguanData.length; canguanI++) {
+									self.celljingdian = {}
+									self.celljingdian.src = '#/displayremark/restaurant?id=' + canguanData[canguanI].restaurantid + '&type=sight'
+									self.celljingdian.name 
+
+				 = canguanData[canguanI].name
+									self.canguan[canguanI] = self.celljingdian
+								}
+								console.log('canguan:')
+								console.log(self.canguan)
+
+								var zhusuData = res.data.hotels
+								self.zhusu = []
+								for (var zhusuI = 0; zhusuI < zhusuData.length; zhusuI++) {
+									self.celljingdian = {}
+									self.celljingdian.src = '#/displayremark/sigh?id=' + zhusuData[zhusuI].idhotel + '&type=sight'
+									self.celljingdian.name 
+
+				 = zhusuData[zhusuI].hotelname
+									self.zhusu[zhusuI] = self.celljingdian
+								}
+								console.log('zhusu:')
+								console.log(self.zhusu)
+								self.travelNotes = res.data.articles;
+								console.log(self.travelNotes)
 								/* var jingdianData = res.data.scenicSpots;
 								for (var jingdianI = 0; jingdianI < jingdianData.length; jingdianI++) {
 										self.jingdian[jingdianI].src = '#/displayremark/restaurant?id=' + jingdianData[jingdianI].scenicspotid + '&type=sight';
@@ -1242,6 +1286,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				},
 				/* 地图定位 */
 				searchPleace(pleace) {
+						console.log(pleace)
 						this.placeSearch.search(pleace);
 				},
 				ChangeSightShow(str) {
@@ -2315,6 +2360,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.userInfo2.headPic = this.userInfo.userPic;
       this.userInfo2.phone = this.userInfo.phone;
       this.userInfo2.idcard = this.userInfo.idcard;
+      this.rz.number = this.userInfo.idcard;
+      console.log('aaa' + this.rz.number)
     },
     /* 暂时不需要了 获取个人资料 （待修改） */
     getPersonInfo() {
@@ -3293,7 +3340,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 							console.log(data.data);
 							self.noticeText = '登陆成功';
 							self.turnOrNot = true;
-							self.aHref = 'http://localhost:8000/ssm01/#/index';
+							self.aHref = '/ssm01/#/';
 						} else {
 							self.noticeText = data.data;
 						}
@@ -17163,11 +17210,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           path: '/show/youjiShow',
           query: {
             id: oneTN.idarticle,
-            content: oneTN.content,
-            author: oneTN.username,
             time: oneTN.articletime,
             name: oneTN.name,
-            mainpic: oneTN.mainpic
+            mainpic: 'img/articles/cover/' + oneTN.mainpic
           }
         },
         "target": "_blank"
