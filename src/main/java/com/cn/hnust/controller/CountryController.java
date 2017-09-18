@@ -117,7 +117,6 @@ public class CountryController {
 		session.setAttribute("CountryWithBLOBs", bloBs);
 		JSONObject object = new JSONObject();
 		List<CountryWithBLOBs> bs = new ArrayList<CountryWithBLOBs>();
-		System.out.println("bs:" + bs.toString());
 		bs.add(bloBs);
 		object.put("CountryWithBLOBs", bs);
 		try {
@@ -257,11 +256,7 @@ public class CountryController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		System.out.println("aa:" + countrytype);
-		System.out.println("bb:" + page);
-		System.out.println("cc:" + content);
 		List<CountryWithBLOBs> bloBs = this.countryService.getCountrysByType(countrytype, page, content);
-		System.out.println("blogs:" + bloBs);
 		if (bloBs.size() == 0) {
 			return null;
 		} else {
@@ -303,7 +298,6 @@ public class CountryController {
 		filter.getExcludes().add("sights");
 		filter.getExcludes().add("location");
 		return JSON.toJSONString(bs, filter);
-		/* return bs; */
 	}
 
 	@ResponseBody
@@ -351,7 +345,6 @@ public class CountryController {
 			}
 			bs.setActivities(String.valueOf(date.getTime()) + ".txt");
 			bs.setCulture(String.valueOf(date2.getTime()) + ".txt");
-
 			// 处理请求中的文件
 			Iterator iter = multiRequest.getFileNames();
 			while (iter.hasNext()) {

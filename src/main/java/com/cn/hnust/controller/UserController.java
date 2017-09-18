@@ -120,36 +120,11 @@ public class UserController {
 				System.out.println("success:");
 				// user.setUserpassword(""); //删除传输给前端用户信息中的密码项
 				object.put("info", "登陆成功");
-/*				try {
-					response.getWriter().write(object.toString());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-				/*return;
-				*/
 				return "登陆成功";
 			} else {
-/*				object.put("info", "用户名或者密码不正确");
-				try {
-					response.getWriter().write(object.toString());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-				/*return;
-				*/
 				return "用户名或者密码不正确";
 			}
 		} else {
-/*			object.put("info", "验证码不正确");
-			try {
-				response.getWriter().write(object.toString());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*//*
-			return;*/
 			return "验证码不正确";
 		}
 	}
@@ -240,10 +215,6 @@ public class UserController {
 	public String register(HttpServletRequest request, ModelMap model, HttpSession session) {
 		User newuser = new User();
 		String piccode = (String) request.getSession().getAttribute("piccode");
-		/*
-		 * System.out.println("time2:"+request.getSession().getCreationTime());
-		 * System.out.println("timebbb:"+session.getCreationTime());
-		 */
 		String checkcode = "00";
 		StringBuffer requestBody;
 		try {
@@ -263,11 +234,6 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		/*
-		 * System.out.println("dd:"+piccode);
-		 * System.out.println("qq:"+checkcode);
-		 */
-		System.out.println("USER:" + newuser.toString());
 		checkcode = checkcode.toUpperCase();
 		if (piccode.equals(checkcode)) {
 			System.out.println("aaaaaaa");
@@ -304,7 +270,6 @@ public class UserController {
 				return info;
 			}
 		} else {
-			System.out.println("bbbbbb");
 			return "验证码不正确";
 		}
 	}
@@ -318,7 +283,6 @@ public class UserController {
 	@RequestMapping("/verification")
 	public String verification(HttpServletRequest request, ModelMap model) {
 		String email = request.getParameter("from");
-		System.out.println("vvvvv:" + email);
 		model.addAttribute("waitingEmial", email);
 		String confirmation_token = request.getParameter("key");
 		if (this.userService.userverificate(confirmation_token).equals("success")) {
