@@ -280,13 +280,13 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABX
 /* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/photo1.c8f9407.jpg";
+module.exports = __webpack_require__.p + "static/img/photo1.c8f9407.jpg";
 
 /***/ }),
 /* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/spotcover2.9dbf5d7.jpg";
+module.exports = __webpack_require__.p + "static/img/spotcover2.9dbf5d7.jpg";
 
 /***/ }),
 /* 170 */,
@@ -457,7 +457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '最新的用户名',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '/static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -1056,7 +1056,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						cIntroduction: '简介',
 						cCover: 'static/councover.jpg',
 						location: '浙江省 湖州市 安吉县 山川乡',
-						countrytype: '生态保护',
+						countrytype: '生态保护型',
 						imgsInfo: [['static/special1.jpg', 'static/special2.jpg', 'static/special3.jpg'], ['static/special4.jpg', 'static/special5.jpg']],
 						videoInfo: [{ src: 'static/1.1.2.mp4', title: '安吉白茶1' }, { src: 'static/1.1.2.mp4', title: '安吉白茶2' }],
 						cCulture: 'cCulture',
@@ -1124,12 +1124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						showVidIndex: 0,
 						showActIndex: 0,
 						shouTShow: false,
-						PlaceSearch: {},
-						videocell: {
-								src : '',
-								title : ''
-							},
-							celljingdian: {}
+						PlaceSearch: {}
 				};
 		},
 		computed: {
@@ -1154,7 +1149,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 		},
 		mounted() {
-			
 				/* 地图 */
 				var map = new AMap.Map("container", {
 						resizeEnable: true
@@ -1170,89 +1164,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						//关键字查询
 						self.placeSearch = placeSearch;
 				});
-
-				if (this.jingdian.length > 0) {
-					this.searchPleace(this.jingdian[0].name)
-				} else {
-					this.searchPleace('安吉县')
-				}
 		},
 		methods: {
 				/* 获取乡村信息 */
 				getContryside() {
 						const self = this;
-						__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('country/allInfo', this.GetQueryString('id'), {
+						__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('country/allInfo', this.GetQueryString('id'), {
 								headers: {
 										'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
 								}
 						}).then(function (res) {
-								console.log(res.data);
 								console.log(res.data.info);
-								console.log('\n\n\n\n\n获取乡村信息如下4：');
-								self.cName = res.data.country[0].name;
-								self.cIntroduction = res.data.country[0].introduce;
-								self.cCover = 'img/countryside/mainPic/' +res.data.country[0].mianpic;
-								self.location = res.data.country[0].location;
-								self.countrytype = res.data.country[0].countrytype;
-								self.cCulture = res.data.country[0].culture;
-								self.actInfo = res.data.country[0].activities;
+								console.log('\n\n\n\n\n获取乡村信息如下：');
+								self.cName = res.data.country.name;
+								self.cIntroduction = res.data.country.introduce;
+								self.cCover = res.data.country.mianpic;
+								self.location = res.data.country.location;
+								self.countrytype = res.data.country.countrytype;
+								self.imgsInfo = res.data.pices;
+								self.videoInfo = res.data.video;
+								self.cCulture = res.data.country.culture;
+								self.actInfo = res.data.country.activities;
 								self.techanInfo = {};
-								console.log('cName' + self.cName)
-								console.log('cIntroduction' + self.cIntroduction)
-								console.log('cCover' + self.cCover)
-								console.log('location' + self.location)
-								console.log('countrytype' + self.countrytype)
-								console.log('cCulture' + self.cCulture)
-								console.log('actInfo' + self.actInfo)
-								var shipin = res.data.videos
-								self.videoInfo = []
-								for(var shipinI = 0; shipinI < shipin.length; shipinI++) {
-									self.videocell = {}
-									self.videocell.src = '/' +shipin[shipinI].src
-									self.videocell.title = shipin[shipinI].name
-									console.log(self.videocell)
-									self.videoInfo[shipinI] = self.videocell
-								}
-								console.log('videoInfo:')
-								console.log(self.videoInfo)
-								var jingdianData = res.data.scenicSpots
-								self.jingdian = []
-								for (var jingdianI = 0; jingdianI < jingdianData.length; jingdianI++) {
-									self.celljingdian = {}
-									self.celljingdian.src = '#/displayremark/restaurant?id=' + jingdianData[jingdianI].scenicspotid + '&type=sight'
-									self.celljingdian.name = jingdianData[jingdianI].name
-									self.jingdian[jingdianI] = self.celljingdian
-								}
-								console.log('jingdian:')
-								console.log(self.jingdian)
-								var canguanData = res.data.restaurants
-								self.canguan = []
-								for (var canguanI = 0; canguanI < canguanData.length; canguanI++) {
-									self.celljingdian = {}
-									self.celljingdian.src = '#/displayremark/restaurant?id=' + canguanData[canguanI].restaurantid + '&type=sight'
-									self.celljingdian.name 
-
-				 = canguanData[canguanI].name
-									self.canguan[canguanI] = self.celljingdian
-								}
-								console.log('canguan:')
-								console.log(self.canguan)
-
-								var zhusuData = res.data.hotels
-								self.zhusu = []
-								for (var zhusuI = 0; zhusuI < zhusuData.length; zhusuI++) {
-									self.celljingdian = {}
-									self.celljingdian.src = '#/displayremark/sigh?id=' + zhusuData[zhusuI].idhotel + '&type=sight'
-									self.celljingdian.name 
-
-				 = zhusuData[zhusuI].hotelname
-									self.zhusu[zhusuI] = self.celljingdian
-								}
-								console.log('zhusu:')
-								console.log(self.zhusu)
-								self.travelNotes = res.data.articles;
-								console.log(self.travelNotes)
-								/* var jingdianData = res.data.scenicSpots;
+								var jingdianData = res.data.scenicSpots;
 								for (var jingdianI = 0; jingdianI < jingdianData.length; jingdianI++) {
 										self.jingdian[jingdianI].src = '#/displayremark/restaurant?id=' + jingdianData[jingdianI].scenicspotid + '&type=sight';
 										self.jingdian[jingdianI].name = jingdianData[jingdianI].name;
@@ -1279,14 +1213,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 										self.comment[commentI].dislike = commentData[commentI].badsum;
 										self.comment[commentI].like_show = 'like';
 										self.comment[commentI].dislike_show = 'dislike';
-								} */
+								}
 						}).catch(function (err) {
 								console.log('获取乡村信息失败' + err);
 						});
 				},
 				/* 地图定位 */
 				searchPleace(pleace) {
-						console.log(pleace)
 						this.placeSearch.search(pleace);
 				},
 				ChangeSightShow(str) {
@@ -1458,7 +1391,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		created() {
 				this.displayNone(30);
-				this.getContryside();
 		}
 });
 function getTime() {
@@ -1568,7 +1500,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         id: '1',
         name: '高家堂村',
         mianpic: '../../static/c1.jpg',
-        countrytype: '文化传承'
+        countrytype: '文化传承型'
       }, {
         id: '2',
         name: '高家堂村',
@@ -1592,91 +1524,91 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }, {
         id: '7',
         name: '高家堂村',
-        mianpic: 'static/c7.jpg'
+        mianpic: '../../static/c7.jpg'
       }, {
         id: '8',
         name: '高家堂村',
-        mianpic: 'static/c0.jpg'
+        mianpic: '../../static/c0.jpg'
       }, {
         id: '9',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '10',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '2',
         name: '高家堂村',
-        mianpic: 'static/c2.jpg'
+        mianpic: '../../static/c2.jpg'
       }, {
         id: '3',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '4',
         name: '高家堂村',
-        mianpic: 'static/c4.jpg'
+        mianpic: '../../static/c4.jpg'
       }, {
         id: '5',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '6',
         name: '高家堂村',
-        mianpic: 'static/c6.jpg'
+        mianpic: '../../static/c6.jpg'
       }, {
         id: '7',
         name: '高家堂村',
-        mianpic: 'static/c7.jpg'
+        mianpic: '../../static/c7.jpg'
       }, {
         id: '8',
         name: '高家堂村',
-        mianpic: 'static/c0.jpg'
+        mianpic: '../../static/c0.jpg'
       }, {
         id: '9',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '10',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '2',
         name: '高家堂村',
-        mianpic: 'static/c1.jpg'
+        mianpic: '../../static/c1.jpg'
       }, {
         id: '3',
         name: '高家堂村',
-        mianpic: 'static/c2.jpg'
+        mianpic: '../../static/c2.jpg'
       }, {
         id: '4',
         name: '高家堂村',
-        mianpic: 'static/c3.jpg'
+        mianpic: '../../static/c3.jpg'
       }, {
         id: '5',
         name: '高家堂村',
-        mianpic: 'static/c4.jpg'
+        mianpic: '../../static/c4.jpg'
       }, {
         id: '6',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }, {
         id: '7',
         name: '高家堂村',
-        mianpic: 'static/c6.jpg'
+        mianpic: '../../static/c6.jpg'
       }, {
         id: '8',
         name: '高家堂村',
-        mianpic: 'static/c7.jpg'
+        mianpic: '../../static/c7.jpg'
       }, {
         id: '9',
         name: '高家堂村',
-        mianpic: 'static/c0.jpg'
+        mianpic: '../../static/c0.jpg'
       }, {
         id: '10',
         name: '高家堂村',
-        mianpic: 'static/c5.jpg'
+        mianpic: '../../static/c5.jpg'
       }],
       scroll: 0,
       sxValue: {
@@ -1730,7 +1662,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           self.scrollIndex = 2000;
         }
         self.showWait = false;
-        self.getXcIndex++;
       }).catch(function (err) {
         console.log('获取全部乡村失败：' + err);
         /* 测试 */
@@ -1784,27 +1715,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getXc_sx() {
       this.sxValue.type1 = this.selectbar1;
       this.sxValue.type2 = this.selectbar2;
+      this.sxValue.page = this.getXcIndex;
       this.sxValue.key = this.searchXc_value;
       console.log('发送的信息：');
       console.log(this.sxValue);
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('country/ByType', this.sxValue, {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('sx', this.sxValue, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
       }).then(function (res) {
         console.log('发送筛选信息成功~' + res);
         self.scrollIndex = 600;
-        self.country = [];
-        console.log('aaaaaaaaaaaaaaaaaaaaaa')
-        console.log(res.data)
-        console.log(res.data.length)
         self.country = self.country.concat(res.data);
-        console.log(self.country)
-        console.log(self.country.length)
-        if (res.data.length === 0) {
-        	self.country = [];
-        }
       }).catch(function (err) {
         console.log('发送筛选信息失败！' + err);
       });
@@ -2274,7 +2197,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo3: {
         userName: '阿水12344',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '../../../static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -2360,8 +2283,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.userInfo2.headPic = this.userInfo.userPic;
       this.userInfo2.phone = this.userInfo.phone;
       this.userInfo2.idcard = this.userInfo.idcard;
-      this.rz.number = this.userInfo.idcard;
-      console.log('aaa' + this.rz.number)
     },
     /* 暂时不需要了 获取个人资料 （待修改） */
     getPersonInfo() {
@@ -3309,7 +3230,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				checkcode: '',
 				type: '0'
 			},
-			yanzhensrc: 'servlet/ImageServlet',
+			yanzhensrc: 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet',
 			showModalValue: '',
 			noticeText: '',
 			turnOrNot: false,
@@ -3335,16 +3256,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 							'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
 						}
 					}).then(function (data) {
-						console.log(data.data);
-						if (data.data == '登陆成功') {
-							console.log(data.data);
+						console.log(data);
+						if (data === '登陆成功') {
 							self.noticeText = '登陆成功';
 							self.turnOrNot = true;
-							self.aHref = '/ssm01/#/';
+							self.aHref = 'http://localhost:8080/#/index';
 						} else {
-							self.noticeText = data.data;
+							this.noticeText = data.data;
 						}
-						self.showModalValue = 'modal-alter';
+						this.showModalValue = 'modal-alter';
 						console.log(data.data);
 						if (data.data.errno === 0) {
 							console.log('上传成功');
@@ -3358,16 +3278,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 							'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
 						}
 					}).then(function (data) {
-						console.log(data.data);
-						if (data.data == '登陆成功') {
-							console.log(data.data);
+						console.log(data);
+						if (data === '登陆成功') {
 							self.noticeText = '登陆成功';
 							self.turnOrNot = true;
-							self.aHref = '/ssm01/#/person/xiangcun';
+							self.aHref = 'http://localhost:8080/#/index';
 						} else {
-							self.noticeText = data.data;
+							this.noticeText = data.data;
 						}
-						self.showModalValue = 'modal-alter';
+						this.showModalValue = 'modal-alter';
 						if (data.data.errno === 0) {
 							console.log('上传成功');
 						}
@@ -3379,7 +3298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		reloadCode() {
 			var time = new Date().getTime();
-			this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+			this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
 		},
 		changeType(str) {
 			this.user.type = str;
@@ -3813,7 +3732,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userInfo: {
         userName: '阿水12344',
         signature: '这位同学很懒，木有签名的说～',
-        userPic: 'static/t16.jpg',
+        userPic: '../../../static/t16.jpg',
         dengji: 1,
         fensi: 2,
         guanzu: 3,
@@ -4307,7 +4226,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     reloadCode() {
       var time = new Date().getTime();
-      this.yanzhensrc = 'servlet/ImageServlet?d=' + time;
+      this.yanzhensrc = 'http://192.168.5.112:8000/ssm01/servlet/ImageServlet?d=' + time;
     },
     changeType(str) {
       this.user.type = str;
@@ -6158,7 +6077,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data() {
     return {
-      countrytype: '生态保护',
+      countrytype: '生态保护型',
       showStr: 'techan',
       wenhua: 'wenhua',
       huodong: '活动',
@@ -6448,7 +6367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
         }
       }).then(function (res) {
-        if (res.data === '添加成功') {
+        if (res.data === 'success') {
           window.alert('添加成功');
         } else {
           window.alert('添加失败');
@@ -7978,7 +7897,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('游记，获取游记成功！' + res);
         self.yj.yjAuthor = res.data.username;
         self.yj.yjid = res.data.idarticle;
-        self.yj.yjImg = 'img/articles/cover/'+res.data.mainpic;
+        self.yj.yjImg = res.data.mainpic;
         self.yj.yjName = res.data.name;
         self.yj.yjTime = self.dateFormat(res.data.articletime);
         self.content = res.data.content;
@@ -8641,7 +8560,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data() {
     return {
       mapPA: '0',
-      bgnone: ['static/c1.jpg', 'static/c2.jpg', 'static/c3.jpg', 'static/c4.jpg', 'static/c5.jpg', 'static/c6.jpg', 'static/c7.jpg', 'static/c0.jpg'],
+      bgnone: ['/static/c1.jpg', '/static/c2.jpg', '/static/c3.jpg', '/static/c4.jpg', '/static/c5.jpg', '/static/c6.jpg', '/static/c7.jpg', '/static/c0.jpg'],
       showbg1: true,
       showbg2: false,
       showtj11: false,
@@ -8662,29 +8581,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       nowCountryImgshow1: true,
       nowCountryImgshow2: false,
       showArea: 6,
-      countryInfor: [{ bgImg: 'static/c1.jpg', name: '横山坞村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。0' }, { bgImg: 'static/c2.jpg', name: '双一村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。1' }, { bgImg: 'static/c3.jpg', name: '刘家塘村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。2' }, { bgImg: 'static/c4.jpg', name: '余村村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。3' }, { bgImg: 'static/c5.jpg', name: '马家弄村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。4' }, {
-        bgImg: 'static/c6.jpg',
+      countryInfor: [{ bgImg: '/static/c1.jpg', name: '横山坞村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。0' }, { bgImg: '/static/c2.jpg', name: '双一村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。1' }, { bgImg: '/static/c3.jpg', name: '刘家塘村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。2' }, { bgImg: '/static/c4.jpg', name: '余村村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。3' }, { bgImg: '/static/c5.jpg', name: '马家弄村', introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。4' }, {
+        bgImg: '/static/c6.jpg',
         name: '高家堂村',
         introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 5'
       }, {
-        bgImg: 'static/c7.jpg',
+        bgImg: '/static/c7.jpg',
         name: '尚书干村',
         introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 6'
       }, {
-        bgImg: 'static/c0.jpg',
+        bgImg: '/static/c0.jpg',
         name: '长林垓村',
         introduction: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。, num: 7'
       }],
       showCountry: '横山坞村',
       showText: '余村海产品特别丰富，盛产鱼、虾、花蟹。环境优雅，有大片肥沃的农田，大片快速丰产林，是一个鱼米之乡。',
-      nowCountryImg: 'static/c1.jpg',
-      imgArea: [{ src: 'static/area1.png', num: 1 }, { src: 'static/area2.png', num: 2 }, { src: 'static/area3.png', num: 3 }, { src: 'static/area4.png', num: 4 }, { src: 'static/area5.png', num: 5 }, { src: 'static/area6.png', num: 6 }, { src: 'static/area7.png', num: 7 }, { src: 'static/area8.png', num: 8 }, { src: 'static/area9.png', num: 9 }, { src: 'static/area10.png', num: 10 }, { src: 'static/area11.png', num: 11 }, { src: 'static/area12.png', num: 12 }, { src: 'static/area13.png', num: 13 }, { src: 'static/area14.png', num: 14 }, { src: 'static/area15.png', num: 15 }],
+      nowCountryImg: '/static/c1.jpg',
+      imgArea: [{ src: '/static/area1.png', num: 1 }, { src: '/static/area2.png', num: 2 }, { src: '/static/area3.png', num: 3 }, { src: '/static/area4.png', num: 4 }, { src: '/static/area5.png', num: 5 }, { src: '/static/area6.png', num: 6 }, { src: '/static/area7.png', num: 7 }, { src: '/static/area8.png', num: 8 }, { src: '/static/area9.png', num: 9 }, { src: '/static/area10.png', num: 10 }, { src: '/static/area11.png', num: 11 }, { src: '/static/area12.png', num: 12 }, { src: '/static/area13.png', num: 13 }, { src: '/static/area14.png', num: 14 }, { src: '/static/area15.png', num: 15 }],
       // 模态框中有的
       showModalValue: '',
       showButtonValue: false,
       showImgIndex: 0,
       imgInfo: ['/static/special1.jpg', '/static/special2.jpg', '/static/special3.jpg'],
-      videoInfo: { src: 'ssm01/static/mp4_video.mp4', title: '壮丽河山', cover: 'static/fallback.jpg' },
+      videoInfo: { src: '/static/mp4_video.mp4', title: '壮丽河山', cover: '/static/fallback.jpg' },
       destination: [{ country: '高家堂村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }, { country: '余村村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }, { country: '横山坞村', spot: ['藏龙大瀑布11', '中南百草园'], restaurant: ['餐馆1', '餐馆2'], hotel: ['住宿1', '住宿2'] }]
     };
   },
@@ -9795,13 +9714,13 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADh
 /* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/allArea.b8d7879.png";
+module.exports = __webpack_require__.p + "static/img/allArea.b8d7879.png";
 
 /***/ }),
 /* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/bgimage.f35ea6a.jpg";
+module.exports = __webpack_require__.p + "static/img/bgimage.f35ea6a.jpg";
 
 /***/ }),
 /* 542 */
@@ -9831,7 +9750,7 @@ module.exports = __webpack_require__.p + "static/img/finderror.81918eb.jpg";
 /* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/hp1.213b1fc.jpg";
+module.exports = __webpack_require__.p + "static/img/hp1.213b1fc.jpg";
 
 /***/ }),
 /* 547 */
@@ -9843,7 +9762,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAGrCAYAAAA8
 /* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/loadbg1.a85a227.jpg";
+module.exports = __webpack_require__.p + "static/img/loadbg1.a85a227.jpg";
 
 /***/ }),
 /* 549 */
@@ -9879,7 +9798,7 @@ module.exports = __webpack_require__.p + "static/img/special4.a10d3ae.jpg";
 /* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "ssm01/static/img/view.c83e324.jpg";
+module.exports = __webpack_require__.p + "static/img/view.c83e324.jpg";
 
 /***/ }),
 /* 555 */
@@ -14760,29 +14679,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("全部")]), _vm._v(" "), _c('li', {
     class: {
-      liactive: _vm.selectbar1 === '文化传承'
+      liactive: _vm.selectbar1 === '文化传承型'
     },
     on: {
       "click": function($event) {
-        _vm.select1('文化传承')
+        _vm.select1('文化传承型')
       }
     }
   }, [_vm._v("文化传承")]), _vm._v(" "), _c('li', {
     class: {
-      liactive: _vm.selectbar1 === '生态保护'
+      liactive: _vm.selectbar1 === '生态保护型'
     },
     on: {
       "click": function($event) {
-        _vm.select1('生态保护')
+        _vm.select1('生态保护型')
       }
     }
   }, [_vm._v("生态保护")]), _vm._v(" "), _c('li', {
     class: {
-      liactive: _vm.selectbar1 === '产业发展'
+      liactive: _vm.selectbar1 === '产业发展型'
     },
     on: {
       "click": function($event) {
-        _vm.select1('产业发展')
+        _vm.select1('产业发展型')
       }
     }
   }, [_vm._v("产业发展")])]), _vm._v(" "), _c('ul', [_c('span', {
@@ -14843,7 +14762,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('img', {
       staticClass: "transition3",
       attrs: {
-        "src": 'img/countryside/mainPic/' + xc.mianpic
+        "src": xc.mianpic
       }
     })]), _vm._v(" "), _c('div', {
       staticClass: "cellyin"
@@ -14870,7 +14789,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "celltext3"
     }, [_c('span', {
       staticClass: "biaoqian"
-    }, [_vm._v("文化传承")])])])
+    }, [_vm._v("文化传承型")])])])
   }))], 1), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
@@ -15499,15 +15418,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', [_vm._v("类型：")]), _vm._v(" "), _c('input', {
     attrs: {
       "type": "radio",
-      "value": "生态保护",
+      "value": "生态保护型",
       "name": "countrytype"
     },
     domProps: {
-      "checked": _vm.countrytype === '生态保护'
+      "checked": _vm.countrytype === '生态保护型'
     },
     on: {
       "click": function($event) {
-        _vm.countrytype = '生态保护'
+        _vm.countrytype = '生态保护型'
       }
     }
   }), _vm._v(" "), _c('lable', {
@@ -15515,18 +15434,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "countrytype"
     }
-  }, [_vm._v("生态保护")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("生态保护型")]), _vm._v(" "), _c('input', {
     attrs: {
       "type": "radio",
-      "value": "产业发展",
+      "value": "产业发展型",
       "name": "countrytype"
     },
     domProps: {
-      "checked": _vm.countrytype === '产业发展'
+      "checked": _vm.countrytype === '产业发展型'
     },
     on: {
       "click": function($event) {
-        _vm.countrytype = '产业发展'
+        _vm.countrytype = '产业发展型'
       }
     }
   }), _vm._v(" "), _c('lable', {
@@ -15534,18 +15453,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "countrytype"
     }
-  }, [_vm._v("产业发展")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("产业发展型")]), _vm._v(" "), _c('input', {
     attrs: {
       "type": "radio",
-      "value": "文化传承",
+      "value": "文化传承型",
       "name": "countrytype"
     },
     domProps: {
-      "checked": _vm.countrytype === '文化传承'
+      "checked": _vm.countrytype === '文化传承型'
     },
     on: {
       "click": function($event) {
-        _vm.countrytype = '文化传承'
+        _vm.countrytype = '文化传承型'
       }
     }
   }), _vm._v(" "), _c('lable', {
@@ -15553,7 +15472,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "countrytype"
     }
-  }, [_vm._v("文化传承")])], 1), _vm._v(" "), _c('p', {
+  }, [_vm._v("文化传承型")])], 1), _vm._v(" "), _c('p', {
     staticClass: "formtr formtrp"
   }, [_c('span', [_vm._v("隶属：")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('select', {
     directives: [{
@@ -17210,9 +17129,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           path: '/show/youjiShow',
           query: {
             id: oneTN.idarticle,
+            content: oneTN.content,
+            author: oneTN.username,
             time: oneTN.articletime,
             name: oneTN.name,
-            mainpic: 'img/articles/cover/' + oneTN.mainpic
+            mainpic: oneTN.mainpic
           }
         },
         "target": "_blank"
@@ -18772,7 +18693,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.showbg1) ? _c('div', {
     staticClass: "vidbg-box map-bg-img",
     attrs: {
-      "data-vidbg-bg": "mp4: ssm01/static/mp4_video.mp4, webm: static/webm_video.webm, poster: static/fallback.jpg",
+      "data-vidbg-bg": "mp4: /static/mp4_video.mp4, webm: /static/webm_video.webm, poster: /static/fallback.jpg",
       "data-vidbg-options": "loop: true, muted: true, overlay: true, volume: 1, playbackRate: 1, position: '50% 50%', resizing: false"
     }
   }) : _vm._e(), _vm._v(" "), (_vm.showbg2) ? _c('div', [_c('transition', {

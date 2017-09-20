@@ -20,7 +20,6 @@ public class CountryCommentServiceImpl implements CountryCommentService {
 	public List<CountryComment> getCountryComments(CountryWithBLOBs countryWithBLOBs) {
 		// TODO Auto-generated method stub
 		List<CountryComment> comments = this.countryCommentMapper.getCountryComments(countryWithBLOBs);
-		System.out.println("comments:"+comments);
 		return comments;
 	}
 

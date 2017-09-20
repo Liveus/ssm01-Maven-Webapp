@@ -1,8 +1,11 @@
 package com.cn.hnust.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,7 +17,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.service.CountryService;
@@ -22,18 +29,18 @@ import com.cn.hnust.service.CountrysideUserService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
-@Api(value="CountrysideUser")
+@Api(value = "CountrysideUser")
 @Controller
-@RequestMapping(value="/CountrysideUser")
+@RequestMapping(value = "/CountrysideUser")
 public class CountrysideUserController {
 	@Resource
 	private CountrysideUserService countrysideUserService;
 	@Resource
 	private CountryService countryService;
-	
+
 	@ResponseBody
-	@RequestMapping(value="/login",produces = "text/json;charset=UTF-8")
-	public String login(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value = "/login", produces = "text/json;charset=UTF-8")
+	public String login(HttpServletRequest request, HttpServletResponse response) {
 		CountrysideUser user = new CountrysideUser();
 		String piccode = (String) request.getSession().getAttribute("piccode");
 		StringBuffer requestBody;
@@ -57,20 +64,20 @@ public class CountrysideUserController {
 			e1.printStackTrace();
 		}
 		checkcode = checkcode.toUpperCase();
-		if(checkcode.equals(piccode)){
+		if (checkcode.equals(piccode)) {
 			return this.countrysideUserService.getUser(user, request.getSession());
-		}else{
-			return "��֤�벻��ȷ";
+		} else {
+			return "验证码不正确";
 		}
 	}
-	
-	@ApiOperation(value="��ȡ�û���Ϣ",httpMethod="GET",notes="get info")
+
+	@ApiOperation(value = "获取用户信息", httpMethod = "GET", notes = "get info")
 	@ResponseBody
-	@RequestMapping(value="/info",produces = "text/json;charset=UTF-8")
-	public void userinfo(HttpSession session,HttpServletResponse response){
+	@RequestMapping(value = "/info", produces = "text/json;charset=UTF-8")
+	public void userinfo(HttpSession session, HttpServletResponse response) {
 		response.setContentType("text/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		CountrysideUser user = (CountrysideUser)session.getAttribute("countrysideUser");
+		CountrysideUser user = (CountrysideUser) session.getAttribute("countrysideUser");
 		JSONObject jsonObject = new JSONObject();
 		List<CountrysideUser> countrysideUsers = new ArrayList<CountrysideUser>();
 		countrysideUsers.add(user);
@@ -83,28 +90,62 @@ public class CountrysideUserController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/login2",produces = "text/json;charset=UTF-8")
-	public String Test(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value = "/login2", produces = "text/json;charset=UTF-8")
+	public String Test(HttpServletRequest request, HttpServletResponse response) {
 		CountrysideUser countrysideUser = new CountrysideUser();
 		countrysideUser.setName(request.getParameter("name"));
 		countrysideUser.setUserpassword(request.getParameter("userpassword"));
 		return this.countrysideUserService.getUser(countrysideUser, request.getSession());
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/changeInfo",produces="text/json;charset=utf-8")
-	public String changeUserInfo(HttpSession session){
-		CountrysideUser user = new CountrysideUser();
-		user.setName("2221");
-		user.setUserphone("1546");
-		return this.countrysideUserService.changeUserInfo(user, session);
+	@RequestMapping(value = "/changeInfo", produces = "text/json;charset=utf-8")
+	public String changeUserInfo(HttpSession session, @RequestParam("username") String username,
+			@RequestParam("sex") String sex, @RequestParam("city") String city, @RequestParam("phone") String phone,HttpServletRequest request) {
+		CountrysideUser user = (CountrysideUser)session.getAttribute("CountrysideUser");
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+				request.getSession().getServletContext());
+		user.setName(username);
+		if(sex.equals("0")){
+			user.setSex("男");
+		}else{
+			user.setSex("女");
+		}
+		user.setUserphone(phone);
+		user.setCity(city);
+		if (multipartResolver.isMultipart(request)) {
+			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+			Iterator iter = multiRequest.getFileNames();
+			while (iter.hasNext()) {
+				MultipartFile file = multiRequest.getFile(iter.next().toString());
+				if (file != null) {
+					String path = request.getServletContext().getRealPath("/img/headpic") + "/"
+							+ String.valueOf(new Date().getTime()) + "."
+							+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+					try {
+						user.setHeadpic(String.valueOf(new Date().getTime()) + "." + file.getOriginalFilename()
+								.substring(file.getOriginalFilename().lastIndexOf(".") + 1));
+						file.transferTo(new File(path));
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		System.out.println("info:"+user.toString());
+		/* return this.countrysideUserService.changeUserInfo(user, session); */
+		return null;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/changePwd",produces="text/json;charset=utf-8")
-	public String changePwd(HttpSession session,HttpServletRequest request){
+	@RequestMapping(value = "/changePwd", produces = "text/json;charset=utf-8")
+	public String changePwd(HttpSession session, HttpServletRequest request) {
 		String pwd = "";
 		String newpwd = "";
 		StringBuffer requestBody;
@@ -126,5 +167,17 @@ public class CountrysideUserController {
 			e1.printStackTrace();
 		}
 		return this.countrysideUserService.changePwd(pwd, newpwd, session);
+	}
+
+	@ApiOperation(value = "判断商业用户是否登录", httpMethod = "GET", notes = "if countrysideUser is logedin ?", response = java.lang.String.class)
+	@ResponseBody
+	@RequestMapping(value = "isLogin", produces = "text/json;charset=UTF-8")
+	public String isLogin(HttpSession session) {
+		CountrysideUser user = (CountrysideUser) session.getAttribute("countrysideUser");
+		if (user == null) {
+			return "未登录";
+		} else {
+			return "已登陆";
+		}
 	}
 }

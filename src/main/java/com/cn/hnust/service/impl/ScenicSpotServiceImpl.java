@@ -20,7 +20,6 @@ public class ScenicSpotServiceImpl implements ScenicSpotService {
 	public List<ScenicSpot> getCountrysideSpots(CountryWithBLOBs country) {
 		// TODO Auto-generated method stub
 		List<ScenicSpot> list = this.scenicSpotMapper.getCountrysideSopts(country);
-		System.out.println(list.toString());
 		return list;
 	}
 	@Override

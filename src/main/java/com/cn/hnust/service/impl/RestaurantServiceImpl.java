@@ -20,7 +20,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<Restaurant> getCountryRestaurant(CountryWithBLOBs countryWithBLOBs) {
 		// TODO Auto-generated method stub
 		List<Restaurant> list = this.restaurantMapper.getCountryRestaurants(countryWithBLOBs);
-		System.out.println("res:"+list);
 		return list;
 	}
 

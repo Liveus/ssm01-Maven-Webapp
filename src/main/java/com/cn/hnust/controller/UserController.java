@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.pojo.User;
 import com.cn.hnust.service.UserService;
 import com.cn.hnust.util.MD5Util;
@@ -412,6 +413,18 @@ public class UserController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	@ApiOperation(value="判断普通用户是否登录",httpMethod="GET",notes="if user is logedin ?")
+	@ResponseBody
+	@RequestMapping(value="isLogin",produces="text/json;charset=UTF-8")
+	public String isLogin(HttpSession session){
+		User user = (User)session.getAttribute("user");
+		if(user==null){
+			return "未登录";
+		}else{
+			return "已登陆";
 		}
 	}
 }

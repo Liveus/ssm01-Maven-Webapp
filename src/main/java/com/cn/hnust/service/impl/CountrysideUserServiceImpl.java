@@ -22,21 +22,21 @@ public class CountrysideUserServiceImpl implements CountrysideUserService {
 		// TODO Auto-generated method stub
 		CountrysideUser date = this.countrysideUserMapper.selectByName(user.getName());
 		if(date.equals(null)){
-			return "ÓÃ»§Ãû²»´æÔÚ";
+			return "ç”¨æˆ·åä¸å­˜åœ¨";
 		}else{
 			try {
 				if(MD5Util.encrypt(user.getUserpassword()).equals(date.getUserpassword())){
 					session.setAttribute("countrysideUser", date);
-					return "µÇÂ½³É¹¦";
+					return "ç™»é™†æˆåŠŸ";
 				}else{
-					return "ÃÜÂë²»ÕıÈ·";
+					return "å¯†ç ä¸æ­£ç¡®";
 				}
 			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return "µÇÂ¼Ê§°Ü";
+		return "ç™»å½•å¤±è´¥";
 	}
 
 	@Override
@@ -58,15 +58,15 @@ public class CountrysideUserServiceImpl implements CountrysideUserService {
 				sessionUser.setUserpassword(MD5Util.encrypt(newpwd));
 				session.setAttribute("countrysideUser", sessionUser);
 				this.countrysideUserMapper.updateByPrimaryKey(sessionUser);
-				return "ĞŞ¸Ä³É¹¦";
+				return "ä¿®æ”¹æˆåŠŸ";
 			}else{
-				return "¾ÉÃÜÂëÊäÈë²»ÕıÈ·";
+				return "æ—§å¯†ç è¾“å…¥ä¸æ­£ç¡®";
 			}
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "ĞŞ¸ÄÊ§°Ü";
+		return "ä¿®æ”¹å¤±è´¥";
 	}
 	
 }

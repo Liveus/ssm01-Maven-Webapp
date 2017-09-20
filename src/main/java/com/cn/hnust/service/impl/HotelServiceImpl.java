@@ -19,7 +19,6 @@ public class HotelServiceImpl implements HotelService {
 	public List<Hotel> getCountryHotels(CountryWithBLOBs countryWithBLOBs) {
 		// TODO Auto-generated method stub
 		List<Hotel> hotels = this.hotelmapper.getCountryHotels(countryWithBLOBs);
-		System.out.println("hotels:"+hotels.toString());
 		return hotels;
 	}
 	@Override

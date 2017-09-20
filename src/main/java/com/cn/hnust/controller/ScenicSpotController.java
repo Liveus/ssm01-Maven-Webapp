@@ -1,6 +1,8 @@
 package com.cn.hnust.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.cn.hnust.pojo.CountryWithBLOBs;
 import com.cn.hnust.pojo.ScenicSpot;
+import com.cn.hnust.service.HotelService;
 import com.cn.hnust.service.ScenicSpotService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -97,19 +101,28 @@ public class ScenicSpotController {
 	@ResponseBody
 	@RequestMapping(value="/detail")
 	public ScenicSpot getSpotDetail(HttpServletRequest request){
-		int id = 123;
-/*		try {
+		int id = 123;		
+		StringBuffer requestBody;
+		try {
 			BufferedReader reader = request.getReader();
-			id = Integer.valueOf(reader.readLine());
+			String input = null;
+			requestBody = new StringBuffer();
+			while ((input = reader.readLine()) != null) {
+				requestBody.append(input);
+				JSONObject jsonObject = new JSONObject(input);
+				id = Integer.valueOf(jsonObject.get("id").toString());
+			}
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}*/
+		}
+		
 		ScenicSpot scenicSpot = new ScenicSpot();
 		scenicSpot = this.scenicSpotService.getDetail(id);
 		return scenicSpot;
 	}
+	
 }
