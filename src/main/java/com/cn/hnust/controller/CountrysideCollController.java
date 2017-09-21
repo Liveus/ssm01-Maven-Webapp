@@ -1,22 +1,30 @@
 package com.cn.hnust.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cn.hnust.pojo.CountrysideColl;
 import com.cn.hnust.pojo.User;
 import com.cn.hnust.service.CountrysideCollService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
+@Api(value = "CountrysideColl")
 @Controller
 @RequestMapping(value="/CountrysideColl")
 public class CountrysideCollController {
@@ -51,4 +59,54 @@ public class CountrysideCollController {
 			return "取消失败";
 		}
 	}
+	
+	@ApiOperation(value = "收藏新的乡村", httpMethod = "GET", notes = "new collected countryside", response = java.lang.String.class)
+	@ResponseBody
+	@RequestMapping(value="/newColl",produces = "text/json;charset=UTF-8")
+	public String newColl(HttpServletRequest request){
+		StringBuffer requestBody;
+		User user = (User)request.getSession().getAttribute("user");
+		String name = "";
+		String remark = "";
+		String mainPic = "";
+		Integer id = 1;
+		try {
+			BufferedReader reader = request.getReader();
+			String input = null;
+			requestBody = new StringBuffer();
+			while ((input = reader.readLine()) != null) {
+				requestBody.append(input);
+				JSONObject jsonObject = new JSONObject(input);
+				id = Integer.valueOf(jsonObject.get("id").toString());
+				name = jsonObject.get("name").toString();
+				remark = jsonObject.get("remark").toString();
+				mainPic = jsonObject.get("mainPic").toString();
+			}
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		CountrysideColl coll = new CountrysideColl();
+		coll.setColltime(Calendar.getInstance().getTime());
+		coll.setCountryId(id);
+		coll.setCountrysideName(name);
+		coll.setMainpic(mainPic);
+		coll.setRemark(remark);
+		coll.setUserUserid(user.getUserid());
+		if(this.countrysideCollService.newColl(coll)==1){
+			return "收藏成功";
+		}else{
+			return "收藏失败";
+		}
+	}
+	
+/*	@ApiOperation(value = "收藏新的乡村2", httpMethod = "GET", notes = "new collected countryside2", response = java.lang.Integer.class)
+	@ResponseBody
+	@RequestMapping(value="/newColl2",produces = "text/json;charset=UTF-8")
+	public int newColl2(@RequestParam("id") Integer id){
+		
+	}*/
 }

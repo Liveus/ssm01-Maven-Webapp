@@ -19,4 +19,10 @@ public interface CountrysideCollService {
 	 * @return
 	 */
 	public int cancelColl(Integer integer);
+	/**
+	 * ĞÂÔöÊÕ²Ø
+	 * @param coll
+	 * @return
+	 */
+	public int newColl(CountrysideColl coll);
 }

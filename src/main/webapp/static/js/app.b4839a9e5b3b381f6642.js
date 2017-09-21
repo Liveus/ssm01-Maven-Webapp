@@ -298,7 +298,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABX
 /* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/img/photo1.c8f9407.jpg";
+module.exports = __webpack_require__.p + "ssm01/static/img/photo1.c8f9407.jpg";
 
 /***/ }),
 /* 172 */,
@@ -532,13 +532,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       /* 判断商业用户是否登入 */
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('CountrysideUser/isLogin', { headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }
       }).then(function (res) {
-        console.log('导航，商业用户：' + res);
-        if (res === '未登录') {
+        if (res.data === '未登录') {
           // 判断普通用户是否登入 （商业用户未登录）
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('user/isLogin', { headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }
           }).then(function (res) {
-            console.log('导航，普通用户：' + res);
-            if (res === '未登录') {
+            if (res.data === '未登录') {
               console.log('导航，尚未登录');
             } else {
               // 普通用户已登录
@@ -1281,6 +1279,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			location: '浙江省 湖州市 安吉县 山川乡',
 			countrytype: '生态保护型',
 			imgsInfo: [['static/special1.jpg', 'static/special2.jpg', 'static/special3.jpg'], ['static/special4.jpg', 'static/special5.jpg']],
+			cellImgsInfo: [],
 			// 视频
 			videoInfo: [{ src: 'static/1.1.2.mp4', title: '安吉白茶1' }, { src: 'static/1.1.2.mp4', title: '安吉白茶2' }],
 			videocell: {},
@@ -1301,7 +1300,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			zhusu: [],
 			celljingdian: {},
 			imgInfo: '',
-			travelNotes: [{ idarticle: 1, mainpic: 'static/spotcover1.jpg', name: '为北极冬天而痴迷1', articletime: '2017-5-11', username: 'aaa', content: 'content' }, { idarticle: 2, mainpic: 'static/spotcover1.jpg', name: '为北极冬天而痴迷2', articletime: '2017-5-11', username: 'aaa', content: 'content' }, { idarticle: 3, mainpic: 'static/spotcover1.jpg', name: '为北极冬天而痴迷3', articletime: '2017-5-11', username: 'aaa', content: 'content' }],
+			travelNotes: [{ idarticle: 1, mainpic: '/ssm01/static/spotcover1.jpg', name: '为北极冬天而痴迷1', articletime: '2017-5-11', username: 'aaa', content: 'content' }, { idarticle: 2, mainpic: '/ssm01/static/spotcover1.jpg', name: '为北极冬天而痴迷2', articletime: '2017-5-11', username: 'aaa', content: 'content' }, { idarticle: 3, mainpic: '/ssm01/static/spotcover1.jpg', name: '为北极冬天而痴迷3', articletime: '2017-5-11', username: 'aaa', content: 'content' }],
 			// 评论
 			comment: [{
 				name: '有毒的黄同学',
@@ -1358,7 +1357,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			shouTShow: false,
 			PlaceSearch: {},
 			scroll: 0,
-			scrollIndex: 1
+			scrollIndex: 1,
+			style2: ''
 		};
 	},
 	computed: {
@@ -1404,13 +1404,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		/* 获取乡村信息 */
 		getContryside() {
 			const self = this;
-			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('country/allInfo', this.GetQueryString('id'), {
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('country/allInfo', {id: self.GetQueryString('id')}, {
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
 				}
 			}).then(function (res) {
-				console.log(this.GetQueryString('id'));
-				console.log(res.data.info);
+				console.log('向后台发送乡村的id：' + self.GetQueryString('id'));
 				console.log('\n\n\n获取乡村信息如下：');
 				/* 乡村的基本信息 */
 				self.cName = res.data.country[0].name;
@@ -1421,7 +1420,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				self.countrytype = res.data.country[0].countrytype;
 				self.cCulture = res.data.country[0].culture;
 				self.actInfo = res.data.country[0].activities;
-				self.techanInfo = {};
+				console.log('techan:')
+				console.log(self.techanInfo)
 				console.log('cName' + self.cName);
 				console.log('cPingfen' + self.cPingfen);
 				console.log('cIntroduction' + self.cIntroduction);
@@ -1440,7 +1440,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				self.videoInfo = [];
 				for (var shipinI = 0; shipinI < shipin.length; shipinI++) {
 					self.videocell = {};
-					self.videocell.src = 'img/countryside/videos/' + shipin[shipinI].src;
+					self.videocell.src = shipin[shipinI].src;
 					self.videocell.title = shipin[shipinI].name;
 					self.videoInfo[shipinI] = self.videocell;
 				}
@@ -1448,12 +1448,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				console.log(self.videoInfo);
 				/* 美景图片集 */
 				var tupianji = res.data.photos;
-				self.imgsInfo = {};
+				self.imgsInfo = []
 				for (var tpjI = 0; tpjI < tupianji.length; tpjI++) {
-					for (var tpjJ = 0; tpjJ < tupianji[tpjI].length; tpjJ++) {
-						self.imgInfo = tupianji[tpjI].split(';');
-					}
-					self.imgsInfo[tpjI] = self.imgInfo;
+					self.cellImgsInfo = [];
+					self.cellImgsInfo = tupianji[tpjI].src.split(';')
+					self.imgsInfo[tpjI] = self.cellImgsInfo;
 				}
 				console.log('tupianji:');
 				console.log(self.imgsInfo);
@@ -1513,20 +1512,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 		},
 		/* 滚轮定位 */
-		menu() {
-			this.scroll = document.body.scrollTop;
+		menu () {
+			this.scroll = document.documentElement.scrollTop || document.body.scrollTop
 			if (this.scroll > 100 && this.scrollIndex === 1) {
 				if (this.scrollIndex === 1) {
-					this.scrollIndex = 0;
-					console.log(this.jingdian.length + '这里' + this.scrollIndex);
+					this.scrollIndex = 0
+					console.log(this.jingdian.length + '这里' + this.scrollIndex)
 				}
 				if (this.jingdian.length > 0) {
-					console.log('景点的长度大于0');
-					console.log(this.jingdian);
-					this.searchPleace(this.jingdian[0].name);
+					console.log('景点的长度大于0')
+					console.log(this.jingdian)
+					this.searchPleace(this.jingdian[0].name)
 				} else {
-					console.log('景点为空');
-					this.searchPleace('安吉县');
+					console.log('景点为空')
+					this.searchPleace('安吉县')
 				}
 			}
 		},
@@ -1540,7 +1539,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		ChangeSpecialShow(str) {
 			this.special_show = str;
 			if (str === 'specialty') {
-				if (techanInfo === {}) {
+				if (this.techanInfo ===[]) {
 					setTimeout(function () {
 						document.getElementsByClassName('specialty')[0].style.display = 'none';
 						document.getElementsByClassName('specialty2')[0].style.display = 'block';
@@ -1577,7 +1576,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		/* 收藏按钮需要 添加 alert模态框 */
 		showShowed() {
 			const self = this;
-			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('sc', this.GetQueryString('id'), {
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('sc', self.GetQueryString('id'), {
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
 				}
@@ -1633,13 +1632,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				console.log('发送新的留言失败：' + err);
 			});
 		},
-		ChangeLike(item, str, n) {
-			item.like_show = str;
-			item.like += n;
+		ChangeLike(index, str, n) {
+			console.log('--------2------------')
+			console.log('v-if(like):' + (this.comment[index].like_show === 'like'))
+			console.log('v-if(liked):' + (this.comment[index].like_show === 'liked'))
+			console.log('参数: ChangeLike:' + n + 'index:' + index + 'like_show2:' + str)
+			console.log('原来的值:' + this.comment[index].like_show + ',' + this.comment[index].like)
+			this.comment[index].like_show = str;
+			this.comment[index].like += n;
+			console.log('现在的值:' + this.comment[index].like_show + ',' + this.comment[index].like)
 		},
 		ChangeDislike(item, str, n) {
 			item.dislike_show = str;
 			item.dislike += n;
+			console.log('ChangeDislike' + n)
 		},
 		changeImgIndex(index) {
 			/* window.alert(index) */
@@ -1741,6 +1747,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	created() {
 		this.displayNone(30);
 		this.getContryside();
+	},
+	mounted (){
 	}
 });
 function getTime() {
@@ -2168,10 +2176,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     ChangeLike(item, str, n) {
       item.like_show = str;
       item.like += n;
+      console.log('ChangeLike' + n)
     },
     ChangeDislike(item, str, n) {
       item.dislike_show = str;
       item.dislike += n;
+      console.log('ChangeDislike' + n)
     }
   }
 });
@@ -3010,7 +3020,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       hAddress: '浙江省湖州市安吉县天荒坪江南天池滑雪场傍',
       hPrice: 89,
       hLikers: 20,
-      hCover: 'static/spotcover1.jpg',
+      hCover: '/ssm01/static/spotcover1.jpg',
       hVideo: 'static/1.1.2.mp4'
     };
   },
@@ -4398,7 +4408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     /* 获取个人收藏 */
     getPersonShoucang() {
       const self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user/countrysideColls').then(function (res) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('CountrysideColl/allColls').then(function (res) {
         self.shoucang = res.data.countrysideColls;
         console.log('获取个人收藏成功！');
       }).catch(function (err) {
@@ -4894,7 +4904,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       rAddress: '浙江省湖州市安吉县天荒坪江南天池滑雪场傍',
       rPrice: 89,
       rLikers: 20,
-      rCover: '/static/spotcover1.jpg',
+      rCover: '/ssm01/static/spotcover1.jpg',
       rVideo: '/static/1.1.2.mp4'
     };
   },
@@ -7731,7 +7741,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       techanInfo: [{ src: 'static/special1.jpg', name: '安吉白茶1' }, { src: 'static/special2.jpg', name: '安吉白茶2' }, { src: 'static/special3.jpg', name: '安吉白茶3' }, { src: 'static/special4.jpg', name: '安吉白茶4' }, { src: 'static/special5.jpg', name: '安吉白茶5' }],
       techanInfoSrc: [],
       techanInfoName: [],
-      travelNotes: [{ id: 1, cover: 'static/spotcover1.jpg', title: '为北极冬天而痴迷1', time: '2017-5-11' }, { id: 2, cover: 'static/spotcover1.jpg', title: '为北极冬天而痴迷2', time: '2017-5-11' }, { id: 3, cover: 'static/spotcover1.jpg', title: '为北极冬天而痴迷3', time: '2017-5-11' }],
+      travelNotes: [{ id: 1, cover: '/ssm01/static/spotcover1.jpg', title: '为北极冬天而痴迷1', time: '2017-5-11' }, { id: 2, cover: '/ssm01/static/spotcover1.jpg', title: '为北极冬天而痴迷2', time: '2017-5-11' }, { id: 3, cover: '/ssm01/static/spotcover1.jpg', title: '为北极冬天而痴迷3', time: '2017-5-11' }],
       nowImgNum: 0,
       /* 点击的图片索引号码 */
       nowLocation: 0,
@@ -9246,7 +9256,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     /* 监听滚动条 事件 */
     menu() {
-      this.scroll = document.body.scrollTop;
+      this.scroll = document.documentElement.scrollTop || document.body.scrollTop;
       const self = this;
       if (this.scroll > 300) {
         this.title3Show = true;
@@ -10270,25 +10280,25 @@ const modal1 = {
 /* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/img/1505823069443.e201a04.jpg";
+module.exports = __webpack_require__.p + "ssm01/static/img/1505823069443.e201a04.jpg";
 
 /***/ }),
 /* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/img/1505827168810.6a4185d.jpeg";
+module.exports = __webpack_require__.p + "ssm01/static/img/1505827168810.6a4185d.jpeg";
 
 /***/ }),
 /* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/img/cover1.e85fc24.jpg";
+module.exports = __webpack_require__.p + "ssm01/static/img/cover1.e85fc24.jpg";
 
 /***/ }),
 /* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/img/spotcover2.9dbf5d7.jpg";
+module.exports = __webpack_require__.p + "ssm01/static/img/spotcover2.9dbf5d7.jpg";
 
 /***/ }),
 /* 545 */
@@ -10408,7 +10418,7 @@ module.exports = __webpack_require__.p + "ssm01/static/img/gjtc4.84778a9.jpg";
 /* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/img/syc.7b62d95.jpg";
+module.exports = __webpack_require__.p + "ssm01/static/img/syc.7b62d95.jpg";
 
 /***/ }),
 /* 565 */
@@ -14270,20 +14280,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "time_re"
     }, [_vm._v(_vm._s(item.time))])]), _vm._v(" "), _c('div', {
       staticClass: "like_dis"
-    }, [_c('ul', [(item.like_show === 'like') ? _c('li', {
+    }, [_c('ul', [(_vm.comment[index].like_show === 'like') ? _c('li', {
       on: {
         "click": function($event) {
-          _vm.ChangeLike(item, 'liked', 1)
+          _vm.ChangeLike(index, 'liked', 1)
         }
       }
     }, [_c('img', {
       attrs: {
         "src": __webpack_require__(67)
       }
-    })]) : _vm._e(), _vm._v(" "), (item.like_show === 'liked') ? _c('li', {
+    })]) : _vm._e(), _vm._v(" "), (_vm.comment[index].like_show === 'liked') ? _c('li', {
       on: {
         "click": function($event) {
-          _vm.ChangeLike(item, 'like', -1)
+          _vm.ChangeLike(index, 'like', -1)
         }
       }
     }, [_c('img', {
@@ -15701,29 +15711,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("全部")]), _vm._v(" "), _c('li', {
     class: {
-      liactive: _vm.selectbar1 === '文化传承型'
+      liactive: _vm.selectbar1 === '文化传承'
     },
     on: {
       "click": function($event) {
-        _vm.select1('文化传承型')
+        _vm.select1('文化传承')
       }
     }
   }, [_vm._v("文化传承")]), _vm._v(" "), _c('li', {
     class: {
-      liactive: _vm.selectbar1 === '生态保护型'
+      liactive: _vm.selectbar1 === '生态保护'
     },
     on: {
       "click": function($event) {
-        _vm.select1('生态保护型')
+        _vm.select1('生态保护')
       }
     }
   }, [_vm._v("生态保护")]), _vm._v(" "), _c('li', {
     class: {
-      liactive: _vm.selectbar1 === '产业发展型'
+      liactive: _vm.selectbar1 === '产业发展'
     },
     on: {
       "click": function($event) {
-        _vm.select1('产业发展型')
+        _vm.select1('产业发展')
       }
     }
   }, [_vm._v("产业发展")])]), _vm._v(" "), _c('ul', [_c('span', {
@@ -17803,7 +17813,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "cover"
   }, [_c('img', {
     attrs: {
-      "src": 'img/countryside/mainPic/' + _vm.cCover
+      "src": _vm.cCover
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "main clear"
@@ -18353,20 +18363,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "time_re"
     }, [_vm._v(_vm._s(item.time))])]), _vm._v(" "), _c('div', {
       staticClass: "like_dis"
-    }, [_c('ul', [(item.like_show === 'like') ? _c('li', {
+    }, [_c('ul', [(_vm.comment[index].like_show === 'like') ? _c('li', {
       on: {
         "click": function($event) {
-          _vm.ChangeLike(item, 'liked', 1)
+          _vm.ChangeLike(index, 'liked', 1)
         }
       }
     }, [_c('img', {
       attrs: {
         "src": __webpack_require__(67)
       }
-    })]) : _vm._e(), _vm._v(" "), (item.like_show === 'liked') ? _c('li', {
+    })]) : _vm._e(), _vm._v(" "), (_vm.comment[index].like_show === 'liked') ? _c('li', {
       on: {
         "click": function($event) {
-          _vm.ChangeLike(item, 'like', -1)
+          _vm.ChangeLike(index, 'like', -1)
         }
       }
     }, [_c('img', {
@@ -18480,7 +18490,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _vm._l((_vm.imgInfo), function(image, index) {
     return (_vm.showImgIndex === index) ? _c('img', {
       attrs: {
-        "src": 'img/countryside/mainPic' + image
+        "src": 'img/countryside/otherPic/' + image
       }
     }) : _vm._e()
   }), _vm._v(" "), _c('div', {
@@ -18542,7 +18552,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('source', {
     attrs: {
-      "src": 'img/countryside/videos' + _vm.nowVid.src,
+      "src": 'img/countryside/videos/' + _vm.nowVid.src,
       "type": "video/mp4"
     }
   })])]), _vm._v(" "), _c('div', {
@@ -19110,20 +19120,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "time_re"
     }, [_vm._v(_vm._s(item.time))])]), _vm._v(" "), _c('div', {
       staticClass: "like_dis"
-    }, [_c('ul', [(item.like_show === 'like') ? _c('li', {
+    }, [_c('ul', [(_vm.comment[index].like_show === 'like') ? _c('li', {
       on: {
         "click": function($event) {
-          _vm.ChangeLike(item, 'liked', 1)
+          _vm.ChangeLike(index, 'liked', 1)
         }
       }
     }, [_c('img', {
       attrs: {
         "src": __webpack_require__(67)
       }
-    })]) : _vm._e(), _vm._v(" "), (item.like_show === 'liked') ? _c('li', {
+    })]) : _vm._e(), _vm._v(" "), (_vm.comment[index].like_show === 'liked') ? _c('li', {
       on: {
         "click": function($event) {
-          _vm.ChangeLike(item, 'like', -1)
+          _vm.ChangeLike(index, 'like', -1)
         }
       }
     }, [_c('img', {
@@ -20485,7 +20495,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return (_vm.showImgIndex === index) ? _c('img', {
       key: index,
       attrs: {
-        "src": image
+        "src": 'img/countryside/otherPic/' + image
       }
     }) : _vm._e()
   }), _vm._v(" "), _c('div', {

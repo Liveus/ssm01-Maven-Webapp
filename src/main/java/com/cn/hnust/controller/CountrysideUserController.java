@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.service.CountryService;
@@ -179,5 +180,20 @@ public class CountrysideUserController {
 		} else {
 			return "已登陆";
 		}
+	}
+	
+	@ApiOperation(value = "商业用户退出", httpMethod = "GET", notes = "admin user exit", response = java.lang.String.class)
+	@ResponseBody
+	@RequestMapping(value = "/exit",produces="text/json;charset=UTF-8")
+	public String exit(HttpSession session) {
+		try {
+			session.removeAttribute("countrysideUser");
+			System.out.println("111");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "登出失败";
+		}
+		return "登出成功";
 	}
 }

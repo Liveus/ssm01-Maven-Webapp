@@ -25,13 +25,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.pojo.User;
 import com.cn.hnust.service.UserService;
 import com.cn.hnust.util.MD5Util;
@@ -41,7 +38,6 @@ import com.wordnik.swagger.annotations.ApiOperation;
 @Api(value="user")
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("user")
 public class UserController {
 	@Resource
 	private UserService userService;
@@ -116,7 +112,6 @@ public class UserController {
 			user.setUserpassword(password);
 			user = this.userService.getUserByPwd(user);
 			if (user != null) {
-				model.addAttribute("user", user);
 				session.setAttribute("user", user);
 				System.out.println("success:");
 				// user.setUserpassword(""); //删除传输给前端用户信息中的密码项
@@ -188,12 +183,19 @@ public class UserController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/exit")
-	public ModelAndView exit(HttpSession session) {
-		session.removeAttribute("user");
-		String viewName = "index";
-		ModelAndView modelAndView = new ModelAndView(viewName);
-		return modelAndView;
+	@ApiOperation(value = "普通用户退出", httpMethod = "GET", notes = "normal user exit", response = java.lang.String.class)
+	@RequestMapping(value = "/exit",produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String exit(HttpSession session) {
+		try {
+			session.removeAttribute("user");
+			User user = (User)session.getAttribute("user");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "登出失败";
+		}
+		return "登出成功";
 	}
 
 	/**

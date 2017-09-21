@@ -24,5 +24,10 @@ public class CountrysideCollServiceImpl implements CountrysideCollService {
 		// TODO Auto-generated method stub
 		return this.CountrysideCollMapper.deleteByPrimaryKey(integer);
 	}
+	@Override
+	public int newColl(CountrysideColl coll) {
+		// TODO Auto-generated method stub
+		return this.CountrysideCollMapper.insertSelective(coll);
+	}
 
 }

@@ -71,7 +71,7 @@ public class CountryCommentController {
 			while ((input = reader.readLine()) != null) {
 				requestBody.append(input);
 				JSONObject jsonObject = new JSONObject(input);
-				comment.setScore(Double.valueOf(jsonObject.get("score").toString()));
+				comment.setScore(Double.valueOf(jsonObject.get("scores").toString()));
 				comment.setContent(jsonObject.get("content").toString());
 				comment.setCountryId(jsonObject.getInt("id"));
 				comment.setUserUserid(user.getUserid());

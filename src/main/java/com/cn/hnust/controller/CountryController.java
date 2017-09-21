@@ -39,7 +39,6 @@ import com.cn.hnust.pojo.CountrysideUser;
 import com.cn.hnust.pojo.Hotel;
 import com.cn.hnust.pojo.Restaurant;
 import com.cn.hnust.pojo.ScenicSpot;
-import com.cn.hnust.pojo.User;
 import com.cn.hnust.service.ArticleService;
 import com.cn.hnust.service.CountryCommentService;
 import com.cn.hnust.service.CountryPhotoService;
@@ -48,7 +47,6 @@ import com.cn.hnust.service.CountryVideoService;
 import com.cn.hnust.service.HotelService;
 import com.cn.hnust.service.RestaurantService;
 import com.cn.hnust.service.ScenicSpotService;
-import com.mysql.fabric.xmlrpc.base.Data;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
@@ -141,12 +139,17 @@ public class CountryController {
 		response.setContentType("text/json;charset=UTF-8");
 		JSONObject object = new JSONObject();
 		CountryWithBLOBs bloBs = new CountryWithBLOBs();
-		System.out.println(request.getParameter("id"));
+		StringBuffer requestBody;
+		Integer id = 1;
 		try {
 			BufferedReader reader = request.getReader();
-			System.out.println(reader.readLine());
-/*			Integer id = Integer.valueOf(reader.readLine());
-			System.out.println("id:"+id);*/
+			String input = null;
+			requestBody = new StringBuffer();
+			while ((input = reader.readLine()) != null) {
+				requestBody.append(input);
+				JSONObject jsonObject = new JSONObject(input);
+				id = Integer.valueOf(jsonObject.get("id").toString());
+			}
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -154,8 +157,7 @@ public class CountryController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		bloBs.setId(1);
+		bloBs.setId(id);
 		bloBs = this.countryService.getOneCountryById(bloBs.getId());
 		List<CountryWithBLOBs> bloBs2 = new ArrayList<CountryWithBLOBs>();
 		List<CountryPhoto> photos = this.countryPhotoService.getCountryPhotos(bloBs);
@@ -256,6 +258,10 @@ public class CountryController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		System.out.println("1:"+countrytype);
+		System.out.println("1:"+page);
+		System.out.println("1:"+content);
+		System.out.println();
 		List<CountryWithBLOBs> bloBs = this.countryService.getCountrysByType(countrytype, page, content);
 		if (bloBs.size() == 0) {
 			return null;

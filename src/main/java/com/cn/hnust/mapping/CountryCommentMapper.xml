@@ -35,7 +35,7 @@
     <include refid="Blob_Column_List" />
     ,username,headpic
     from countrycomment,user
-    where country_id = #{id,jdbcType=INTEGER} AND countrycomment.user_userid = user.userid
+    where country_id = #{id,jdbcType=INTEGER} AND countrycomment.user_userid = user.userid ORDER BY DeliverTime DESC
  </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
