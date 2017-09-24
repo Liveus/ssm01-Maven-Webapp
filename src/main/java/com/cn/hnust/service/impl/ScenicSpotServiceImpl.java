@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.cn.hnust.dao.ScenicSpotMapper;
-import com.cn.hnust.pojo.Country;
 import com.cn.hnust.pojo.CountryWithBLOBs;
 import com.cn.hnust.pojo.ScenicSpot;
 import com.cn.hnust.service.ScenicSpotService;
@@ -27,6 +26,21 @@ public class ScenicSpotServiceImpl implements ScenicSpotService {
 		// TODO Auto-generated method stub
 		ScenicSpot spot = this.scenicSpotMapper.selectByPrimaryKey(id);
 		return spot;
+	}
+	@Override
+	public int changeInfo(ScenicSpot spot) {
+		// TODO Auto-generated method stub
+		return this.scenicSpotMapper.updateByPrimaryKeySelective(spot);
+	}
+	@Override
+	public int newSopt(ScenicSpot spot) {
+		// TODO Auto-generated method stub
+		return 	this.scenicSpotMapper.insertSelective(spot);
+	}
+	@Override
+	public List<String> getAllSpotNames() {
+		// TODO Auto-generated method stub
+		return this.scenicSpotMapper.getAllSpotNames();
 	}
 
 }

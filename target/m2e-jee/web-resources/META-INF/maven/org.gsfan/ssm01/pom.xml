@@ -49,6 +49,8 @@
 			<artifactId>swagger-springmvc</artifactId>
 			<version>1.0.2</version>
 		</dependency>
+
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
@@ -64,7 +66,16 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.5.1</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-lgpl</artifactId>
+			<version>1.9.12</version>
+		</dependency>
 		<!-- spring核心包 -->
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -114,7 +114,7 @@ public class ArticleController {
 				// 一次遍历所有文件
 				MultipartFile file = multiRequest.getFile(iter.next().toString());
 				if (file != null) {
-					String path = request.getServletContext().getRealPath("/img/src") + "/"
+					String path = request.getServletContext().getRealPath("/img/articles/cover") + "/"
 							+ String.valueOf(date.getTime()) + "."
 							+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
 					// 上传

@@ -25,4 +25,6 @@ public interface CountrysideCollService {
 	 * @return
 	 */
 	public int newColl(CountrysideColl coll);
+	
+
 }

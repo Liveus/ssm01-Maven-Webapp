@@ -29,4 +29,6 @@ public interface CountryMapper {
     
     List<CountryWithBLOBs> getCountrysByType2(Map<String,Object> map);
     
+    List<String> getAllNames();
+    
 }

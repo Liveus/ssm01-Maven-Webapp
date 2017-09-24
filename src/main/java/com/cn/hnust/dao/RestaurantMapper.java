@@ -7,6 +7,8 @@ import com.cn.hnust.pojo.Restaurant;
 
 public interface RestaurantMapper {
     int deleteByPrimaryKey(Integer restaurantid);
+    
+    int deleteByCountrysideId(Integer countrysideId);
 
     int insert(Restaurant record);
 

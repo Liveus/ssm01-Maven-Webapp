@@ -49,6 +49,13 @@
     delete from restaurant
     where restaurantid = #{restaurantid,jdbcType=INTEGER}
   </delete>
+  
+  <delete id="deleteByCountrysideId" parameterType="java.lang.Integer" >
+    delete from restaurant
+    where country_id = #{countrysideId,jdbcType=INTEGER}
+  </delete>
+  
+  
   <insert id="insert" parameterType="com.cn.hnust.pojo.Restaurant" >
     insert into restaurant (restaurantid, name, location, 
       perprice, cinformation, address, 

@@ -2,12 +2,13 @@ package com.cn.hnust.dao;
 
 import java.util.List;
 
-import com.cn.hnust.pojo.Country;
 import com.cn.hnust.pojo.CountryWithBLOBs;
 import com.cn.hnust.pojo.ScenicSpot;
 
 public interface ScenicSpotMapper {
     int deleteByPrimaryKey(Integer scenicspotid);
+    
+    int deleteBycountrysideId(Integer countrysideId);
 
     int insert(ScenicSpot record);
 
@@ -22,4 +23,6 @@ public interface ScenicSpotMapper {
     int updateByPrimaryKey(ScenicSpot record);
     
     List<ScenicSpot> getCountrysideSopts(CountryWithBLOBs country);
+    
+    List<String> getAllSpotNames();
 }

@@ -41,4 +41,20 @@ public interface CountryService {
 	 * @return
 	 */
 	public int newCountry(CountryWithBLOBs bloBs);
+	
+	/**
+	 * 修改乡村信息
+	 * @param bloBs
+	 * @return
+	 */
+	public int changeInfo(CountryWithBLOBs bloBs);
+	
+	/**
+	 * 删除乡村及其相关信息
+	 * @param id
+	 * @return
+	 */
+	public int deleteCountry(int id);
+	
+	public List<String> getAllCountrysideNames();
 }

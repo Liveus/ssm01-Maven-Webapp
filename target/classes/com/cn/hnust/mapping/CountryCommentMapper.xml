@@ -42,6 +42,12 @@
     delete from countrycomment
     where idCountryComment = #{idcountrycomment,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteBycountry_id" parameterType="java.lang.Integer" >
+    delete from countrycomment
+    where country_id = #{countrysideId,jdbcType=INTEGER}
+  </delete>
+  
+  
   <insert id="insert" parameterType="com.cn.hnust.pojo.CountryComment" >
     insert into countrycomment (idCountryComment, score, NiceSum, 
       BadSum, DeliverTime, country_id, 

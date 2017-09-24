@@ -10,11 +10,12 @@
 	    	var password = $("#password").val();
 	    	var username = $("#username").val();
 	    	var checkcode = $("#checkcode").val();
-		    var data = {
+	    	var data = $('#form1').serialize();
+/*		    var data = {
 			    	username:username,
 			    	password:password,
 			    	checkcode:checkcode
-			    };
+			    };*/
 	        $.ajax({
 	            url:'user/login',
 	            type:'post',

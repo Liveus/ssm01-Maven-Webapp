@@ -58,7 +58,6 @@
 		</if>
 	</select>
 
-
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from article
 		where idarticle = #{idarticle,jdbcType=INTEGER}

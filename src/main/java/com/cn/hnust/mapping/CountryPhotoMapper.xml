@@ -28,6 +28,11 @@
     delete from countryphoto
     where idcountryPhoto = #{idcountryphoto,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteBycountrysideId" parameterType="java.lang.Integer" >
+    delete from countryphoto
+    where country_id = #{countrysideId,jdbcType=INTEGER}
+  </delete>
+  
   <insert id="insert" parameterType="com.cn.hnust.pojo.CountryPhoto" >
     insert into countryphoto (idcountryPhoto, src, country_id, 
       name)

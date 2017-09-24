@@ -7,6 +7,8 @@ import com.cn.hnust.pojo.CountryVideo;
 
 public interface CountryVideoMapper {
     int deleteByPrimaryKey(Integer idcountryvideo);
+    
+    int deleteBycountrysideId(Integer countrysideId);
 
     int insert(CountryVideo record);
 

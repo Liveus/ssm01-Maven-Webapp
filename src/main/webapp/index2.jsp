@@ -7,8 +7,8 @@
 <html>
 
 <body>
-	<form action="">
-		username:<input type="text" name="username" id="username"><br>
+	<form action="" id = "form1">
+		username:<input type="text" name="email" id="email"><br>
 		password:<input type="password" name="password" id="password"><br>
 		<input type="text" name="checkcode" id = "checkcode"/>
 		<img alt="验证码" id="imagecode" src="<%=request.getContextPath() %>/servlet/ImageServlet"/>

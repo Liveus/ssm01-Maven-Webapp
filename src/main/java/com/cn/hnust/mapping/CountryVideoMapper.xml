@@ -28,6 +28,12 @@
     delete from countryvideo
     where idcountryVideo = #{idcountryvideo,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteBycountrysideId" parameterType="java.lang.Integer" >
+    delete from countryvideo
+    where country_id = #{countrysideId,jdbcType=INTEGER}
+  </delete>
+  
+  
   <insert id="insert" parameterType="com.cn.hnust.pojo.CountryVideo" >
     insert into countryvideo (idcountryVideo, src, country_id, 
       name)

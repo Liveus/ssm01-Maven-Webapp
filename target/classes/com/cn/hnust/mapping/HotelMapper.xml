@@ -51,6 +51,11 @@
     delete from hotel
     where idhotel = #{idhotel,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByCountrysideId" parameterType="java.lang.Integer" >
+    delete from hotel
+    where country_id = #{countrysideId,jdbcType=INTEGER}
+  </delete>
+  
   <insert id="insert" parameterType="com.cn.hnust.pojo.Hotel" >
     insert into hotel (idhotel, hotelname, score, 
       mainPic, lowPrice, location, 

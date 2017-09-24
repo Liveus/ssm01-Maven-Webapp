@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -416,4 +417,28 @@ public class CountryController {
 			return "添加失败";
 		}
 	}
+	@ApiOperation(value="changeInfo",notes="change countryside info",httpMethod="GET",response=java.lang.String.class)
+	@ResponseBody
+	@RequestMapping(value="/changeInfo",produces="text/json;charset=utf-8")
+	public String changeInfo(){
+		return "修改乡村成功";
+	}
+	
+	@ApiOperation(value="delete",notes="delete countryside",httpMethod="GET",response=java.lang.String.class)
+	@ResponseBody
+	@RequestMapping(value="/delete",produces="text/json;charset=utf-8")
+	public String deleteCountryside(){
+		this.countryService.deleteCountry(15);
+		return "修改乡村成功";
+	}
+	
+	@ApiOperation(value="/getCountrysideNames",httpMethod="GET",response=java.util.List.class)
+	@ResponseBody
+	@RequestMapping(value="/getCountrysideNames")
+	public List<String> getAllCountrysideNames(){
+		List<String> names = new LinkedList<String>();
+		names = this.countryService.getAllCountrysideNames();
+		return names;
+	}
+	
 }

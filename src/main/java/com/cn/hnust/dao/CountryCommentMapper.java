@@ -7,6 +7,8 @@ import com.cn.hnust.pojo.CountryWithBLOBs;
 
 public interface CountryCommentMapper {
     int deleteByPrimaryKey(Integer idcountrycomment);
+    
+    int deleteBycountry_id(Integer countrysideId);
 
     int insert(CountryComment record);
 
