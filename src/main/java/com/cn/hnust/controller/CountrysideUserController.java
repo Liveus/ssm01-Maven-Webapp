@@ -3,7 +3,9 @@ package com.cn.hnust.controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,8 +28,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cn.hnust.pojo.CountrysideUser;
+import com.cn.hnust.pojo.User;
 import com.cn.hnust.service.CountryService;
 import com.cn.hnust.service.CountrysideUserService;
+import com.cn.hnust.util.MD5Util;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
@@ -195,5 +200,51 @@ public class CountrysideUserController {
 			return "登出失败";
 		}
 		return "登出成功";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/register")
+	public String register(HttpServletRequest request, ModelMap model, HttpSession session){
+		CountrysideUser newuser = new CountrysideUser();
+		String piccode = (String) request.getSession().getAttribute("piccode");
+		String checkcode = "00";
+		StringBuffer requestBody;
+		try {
+			BufferedReader reader = request.getReader();
+			String input = null;
+			requestBody = new StringBuffer();
+			while ((input = reader.readLine()) != null) {
+				requestBody.append(input);
+				JSONObject jsonObject = new JSONObject(input);
+				newuser.setUseremail(jsonObject.get("email").toString());
+				newuser.setName(jsonObject.get("name").toString());
+				newuser.setUserpassword(jsonObject.get("passwordO").toString());
+				newuser.setUserphone(jsonObject.get("phonenum").toString());
+				checkcode = jsonObject.get("yanzhen").toString();
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return "验证码不正确";
+		}
+		try {
+			checkcode = checkcode.toUpperCase();
+			if (piccode.equals(checkcode)) {
+				try {
+					String changedPwd = MD5Util.encrypt(newuser.getUserpassword());
+					newuser.setUserpassword(changedPwd);
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			System.out.println(newuser);
+			this.countrysideUserService.newUser(newuser);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "注册失败";
+		}
+		return "恭喜你注册成功，一封邮件已经发往你的邮箱，请点击邮箱中的连接进行验证！";
 	}
 }

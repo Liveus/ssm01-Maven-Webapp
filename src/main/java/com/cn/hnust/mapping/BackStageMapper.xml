@@ -38,8 +38,8 @@
     <result column="examine" property="examine" jdbcType="INTEGER" />  
     <result column="userid" property="userid" jdbcType="INTEGER" /> 
     <result column="username" property="username" jdbcType="VARCHAR" />   
-    
    </resultMap>
+   
   <resultMap id="HotelMap" type="com.cn.hnust.pojo.Hotel" >
    <id column="idhotel" property="idhotel" jdbcType="INTEGER"/>
    <result column="hotelname" property="hotelname" jdbcType="VARCHAR" />
@@ -60,6 +60,11 @@
     <result column="headPic" property="headpic" jdbcType="VARCHAR"/>
     <result column="favorite" property="favorite" jdbcType="VARCHAR"/>
     </resultMap>
+
+<resultMap id="ipDeptResult" type="java.util.HashMap">
+    <result property="key" column="ip"/>
+    <result property="value" column="dept"/>
+</resultMap>
 
 
   <select id="getUsercollByCountry" resultType="java.lang.Integer" parameterType="java.lang.Integer">
@@ -90,7 +95,7 @@
   where country_id = #{id,jdbcType=INTEGER}
   </select>
   <select id="getScenicspotcollByUser" resultType="java.lang.Integer" parameterType="java.util.List">
-  select count(user_id) 
+  select count(user_id)
   from scenicspotcoll
   where scenicspot_id in
   <foreach collection="list" item="item" index="index"
@@ -170,22 +175,22 @@
   <update id="updateCountryInExamine" parameterType="com.cn.hnust.pojo.Country">
   update country
   set examine=#{examine,jdbcType=INTEGER}
-  where id=#{id,jdbcType=INTEGER}
+  where name=#{name,jdbcType=VARCHAR}
   </update>
-  <update id="updateRestaurantInExamine" parameterType="java.lang.Integer">
+  <update id="updateRestaurantInExamine" parameterType="com.cn.hnust.pojo.Restaurant">
   update restaurant
   set examine=#{examine,jdbcType=INTEGER}
-  where restaurantid=#{id,jdbcType=INTEGER}
+  where name=#{name,jdbcType=VARCHAR}
   </update>
   <update id="updateScenicspotInExamine" parameterType="com.cn.hnust.pojo.ScenicSpot">
   update scenicspot
   set examine=#{examine,jdbcType=INTEGER}
-  where scenicspotid=#{id,jdbcType=INTEGER}
+  where name=#{name,jdbcType=VARCHAR}
   </update>
   <update id="updateHotelInExamine" parameterType="com.cn.hnust.pojo.Hotel">
   update hotel
   set examine=#{examine,jdbcType=INTEGER}
-  where idhotel=#{id,jdbcType=INTEGER}
+  where hotelname=#{hotelname,jdbcType=VARCHAR}
   </update>
 
   <select id="getAllUser" resultType="java.lang.Integer" >

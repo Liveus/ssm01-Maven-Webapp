@@ -19,4 +19,10 @@ public interface ScenicSpotService {
 	public int newSopt(ScenicSpot spot);
 	
 	public List<String> getAllSpotNames();
+	
+	public List<ScenicSpot> getSpotsByTag1(String tag1);
+	
+	public List<ScenicSpot> getSpotsByTag2(String tag1);
+	
+	int insertScenicspot(ScenicSpot scenicspot);
 }

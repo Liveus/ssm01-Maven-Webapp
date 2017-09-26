@@ -10,7 +10,7 @@ public interface CountryMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(CountryWithBLOBs record);
-
+    
     int insertSelective(CountryWithBLOBs record);
 
     CountryWithBLOBs selectByPrimaryKey(Integer id);
@@ -31,4 +31,11 @@ public interface CountryMapper {
     
     List<String> getAllNames();
     
+    int updateSights(CountryWithBLOBs country2);
+    
+    int updateHotels(CountryWithBLOBs country2);
+    
+    int updateRestaurants(CountryWithBLOBs country2);
+    
+    CountryWithBLOBs getByName(String name);
 }

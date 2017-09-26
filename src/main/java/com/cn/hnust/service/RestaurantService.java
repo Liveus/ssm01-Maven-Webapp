@@ -13,4 +13,6 @@ public interface RestaurantService {
 	public List<Restaurant> getCountryRestaurant(CountryWithBLOBs countryWithBLOBs);
 	
 	public Restaurant getRestDetail(Integer id);
+	
+	int insert(Restaurant record);
 }

@@ -1,6 +1,7 @@
 package com.cn.hnust.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cn.hnust.pojo.CountryWithBLOBs;
 import com.cn.hnust.pojo.ScenicSpot;
@@ -25,4 +26,9 @@ public interface ScenicSpotMapper {
     List<ScenicSpot> getCountrysideSopts(CountryWithBLOBs country);
     
     List<String> getAllSpotNames();
+    
+    List<ScenicSpot> getSpotsByTag1(Map<String, Object> map);
+    
+    List<ScenicSpot> getSpotsByTag2(Map<String, Object> map);
+    
 }

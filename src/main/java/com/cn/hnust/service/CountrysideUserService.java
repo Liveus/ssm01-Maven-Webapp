@@ -10,4 +10,6 @@ public interface CountrysideUserService {
 	public String changeUserInfo(CountrysideUser user,HttpSession session);
 	
 	public String changePwd(String pwd,String newpwd,HttpSession session);
+	
+	public int newUser(CountrysideUser user);
 }

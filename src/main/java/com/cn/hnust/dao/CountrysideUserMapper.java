@@ -7,6 +7,8 @@ public interface CountrysideUserMapper {
 
     int insert(CountrysideUser record);
 
+    int insertnewUser(CountrysideUser record);
+    
     int insertSelective(CountrysideUser record);
 
     CountrysideUser selectByPrimaryKey(Integer idcountrysideuser);

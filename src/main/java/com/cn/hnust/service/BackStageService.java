@@ -19,9 +19,9 @@ public interface BackStageService {
 	
 	public List<Hotel> getHotelByCountry(Integer id);
 
-	public List<Object> getScenicspotcollByUser(List<Object> sids);
+	public List<Integer> getScenicspotcollByUser(List<Object> sids);
 	
 	public List<Integer> getRestaurantcollByUser(List<Integer> rids);
 	    
-	public List<Object> getHotelcollByUser(List<Object> hids);
+	public List<Integer> getHotelcollByUser(List<Object> hids);
 }

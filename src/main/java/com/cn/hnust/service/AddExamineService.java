@@ -17,11 +17,11 @@ public interface AddExamineService {
 	 
 	 List<Hotel> getHotelInExamine();
 	 
-	 Integer updateCountryInExamine(Integer id,Integer examine);
+	 Integer updateCountryInExamine(Country country);
 	 
-	 Integer updateRestaurantInExamine(Integer id,Integer examine);
+     Integer updateRestaurantInExamine(Restaurant restaurant);
 	 
-	 Integer updateScenicspotInExamine(Integer id,Integer examine);
+	 Integer updateScenicspotInExamine(ScenicSpot scenicspot);
 	 
-	 Integer updateHotelInExamine(Integer id,Integer examine);
+	 Integer updateHotelInExamine(Hotel hotel);
 }

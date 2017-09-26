@@ -15,4 +15,6 @@ public interface HotelService {
 	
 	
 	public Hotel getHotelDetail(Integer id);
+	
+	public int insert(Hotel hotel);
 }

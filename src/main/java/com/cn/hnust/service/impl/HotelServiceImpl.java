@@ -26,5 +26,9 @@ public class HotelServiceImpl implements HotelService {
 		// TODO Auto-generated method stub
 		return this.hotelmapper.selectByPrimaryKey(id);
 	}
-
+	@Override
+	public int insert(Hotel record) {
+		
+		return hotelmapper.insert(record);
+	}
 }

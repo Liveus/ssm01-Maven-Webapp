@@ -1,5 +1,6 @@
 package com.cn.hnust.service.impl;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -50,20 +51,26 @@ public class BackStageServiceImpl implements BackStageService {
 	}
 
 	@Override
-	public List<Object> getScenicspotcollByUser(List<Object> sids) {
-		
+	public List<Integer> getScenicspotcollByUser(List<Object> sids) {
+		if(sids.size()==0){
+			return new LinkedList<Integer>();
+		}
 		return this.backStageMapper.getScenicspotcollByUser(sids);
 	}
 
 	@Override
 	public List<Integer> getRestaurantcollByUser(List<Integer> rids) {
-		
+		if(rids.size()==0){
+			return new LinkedList<Integer>();
+		}
 		return this.backStageMapper.getRestaurantcollByUser(rids);
 	}
 
 	@Override
-	public List<Object> getHotelcollByUser(List<Object> hids) {
-	
+	public List<Integer> getHotelcollByUser(List<Object> hids) {
+		if(hids.size()==0){
+			return new LinkedList<Integer>();
+		}
 		return this.backStageMapper.getHotelcollByUser(hids);
 	}
 

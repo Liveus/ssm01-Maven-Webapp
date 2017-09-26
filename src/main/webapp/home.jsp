@@ -14,6 +14,7 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/templatemo-style.css" rel="stylesheet">
   <style type="text/css"></style>
+  <link rel="shortcut icon" href="static/favicon.ico" mce_href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -21,10 +22,10 @@
     <div class="templatemo-sidebar">
       <header class="templatemo-site-header">
         <div class="square"></div>
-        <h1>LOGO</h1>
+        <h1>郷野 · 故事</h1>
       </header>
       <div class="profile-photo-container">
-        <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">
+        <img src="img/headpic/moren.jpg" alt="Profile Photo" class="img-responsive">
         <div class="profile-photo-overlay"></div>
       </div>
       <form class="templatemo-search-form" role="search">

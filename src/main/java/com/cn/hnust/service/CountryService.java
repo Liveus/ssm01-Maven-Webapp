@@ -57,4 +57,6 @@ public interface CountryService {
 	public int deleteCountry(int id);
 	
 	public List<String> getAllCountrysideNames();
+	
+	public CountryWithBLOBs getByName(String name);
 }

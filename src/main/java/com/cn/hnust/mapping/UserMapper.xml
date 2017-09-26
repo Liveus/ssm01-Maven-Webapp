@@ -75,14 +75,14 @@
   <insert id="insert" parameterType="com.cn.hnust.pojo.User" >
     insert into user (userid, useremail, userpassword, 
       level, fans, experience, 
-      headPic, sex, birth, signature, 
+      sex, birth, signature, 
       attention, city, phone, 
       wechat, favorite, articles, 
       routes, username, keyVal, 
       active)
     values (#{userid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, 
       #{level,jdbcType=INTEGER}, #{fans,jdbcType=INTEGER}, #{experience,jdbcType=INTEGER}, 
-      #{headpic,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{birth,jdbcType=DATE}, #{signature,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{birth,jdbcType=DATE}, #{signature,jdbcType=VARCHAR}, 
       #{attention,jdbcType=INTEGER}, #{city,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{wechat,jdbcType=VARCHAR}, #{favorite,jdbcType=CHAR}, #{articles,jdbcType=INTEGER}, 
       #{routes,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{keyval,jdbcType=VARCHAR}, 

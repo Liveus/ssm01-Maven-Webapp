@@ -45,7 +45,17 @@
 		from country
 		where id = #{id,jdbcType=INTEGER}
 	</select>
-
+	
+	<select id="getByName" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from country
+		where name = #{name,jdbcType=VARCHAR}
+	</select>
+	
 	<select id="getAllNames" resultType="java.lang.String"
 		parameterType="java.lang.Integer">
 		select name from country
@@ -92,6 +102,25 @@
 			limit #{start},#{pagesize}
 		</if>
 	</select>
+
+	<update id="updateSights" parameterType="com.cn.hnust.pojo.Country">
+		update country
+		set sights
+		= sights - 1
+		where id =#{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateHotels" parameterType="com.cn.hnust.pojo.Country">
+		update country
+		set hotels
+		= hotels - 1
+		where id =#{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateRestaurants" parameterType="com.cn.hnust.pojo.Country">
+		update country
+		set
+		restaurants = restaurants - 1
+		where id =#{id,jdbcType=INTEGER}
+	</update>
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from

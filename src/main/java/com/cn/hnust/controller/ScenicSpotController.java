@@ -43,6 +43,7 @@ public class ScenicSpotController {
 		response.setContentType("text/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		CountryWithBLOBs bloBs = (CountryWithBLOBs) session.getAttribute("CountryWithBLOBs");
+		System.out.println(bloBs.toString());
 		/* this.scenicSpotService.getCountrysideSpots(user); */
 		List<ScenicSpot> spots = this.scenicSpotService.getCountrysideSpots(bloBs);
 		JSONObject object = new JSONObject();

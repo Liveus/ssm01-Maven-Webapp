@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +32,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
+import com.cn.hnust.dao.CountrysideUserMapper;
 import com.cn.hnust.pojo.Article;
 import com.cn.hnust.pojo.CountryComment;
 import com.cn.hnust.pojo.CountryPhoto;
@@ -45,6 +47,7 @@ import com.cn.hnust.service.CountryCommentService;
 import com.cn.hnust.service.CountryPhotoService;
 import com.cn.hnust.service.CountryService;
 import com.cn.hnust.service.CountryVideoService;
+import com.cn.hnust.service.CountrysideUserService;
 import com.cn.hnust.service.HotelService;
 import com.cn.hnust.service.RestaurantService;
 import com.cn.hnust.service.ScenicSpotService;
@@ -72,6 +75,8 @@ public class CountryController {
 	@Resource
 	private CountryCommentService commentService;
 
+	@Resource
+	private CountrysideUserService countrysideUserService;
 	/*
 	 * @Resource private SpecialtyService specialtyService;
 	 */
@@ -111,8 +116,13 @@ public class CountryController {
 		 * (IOException e) { // TODO Auto-generated catch block
 		 * e.printStackTrace(); }
 		 */
+		CountryWithBLOBs bloBs  = new CountryWithBLOBs();
 		CountrysideUser user = (CountrysideUser) session.getAttribute("countrysideUser");
-		CountryWithBLOBs bloBs = this.countryService.getOneCountryById(Integer.valueOf(user.getCountrysideId()));
+		if(user.getCountrysideId()==null){
+			bloBs = new CountryWithBLOBs();
+		}else{
+			bloBs = this.countryService.getOneCountryById(Integer.valueOf(user.getCountrysideId()));
+		}
 		session.setAttribute("CountryWithBLOBs", bloBs);
 		JSONObject object = new JSONObject();
 		List<CountryWithBLOBs> bs = new ArrayList<CountryWithBLOBs>();
@@ -125,7 +135,6 @@ public class CountryController {
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * 获取一个乡村的所有信息
 	 * 
@@ -331,7 +340,6 @@ public class CountryController {
 		List<String> list = new ArrayList<String>();
 		if (multipartResolver.isMultipart(request)) {
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-			// 处理编辑器内容
 			try {
 				FileWriter fw = new FileWriter(request.getServletContext().getRealPath("/img/upload") + "/"
 						+ String.valueOf(date.getTime()) + ".txt", true);
@@ -412,6 +420,9 @@ public class CountryController {
 			countryVideo.setCountryId(bloBs.get(0).getId());
 			this.countryVideoService.newVideos(countryVideo);
 			this.countryPhotoService.newPhotos(countryPhoto);
+			String name = bs.getName();
+			user.setCountrysideId(String.valueOf(this.countryService.getByName(name).getId()));
+			this.countrysideUserService.changeUserInfo(user, session);
 			return "添加成功";
 		} else {
 			return "添加失败";
@@ -420,8 +431,113 @@ public class CountryController {
 	@ApiOperation(value="changeInfo",notes="change countryside info",httpMethod="GET",response=java.lang.String.class)
 	@ResponseBody
 	@RequestMapping(value="/changeInfo",produces="text/json;charset=utf-8")
-	public String changeInfo(){
-		return "修改乡村成功";
+	public String changeInfo(HttpServletRequest request,HttpSession session){
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+				request.getSession().getServletContext());
+		CountrysideUser user = (CountrysideUser) session.getAttribute("countrysideUser");
+		CountryWithBLOBs bs = this.countryService.getOneCountryById(Integer.valueOf(user.getCountrysideId()));
+		System.out.println(bs.toString());
+		Date date = new Date();
+		bs.setName(request.getParameter("name"));
+		bs.setIntroduce(request.getParameter("introduce"));
+		bs.setLocation(request.getParameter("location"));
+		bs.setCountrytype(request.getParameter("countrytype"));
+		bs.setUserid(user.getIdcountrysideuser());
+		bs.setUsername(user.getName());
+		String cover = null;
+		String pics = "";
+		String videos = "";
+		String path;
+		Date date2 = new Date();
+		date2.setTime(2l + date.getTime());
+		List<String> list = new ArrayList<String>();
+		if (multipartResolver.isMultipart(request)) {
+			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+			try {
+				FileWriter fw = new FileWriter(request.getServletContext().getRealPath("/img/upload") + "/"
+						+ String.valueOf(date.getTime()) + ".txt", true);
+				FileWriter fw2 = new FileWriter(request.getServletContext().getRealPath("/img/upload") + "/"
+						+ String.valueOf(date2.getTime()) + ".txt", true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				BufferedWriter bw2 = new BufferedWriter(fw2);
+				bw.write(request.getParameter("culture"));
+				bw2.write(request.getParameter("activities"));
+				bw.close();
+				bw2.close();
+				fw.close();
+				fw2.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				return "添加乡村失败";
+			}
+			bs.setActivities(String.valueOf(date.getTime()) + ".txt");
+			bs.setCulture(String.valueOf(date2.getTime()) + ".txt");
+			// 处理请求中的文件
+			Iterator iter = multiRequest.getFileNames();
+			while (iter.hasNext()) {
+				MultipartFile file = multiRequest.getFile(iter.next().toString());
+				if (file != null) {
+					Date date3 = new Date();
+					if (file.getName().equals("mianpic")) {
+						cover = file.getOriginalFilename();
+						path = request.getServletContext().getRealPath("/img/countryside/mainPic") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						cover = String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+					} else if (file.getName().startsWith("techang")) {
+						path = request.getServletContext().getRealPath("/img/countryside/pics") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						list.add(String.valueOf(date3.getTime()) + "." + file.getOriginalFilename()
+								.substring(file.getOriginalFilename().lastIndexOf(".") + 1));
+					} else if (file.getName().startsWith("meijing/pic")) {
+						path = request.getServletContext().getRealPath("/img/countryside/pics") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						pics = pics + ";" + String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						;
+					} else {
+						path = request.getServletContext().getRealPath("/img/countryside/videos") + "/"
+								+ String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+						videos = videos + ";" + String.valueOf(date3.getTime()) + "."
+								+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+					}
+					try {
+						file.transferTo(new File(path));
+					} catch (IllegalStateException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						return "添加乡村失败";
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						return "添加乡村失败";
+					}
+				}
+			}
+			bs.setMianpic(cover);
+		}
+		CountryPhoto countryPhoto = new CountryPhoto();
+		CountryVideo countryVideo = new CountryVideo();
+		countryPhoto.setCountryId(bs.getId());
+		countryPhoto.setSrc(pics);
+		countryVideo.setCountryId(bs.getId());
+		countryVideo.setSrc(videos);
+		if (this.countryService.changeInfo(bs) == 1) {
+			List<CountryWithBLOBs> bloBs = this.countryService.getUserCountrysides(session);
+			countryPhoto.setCountryId(bloBs.get(0).getId());
+			countryVideo.setCountryId(bloBs.get(0).getId());
+			this.countryVideoService.newVideos(countryVideo);
+			this.countryPhotoService.newPhotos(countryPhoto);
+			this.countrysideUserService.changeUserInfo(user, session);
+			return "修改乡村成功";
+		} else {
+			return "修改乡村失败";
+		}
 	}
 	
 	@ApiOperation(value="delete",notes="delete countryside",httpMethod="GET",response=java.lang.String.class)

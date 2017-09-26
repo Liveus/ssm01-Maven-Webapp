@@ -1,6 +1,5 @@
 package com.cn.hnust.controller;
 
-import java.util.Calendar;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -9,7 +8,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import com.cn.hnust.pojo.User;
-import com.cn.hnust.util.MD5Util;
 /**
 * @ClassName: Sendmai
 * @Description: Sendmail类继承Thread，因此Sendmail就是一个线程类，这个线程类用于给指定的用户发送Email 
@@ -68,7 +66,7 @@ public class Sendmail extends Thread {
         message.setFrom(new InternetAddress(from));
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getUseremail()));
         message.setSubject("用户注册邮件");
-        String info = "你好："+user.getUseremail()+"!"+"<br>"+"你需要点击以下链接来激活你的账户:"+"<br>"+"http://localhost:8000/ssm01/user/verification?key="+user.getKeyval()+"&from="+user.getUseremail();
+        String info = "你好："+user.getUseremail()+"!"+"<br>"+"你需要点击以下链接来激活你的账户:"+"<br>"+"http://192.168.2.119:8000/ssm01/user/verification?key="+user.getKeyval()+"&from="+user.getUseremail();
         message.setContent(info, "text/html;charset=UTF-8");
         message.saveChanges();
         return message;

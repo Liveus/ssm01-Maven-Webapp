@@ -1,7 +1,6 @@
 package com.cn.hnust.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -101,39 +100,48 @@ public class AddExamineController {
 	@RequestMapping("/updateExaminec")
 	public void updateExaminec(HttpServletRequest request) throws IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
 		Integer examine = Integer.parseInt(request.getParameter("examine"));
-		addExamineService.updateCountryInExamine(id, examine);
+		Country country = new Country();
+		country.setName(name);
+		country.setExamine(examine);
+		
+		addExamineService.updateCountryInExamine(country);
 	}
 
 	@RequestMapping("/updateExaminer")
 	public void updateExaminer(HttpServletRequest request) throws IOException {
 		request.setCharacterEncoding("utf-8");
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
 		Integer examine = Integer.parseInt(request.getParameter("examine"));
-		/*
-		 * Restaurant restaurant = new Restaurant();
-		 * 
-		 * restaurant.setExamine(examine);
-		 */
+         Restaurant restaurant = new Restaurant();
+         restaurant.setName(name);
+         restaurant.setExamine(examine);
 
-		addExamineService.updateRestaurantInExamine(id, examine);
+		addExamineService.updateRestaurantInExamine(restaurant);
 	}
 
 	@RequestMapping("/updateExamines")
-	public void updateExamines(HttpServletRequest request) {
-
-		Integer id = Integer.parseInt(request.getParameter("id"));
+	public void updateExamines(HttpServletRequest request) throws IOException {
+		request.setCharacterEncoding("utf-8");
+		String name = request.getParameter("name");
 		Integer examine = Integer.parseInt(request.getParameter("examine"));
-		addExamineService.updateScenicspotInExamine(id, examine);
+		ScenicSpot scenicspot = new ScenicSpot();
+		scenicspot.setName(name);
+		scenicspot.setExamine(examine);
+		addExamineService.updateScenicspotInExamine(scenicspot);
 	}
 
 	@RequestMapping("/updateExamineh")
-	public void updateExamineh(HttpServletRequest request) {
-
-		Integer id = Integer.parseInt(request.getParameter("id"));
+	public void updateExamineh(HttpServletRequest request) throws IOException {
+		request.setCharacterEncoding("utf-8");
+		String name = request.getParameter("name");
 		Integer examine = Integer.parseInt(request.getParameter("examine"));
-		addExamineService.updateHotelInExamine(id, examine);
+		Hotel hotel = new Hotel();
+		hotel.setHotelname(name);
+		hotel .setExamine(examine);
+		
+		addExamineService.updateHotelInExamine(hotel);
 	}
 
 	@RequestMapping("/showsExamine")
@@ -197,9 +205,7 @@ public class AddExamineController {
 		response.setContentType("text/html;charset=utf-8");
 		String sname = request.getParameter("sname");
 		List<ScenicSpot> scenicspot = new ArrayList<ScenicSpot>();
-
 		scenicspot = this.showExamineService.showScenicspotInExamine(sname);
-
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("list", scenicspot);
 		response.getWriter().write(jsonObject.toString());
@@ -221,7 +227,7 @@ public class AddExamineController {
 		jsonObject.put("list", hotel);
 		response.getWriter().write(jsonObject.toString());
 		return;
-
 	}
 
+	
 }

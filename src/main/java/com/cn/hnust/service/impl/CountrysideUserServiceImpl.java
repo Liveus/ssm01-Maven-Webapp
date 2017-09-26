@@ -68,5 +68,11 @@ public class CountrysideUserServiceImpl implements CountrysideUserService {
 		}
 		return "修改失败";
 	}
+
+	@Override
+	public int newUser(CountrysideUser user) {
+		// TODO Auto-generated method stub
+		return this.countrysideUserMapper.insertnewUser(user);
+	}
 	
 }

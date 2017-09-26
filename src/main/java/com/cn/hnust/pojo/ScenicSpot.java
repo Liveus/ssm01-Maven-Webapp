@@ -1,15 +1,7 @@
 package com.cn.hnust.pojo;
 
 public class ScenicSpot {
-    @Override
-	public String toString() {
-		return "ScenicSpot [scenicspotid=" + scenicspotid + ", name=" + name + ", location=" + location + ", price="
-				+ price + ", cinformation=" + cinformation + ", address=" + address + ", cover=" + cover + ", pices="
-				+ pices + ", video=" + video + ", countryId=" + countryId + ", addtime=" + addtime + ", examine="
-				+ examine + ", userid=" + userid + ", username=" + username + ", synosis=" + synosis + "]";
-	}
-
-	private Integer scenicspotid;
+    private Integer scenicspotid;
 
     private String name;
 
@@ -36,6 +28,10 @@ public class ScenicSpot {
     private Integer userid;
 
     private String username;
+
+    private String tag1;
+
+    private String tag2;
 
     private String synosis;
 
@@ -151,6 +147,22 @@ public class ScenicSpot {
         this.username = username == null ? null : username.trim();
     }
 
+    public String getTag1() {
+        return tag1;
+    }
+
+    public void setTag1(String tag1) {
+        this.tag1 = tag1 == null ? null : tag1.trim();
+    }
+
+    public String getTag2() {
+        return tag2;
+    }
+
+    public void setTag2(String tag2) {
+        this.tag2 = tag2 == null ? null : tag2.trim();
+    }
+
     public String getSynosis() {
         return synosis;
     }
@@ -158,4 +170,13 @@ public class ScenicSpot {
     public void setSynosis(String synosis) {
         this.synosis = synosis == null ? null : synosis.trim();
     }
+
+	@Override
+	public String toString() {
+		return "ScenicSpot [scenicspotid=" + scenicspotid + ", name=" + name + ", location=" + location + ", price="
+				+ price + ", cinformation=" + cinformation + ", address=" + address + ", cover=" + cover + ", pices="
+				+ pices + ", video=" + video + ", countryId=" + countryId + ", addtime=" + addtime + ", examine="
+				+ examine + ", userid=" + userid + ", username=" + username + ", tag1=" + tag1 + ", tag2=" + tag2
+				+ ", synosis=" + synosis + "]";
+	}
 }

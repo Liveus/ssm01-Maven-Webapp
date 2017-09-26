@@ -44,27 +44,27 @@ public class AddExamineServiceImpl implements AddExamineService {
 	}
 
 	@Override
-	public Integer updateCountryInExamine(Integer id,Integer examine) {
+	public Integer updateCountryInExamine(Country country) {
 	
-		return this.backStageMapper.updateCountryInExamine(id, examine);
+		return this.backStageMapper.updateCountryInExamine(country);
 	}
 
 	@Override
-	public Integer updateRestaurantInExamine(Integer id,Integer examine) {
+	public Integer updateRestaurantInExamine(Restaurant restaurant) {
 		
-		return this.backStageMapper.updateRestaurantInExamine(id,examine);
+		return this.backStageMapper.updateRestaurantInExamine(restaurant);
 	}
 
 	@Override
-	public Integer updateScenicspotInExamine(Integer id,Integer examine) {
+	public Integer updateScenicspotInExamine(ScenicSpot scenicspot) {
 		
-		return this.backStageMapper.updateScenicspotInExamine(id, examine);
+		return this.backStageMapper.updateScenicspotInExamine(scenicspot);
 	}
 
 	@Override
-	public Integer updateHotelInExamine(Integer id,Integer examine) {
+	public Integer updateHotelInExamine(Hotel hotel) {
 		
-		return this.backStageMapper.updateHotelInExamine(id, examine);
+		return this.backStageMapper.updateHotelInExamine(hotel);
 	}
 
 }

@@ -13,6 +13,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/templatemo-style.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="static/favicon.ico" mce_href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -20,10 +21,10 @@
     <div class="templatemo-sidebar">
       <header class="templatemo-site-header">
         <div class="square"></div>
-        <h1>LOGO</h1>
+        <h1>郷野 · 故事</h1>
       </header>
       <div class="profile-photo-container">
-        <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">
+        <img src="img/headpic/moren.jpg" alt="Profile Photo" class="img-responsive">
         <div class="profile-photo-overlay"></div>
       </div>
       <!-- <div class="templatemo-search-number">
@@ -106,8 +107,6 @@
             <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li>
               <a href="#" aria-label="Next">
                   <span aria-hidden="true"><i class="fa fa-play"></i></span>
@@ -122,99 +121,6 @@
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
                 <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-md-12" id="add_country_infor">
-                    <!-- <h2 class="text-center table-font-family"><span class="back-icon fa fa-arrow-circle-left fa-fw"></span>添加的村</h2>
-                    <div id="pie_chart_div" class="templatemo-chart">
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">简&emsp;&emsp;介：</li>
-                        <li class="ul-right-context table-font-family">车位 位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后</li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">隶&emsp;&emsp;属：</li>
-                        <li class="ul-right-context table-font-family">浙江省 湖州市 安吉县 <span  class="table-font-family">高家堂村</span></li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">封&emsp;&emsp;面：</li>
-                        <li class="ul-right-context">
-                          <div class="li-context-img-box">
-                            <img src="images/sunset.jpg" class="img-auto">
-                          </div>
-                        </li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">特&emsp;&emsp;产：</li>
-                        <li class="ul-right-context table-font-family">
-                          <div class="country-special-box">
-                            <img src="images/person.jpg">
-                            <span>安吉白茶</span>
-                          </div>
-                          <div class="country-special-box">
-                            <img src="images/person.jpg">
-                            <span>安吉白茶</span>
-                          </div>
-                          <div class="country-special-box">
-                            <img src="images/person.jpg">
-                            <span>安吉白茶</span>
-                          </div>
-                          <div class="country-special-box">
-                            <img src="images/person.jpg">
-                            <span>安吉白茶</span>
-                          </div>
-                          <div class="country-special-box">
-                            <img src="images/person.jpg">
-                            <span>安吉白茶</span>
-                          </div>
-                        </li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">照&ensp;片&ensp;集：</li>
-                        <li class="ul-right-context">
-                          <div class="li-context-imgs-box">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                          </div>
-                        </li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">视&emsp;&emsp;频：</li>
-                        <li class="ul-right-context">
-                          <div class="li-context-video-box" style="margin-bottom:25px;">
-                            <video width="100%" height="100%" controls>
-                              <source src="mp4_video.mp4"  type="video/mp4">
-                            </video>
-                          </div>
-                          <div class="li-context-video-box" style="margin-bottom:25px;">
-                            <video width="100%" height="100%" controls>
-                              <source src="mp4_video.mp4"  type="video/mp4">
-                            </video>
-                          </div>
-                        </li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">文&emsp;&emsp;化：</li>
-                        <li class="ul-right-context table-font-family">车位 位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后</li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">活&emsp;&emsp;动：</li>
-                        <li class="ul-right-context table-font-family">
-                          <div class="country-activity-infor">
-                            <h2 class="table-font-family">活动一</h2>
-                            <p class="table-font-family">和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更</p>
-                          </div>
-                          <div class="country-activity-infor">
-                            <h2 class="table-font-family">活动一</h2>
-                            <p class="table-font-family">和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div> -->
                   </div>
                 </div>                
               </div>
@@ -236,22 +142,6 @@
                 </tr>
               </thead>
               <tbody id="spot_add">
-                <!-- <tr>
-                  <td>添加景点</td>
-                  <td>Silence12344</td>
-                  <td>2017-08-14</td>
-                  <td>
-                    <input type="button" name="" class="table-input-view" value="查看">
-                    <input type="button" name="" class="table-input-view" value="提交审查结果">
-                  </td>
-                  <td>
-                    <select class="table-select">
-                      <option value="0">未处理</option>
-                      <option value="1">未通过</option>
-                      <option value="2">通过</option>
-                    </select>
-                  </td>
-                </tr> -->
               </tbody>
             </table>
           </div>
@@ -263,7 +153,6 @@
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li>
               <a href="#" aria-label="Next">
                   <span aria-hidden="true"><i class="fa fa-play"></i></span>
@@ -278,64 +167,6 @@
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
                 <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-md-12" id="add_spot_infor">
-                    <!-- <h2 class="text-center table-font-family"><span class="back-icon fa fa-arrow-circle-left fa-fw"></span>就这个景点</h2>
-                    <div id="pie_chart_div" class="templatemo-chart">
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">简&emsp;&emsp;介：</li>
-                        <li class="ul-right-context table-font-family">车位 位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后</li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">隶&emsp;&emsp;属：</li>
-                        <li class="ul-right-context table-font-family">浙江省 湖州市 安吉县 <span  class="table-font-family">高家堂村</span></li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">门&emsp;&emsp;票：</li>
-                        <li class="ul-right-context table-font-family"><span  class="table-font-family">89</span> RMB/人</li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">联系方式：</li>
-                        <li class="ul-right-context table-font-family">159********</li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">详细地址：</li>
-                        <li class="ul-right-context table-font-family">浙江省湖州市安吉县什么村真没路35号</li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">封&emsp;&emsp;面：</li>
-                        <li class="ul-right-context">
-                          <div class="li-context-img-box">
-                            <img src="images/sunset.jpg" class="img-auto">
-                          </div>
-                        </li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">照&ensp;片&ensp;集：</li>
-                        <li class="ul-right-context">
-                          <div class="li-context-imgs-box">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                            <img src="images/sunset.jpg">
-                          </div>
-                        </li>
-                      </ul>
-                      <ul class="infor-ul clear">
-                        <li class="ul-left-title table-font-family">视&emsp;&emsp;频：</li>
-                        <li class="ul-right-context">
-                          <div class="li-context-video-box">
-                            <video width="100%" height="100%" controls>
-                              <source src="mp4_video.mp4"  type="video/mp4">
-                            </video>
-                          </div>
-                        </li>
-                      </ul>
-                    </div> -->
                   </div>
                 </div>                
               </div>
@@ -357,22 +188,6 @@
                 </tr>
               </thead>
               <tbody id="restaurant_add">
-                <!-- <tr>
-                  <td>餐馆添加</td>
-                  <td>Silence12344</td>
-                  <td>2017-08-14</td>
-                  <td>
-                    <input type="button" name="" class="table-input-view" value="查看">
-                    <input type="button" name="" class="table-input-view" value="提交审查结果">
-                  </td>
-                  <td>
-                    <select class="table-select">
-                      <option value="0">未处理</option>
-                      <option value="1">未通过</option>
-                      <option value="2">通过</option>
-                    </select>
-                  </td>
-                </tr> -->
               </tbody>
             </table>
           </div>
@@ -383,8 +198,6 @@
             <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li>
               <a href="#" aria-label="Next">
                   <span aria-hidden="true"><i class="fa fa-play"></i></span>
@@ -420,22 +233,6 @@
                 </tr>
               </thead>
               <tbody id="hotel_add">
-                <!-- <tr>
-                  <td>住宿添加</td>
-                  <td>Silence12344</td>
-                  <td>2017-08-14</td>
-                  <td>
-                    <input type="button" name="" class="table-input-view" value="查看">
-                    <input type="button" name="" class="table-input-view" value="提交审查结果">
-                  </td>
-                  <td>
-                    <select class="table-select">
-                      <option value="0">未处理</option>
-                      <option value="1">未通过</option>
-                      <option value="2">通过</option>
-                    </select>
-                  </td>
-                </tr> -->
               </tbody>
             </table>
           </div>
@@ -447,7 +244,6 @@
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li>
               <a href="#" aria-label="Next">
                   <span aria-hidden="true"><i class="fa fa-play"></i></span>
@@ -715,7 +511,7 @@
       var thisCN = $(".addCName").eq(x).html();
       var thisState = $(".country-select").eq(x).val();
       $.ajax({
-        url : 'aaa',
+        url : 'AddExamine/updateExaminec',
         type : 'GET',
         data : {
           name : thisCN,
@@ -735,7 +531,7 @@
       var thisSN = $(".addSName").eq(x).html();
       var thisState = $(".spot-select").eq(x).val();
       $.ajax({
-        url : 'aaa',
+        url : 'AddExamine/updateExamines',
         type : 'GET',
         data : {
           name : thisSN,
@@ -755,7 +551,7 @@
       var thisRN = $(".addRName").eq(x).html();
       var thisState = $(".restaurant-select").eq(x).val();
       $.ajax({
-        url : 'aaa',
+        url : 'AddExamine/updateExaminer',
         type : 'GET',
         data : {
           name : thisRN,
@@ -775,10 +571,10 @@
       var thisHN = $(".addHName").eq(x).html();
       var thisState = $(".hotel-select").eq(x).val();
       $.ajax({
-        url : 'aaa',
+        url : 'AddExamine/updateExamineh',
         type : 'GET',
         data : {
-          name : thisHN,
+          hotelname : thisHN,
           examine : thisState
         },
         success : function(){
@@ -813,53 +609,31 @@
           var outStr1 = "";
           var outStr2 = "";
           var outStr3 = "";
+          var outStr4 = "";
           $.each(jsonArray3,function(i,value){
             var oneTC = value;
             outStr1 += "<div class='country-special-box'><img src='" + oneTC.src + "'><span>" + oneTC.name + "</span></div>"
           });
           $.each(jsonArray1,function(i,value){
             var oneZP = value;
-            outStr2 += "<img src='" + oneZP + "'>";
+            outStr2 += "<img src='img/countryside/otherPic/" + oneZP + "'>";
           });
           $.each(jsonArray2,function(i,value){
             var oneSP = value;
-            outStr3 += "<div class='li-context-video-box' style='margin-bottom:25px;'><video width='100%' height='100%' controls><source src='" + oneSP + "'  type='video/mp4'></video></div>";
+            outStr3 += "<div class='li-context-video-box' style='margin-bottom:25px;'><video width='100%' height='100%' controls><source src='img/countryside/videos/" + oneSP + "'  type='video/mp4'></video></div>";
           });
+          if(jsonArray2.length > 0) {
+            outStr4 = "<ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'>" + outStr3 + "</li></ul>"
+          }
           $.each(jsonArray,function(i,value){
             var jsonCell = value;
-            outStr = "<h2 class='text-center table-font-family'><span class='back-icon fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.introduce + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='" + jsonCell.mianPic + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>特&emsp;&emsp;产：</li><li class='ul-right-context table-font-family'>" + outStr1 + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr2 + "</div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'>" + outStr3 + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>文&emsp;&emsp;化：</li><li class='ul-right-context table-font-family'>" + jsonCell.culture + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>活&emsp;&emsp;动：</li><li class='ul-right-context table-font-family'>" + jsonCell.activities + "</li></ul></div>"
+            outStr = "<h2 class='text-center table-font-family'><span class='back-icon fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.introduce + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='img/countryside/mainPic/" + jsonCell.mianpic + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr2 + "</div></li></ul>" + outStr4 + "<ul class='infor-ul clear'><li class='ul-left-title table-font-family'>文&emsp;&emsp;化：</li><li class='ul-right-context table-font-family'><a href='#' style='text-decoration:underline'>" + jsonCell.culture + "</a></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>活&emsp;&emsp;动：</li><li class='ul-right-context table-font-family'><a href='#' style='text-decoration:underline'>" + jsonCell.activities + "</a></li></ul></div>"
           });
           $("#add_country_infor").html(outStr);
         },
         error : function(){
           console.log("服务器被天狗吃掉了,获取数据失败~");
           // 0 未处理  1 未通过  2 通过
-          var data = '{"list2":["mp4_video.mp4","mp4_video.mp4"],"list3":[{"name":"安吉白茶","src":"images/person.jpg"},{"name":"白茶","src":"images/person.jpg"}],"list1":["images/person.jpg","images/person.jpg","images/person.jpg","images/person.jpg"],"list":[{"location":"浙江省安吉县","name":"高家堂村","introduce":"高家堂村位于浙江省安吉县山川乡南端，境内植被良好，山清水秀，是浙江省第一批全面小唐建设示范村。总人口826人，2003年人均纯收入7152元。该村先后被评为201c省级全面小康建设示范村201d、201c省级绿化示范村201d、201c省级文明村201d、201c全国绿色建筑创新（二等奖）201d等称号，2000年以来，村里坚持发展生态经济，先后投入了380多万元。山林面积8456亩，生态环境良好，竹类资源非常丰富，其中毛竹林4639亩，年产毛竹20余万支。","activities":"暂未说明","mianPic":"images/sunset.jpg","culture":"为了这大自然赋予的秀丽景致不受丝毫污染，据了解，村里请来省里专家，投资40多万元引进了美国最新的阿科蔓技术，利用人工水草的微生物自然吸附，使得所有生活污水得到净化处理，综合利用。现在原本又黑又臭的污水经过处理有成了可直接灌溉的三类水。"}]}';
-          var jsonArray = JSON.parse(data).list;
-          var jsonArray1 = JSON.parse(data).list1;
-          var jsonArray2 = JSON.parse(data).list2;
-          var jsonArray3 = JSON.parse(data).list3;
-          var outStr = "";
-          var outStr1 = "";
-          var outStr2 = "";
-          var outStr3 = "";
-          $.each(jsonArray3,function(i,value){
-            var oneTC = value;
-            outStr1 += "<div class='country-special-box'><img src='" + oneTC.src + "'><span>" + oneTC.name + "</span></div>"
-          });
-          $.each(jsonArray1,function(i,value){
-            var oneZP = value;
-            outStr2 += "<img src='" + oneZP + "'>";
-          });
-          $.each(jsonArray2,function(i,value){
-            var oneSP = value;
-            outStr3 += "<div class='li-context-video-box' style='margin-bottom:25px;'><video width='100%' height='100%' controls><source src='" + oneSP + "'  type='video/mp4'></video></div>";
-          });
-          $.each(jsonArray,function(i,value){
-            var jsonCell = value;
-            outStr = "<h2 class='text-center table-font-family'><span class='back-icon fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.introduce + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='" + jsonCell.mianPic + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>特&emsp;&emsp;产：</li><li class='ul-right-context table-font-family'>" + outStr1 + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr2 + "</div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'>" + outStr3 + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>文&emsp;&emsp;化：</li><li class='ul-right-context table-font-family'>" + jsonCell.culture + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>活&emsp;&emsp;动：</li><li class='ul-right-context table-font-family'>" + jsonCell.activities + "</li></ul></div>"
-          });
-          $("#add_country_infor").html(outStr);
         }
       });
     });
@@ -875,19 +649,31 @@
         url : 'AddExamine/showsSExamine',
         type : 'GET',
         data : {
-          name : thisCN
+          sname : thisCN
         },
         success : function(data){
           var jsonArray = JSON.parse(data).list;
+          console.log(jsonArray);
           var outStr = "";
           var outStr1 = "";
+          var outStr2 = jsonArray[0].pices;
+          if (outStr2 !== ''){
+            array = outStr2.split(';');
+          } else {
+            array = [];
+          }
+          var zpjAll = array;
           $.each(jsonArray,function(i,value){
             var jsonCell = value;
-            $.each(jsonCell.pices,function(i,value){
+            var outStr3 = "<ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul>";
+            if(jsonCell.video == undefined || jsonCell.video == null || jsonCell.video == 0){
+              outStr3 = "";
+            }
+            $.each(zpjAll,function(i,value){
               var oneZP = value;
-              outStr1 += "<img src='" + oneZP + "'>";
+              outStr1 += "<img src='img/scienspot/otherPic/" + oneZP + "'>";
             });
-            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-spot fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.synopsis + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.perprice + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.cinformation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.address + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='" + jsonCell.cover + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul></div>";
+            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-spot fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.synosis + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.price + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.cinformation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.address + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='img/scienspot/cover/" + jsonCell.cover + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul>" + outStr3 + "</div>";
           });
           $("#add_spot_infor").html(outStr);
         },
@@ -908,38 +694,36 @@
         url : 'AddExamine/showsRExamine',
         type : 'GET',
         data : {
-          name : thisRN
+          rname : thisRN
         },
         success : function(data){
           var jsonArray = JSON.parse(data).list;
           var outStr = "";
           var outStr1 = "";
+          var outStr2 = jsonArray[0].pices;
+          if (outStr2 !== ''){
+            array = outStr2.split(';');
+          } else {
+            array = [];
+          }
+          var zpjAll = array;
           $.each(jsonArray,function(i,value){
             var jsonCell = value;
-            $.each(jsonCell.pices,function(i,value){
+            var outStr3 = "<ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul>";
+            if(jsonCell.video == undefined || jsonCell.video == null || jsonCell.video == 0){
+              outStr3 = "";
+            }
+            $.each(zpjAll,function(i,value){
               var oneZP = value;
-              outStr1 += "<img src='" + oneZP + "'>";
+              outStr1 += "<img src='img/restaurant/otherPic/" + oneZP + "'>";
             });
-            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-res fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.synopsis + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.perprice + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.cinformation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.address + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='" + jsonCell.cover + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul></div>";
+            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-res fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.synopsis + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.perprice + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.cinformation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.address + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='img/restaurant/cover/" + jsonCell.cover + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul>" + outStr3 + "</div>";
           });
           $("#add_restaurant_infor").html(outStr);
         },
         error : function(){
           console.log("服务器被天狗吃掉了,获取数据失败~");
           // 0 未处理  1 未通过  2 通过
-          var data = '{"list":[{"name":"餐馆","synopsis":"更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后差三分球放弃人让让3分4条认同和更热全国很一般褂皇太","location":"畈山乡","cover":"images/sunset.jpg","perprice":"89","pices":["images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg"],"video":"mp4_video.mp4","cinformation":"15058798888","address":"认同和更热全国很一般褂皇太后位"}]}';
-          var jsonArray = JSON.parse(data).list;
-          var outStr = "";
-          var outStr1 = "";
-          $.each(jsonArray,function(i,value){
-            var jsonCell = value;
-            $.each(jsonCell.pices,function(i,value){
-              var oneZP = value;
-              outStr1 += "<img src='" + oneZP + "'>";
-            });
-            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-res fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.name + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.synopsis + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.perprice + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.cinformation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.address + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='" + jsonCell.cover + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul></div>";
-          });
-          $("#add_restaurant_infor").html(outStr);
         }
       });
     });
@@ -961,32 +745,30 @@
           var jsonArray = JSON.parse(data).list;
           var outStr = "";
           var outStr1 = "";
+          var outStr2 = jsonArray[0].pice;
+          if (outStr2 !== ''){
+            array = outStr2.split(';');
+          } else {
+            array = [];
+          }
+          var zpjAll = array;
           $.each(jsonArray,function(i,value){
             var jsonCell = value;
-            $.each(jsonCell.pices,function(i,value){
+            var outStr3 = "<ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul>";
+            if(jsonCell.video == undefined || jsonCell.video == null || jsonCell.video == 0){
+              outStr3 = "";
+            }
+            $.each(zpjAll,function(i,value){
               var oneZP = value;
-              outStr1 += "<img src='" + oneZP + "'>";
+              outStr1 += "<img src='img/hotel/otherPic/" + oneZP + "'>";
             });
-            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-hotel fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.hotelname + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.introduce + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.lowPrice + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.phone + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.detailLocation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='" + jsonCell.mainPic + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul></div>";
+            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-hotel fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.hotelname + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.introduce + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.lowprice + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.phone + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.detaillocation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='img/hotel/cover/" + jsonCell.mainpic + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul>" + outStr3 + "</div>";
           });
           $("#add_hotel_infor").html(outStr);
         },
         error : function(){
           console.log("服务器被天狗吃掉了,获取数据失败~");
           // 0 未处理  1 未通过  2 通过
-          var data = '{"list":[{"hotelname":"住宿","introduce":"更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后位 差三分球放弃人让让3分4条认同和更热全国很一般褂皇太后差三分球放弃人让让3分4条认同和更热全国很一般褂皇太","location":"畈山乡","mainPic":"images/sunset.jpg","lowPrice":"89","pices":["images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg","images/sunset.jpg"],"video":"mp4_video.mp4","phone":"15058798888","detailLocation":"认同和更热全国很一般褂皇太后位"}]}';
-          var jsonArray = JSON.parse(data).list;
-          var outStr = "";
-          var outStr1 = "";
-          $.each(jsonArray,function(i,value){
-            var jsonCell = value;
-            $.each(jsonCell.pices,function(i,value){
-              var oneZP = value;
-              outStr1 += "<img src='" + oneZP + "'>";
-            });
-            outStr = "<h2 class='text-center table-font-family'><span class='back-icon-hotel fa fa-arrow-circle-left fa-fw'></span>" + jsonCell.hotelname + "</h2><div id='pie_chart_div' class='templatemo-chart'><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>简&emsp;&emsp;介：</li><li class='ul-right-context table-font-family'>" + jsonCell.introduce + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>隶&emsp;&emsp;属：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.location + "</span></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>门&emsp;&emsp;票：</li><li class='ul-right-context table-font-family'><span  class='table-font-family'>" + jsonCell.lowPrice + "</span> RMB/人</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>联系方式：</li><li class='ul-right-context table-font-family'>" + jsonCell.phone + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>详细地址：</li><li class='ul-right-context table-font-family'>" + jsonCell.detailLocation + "</li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>封&emsp;&emsp;面：</li><li class='ul-right-context'><div class='li-context-img-box'><img src='" + jsonCell.mainPic + "' class='img-auto'></div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>照&ensp;片&ensp;集：</li><li class='ul-right-context'><div class='li-context-imgs-box'>" + outStr1 + "</div></li></ul><ul class='infor-ul clear'><li class='ul-left-title table-font-family'>视&emsp;&emsp;频：</li><li class='ul-right-context'><div class='li-context-video-box'><video width='100%' height='100%' controls><source src='" + jsonCell.video + "'  type='video/mp4'></video></div></li></ul></div>";
-          });
-          $("#add_hotel_infor").html(outStr);
         }
       });
     });
@@ -1024,26 +806,6 @@
         error : function(){
           console.log("服务器被天狗吃掉了,获取数据失败~");
           // 0 未处理  1 未通过  2 通过
-          var data = '{"list":[{"name":"长林垓村1","username":"某某某","addtime":"2017-08-14","examine":"0"},{"name":"长林垓村2","username":"某某某","addtime":"2017-08-14","examine":"1"},{"name":"长林垓村3","username":"某某某","addtime":"2017-08-14","examine":"2"},{"name":"长林垓村4","username":"某某某","addtime":"2017-08-14","examine":"0"},{"name":"长林垓村5","username":"某某某","addtime":"2017-08-14","examine":"0"},{"name":"长林垓村6","username":"某某某","addtime":"2017-08-14","examine":"0"}]}';
-          var jsonArray = JSON.parse(data).list;
-          var outStr1 = "";
-          var outStr2 = "";
-          var outStr3 = "";
-          $.each(jsonArray,function(i,value){
-            var jsonCell = value;
-            var select1 = "";
-            var select2 = "";
-            var select0 = "";
-            if(jsonCell.examine == "0"){
-              select0 = "selected";
-            } else if(jsonCell.examine == "1"){
-              select1 = "selected";
-            } else {
-              select2 = "selected";
-            }
-            outStr1 += "<tr><td class='addCName'>" + jsonCell.name + "</td><td>" + jsonCell.username + "</td><td>" + jsonCell.addtime + "</td><td><input type='button' name='' class='table-input-view country-infor-view' value='查看'><input type='button' name='' class='table-input-view country-result-sub' value='提交审查结果' style='margin-left:10px;outline:none;'></td><td><select class='table-select country-select'><option value='0' " + select0 + ">未处理</option><option value='1' " + select1 + ">未通过</option><option value='2' " + select2 + ">通过</option></select></td></tr>";
-          });
-          $("#country_add").html(outStr1);
         }
       });
     });

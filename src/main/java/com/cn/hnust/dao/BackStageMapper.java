@@ -20,11 +20,11 @@ public interface BackStageMapper {
 	    
 	 List<Hotel> getHotelByCountry(Integer id);
 	    
-	 public List<Object> getScenicspotcollByUser(List<Object> sids);
+	 public List<Integer> getScenicspotcollByUser(List<Object> sids);
 	    
 	 public List<Integer> getRestaurantcollByUser(List<Integer> rids);
 	    
-	 public List<Object> getHotelcollByUser(List<Object> hids);
+	 public List<Integer> getHotelcollByUser(List<Object> hids);
 	 
 	 //”√ªß∑÷Œˆ
 	 List<User> getRecordtimeByuser();
@@ -48,13 +48,13 @@ public interface BackStageMapper {
 	 
 	 List<Hotel> getHotelInExamine();
 	 
-	 Integer updateCountryInExamine(Integer id,Integer examine);
+	 Integer updateCountryInExamine(Country country);
 	 
-	 Integer updateRestaurantInExamine(Integer id,Integer examine);
+	 Integer updateRestaurantInExamine(Restaurant restaurant);
 	 
-	 Integer updateScenicspotInExamine(Integer id,Integer examine);
+	 Integer updateScenicspotInExamine(ScenicSpot scenicspot);
 	 
-	 Integer updateHotelInExamine(Integer id,Integer examine);
+	 Integer updateHotelInExamine(Hotel hotel);
 	 
 	 
 	 

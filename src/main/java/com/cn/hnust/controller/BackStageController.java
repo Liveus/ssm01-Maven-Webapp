@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,6 @@ import com.cn.hnust.pojo.Hotel;
 import com.cn.hnust.pojo.Restaurant;
 import com.cn.hnust.pojo.ScenicSpot;
 import com.cn.hnust.pojo.User;
-import com.cn.hnust.service.AddExamineService;
 import com.cn.hnust.service.BackStageService;
 import com.cn.hnust.service.CountryService;
 import com.cn.hnust.service.RecordUserService;
@@ -89,13 +87,17 @@ public class BackStageController {
 		}
 
 		List<Integer> rcount = new ArrayList<Integer>();
-		List<Object> scount = new ArrayList<Object>();
-		List<Object> hcount = new ArrayList<Object>();
+		List<Integer> scount = new ArrayList<Integer>();
+		List<Integer> hcount = new ArrayList<Integer>();
 
 		rcount = backStageService.getRestaurantcollByUser(rids);
 		scount = backStageService.getScenicspotcollByUser(sids);
 		hcount = backStageService.getHotelcollByUser(hids);
 
+		System.out.println(rcount);
+		System.out.println(scount);
+		System.out.println(hcount);
+		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("list1", country);
 		jsonObject.put("list2", count);

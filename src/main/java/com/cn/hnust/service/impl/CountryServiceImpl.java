@@ -121,4 +121,10 @@ public class CountryServiceImpl implements CountryService {
 		// TODO Auto-generated method stub
 		return this.countryMapper.getAllNames();
 	}
+
+	@Override
+	public CountryWithBLOBs getByName(String name) {
+		// TODO Auto-generated method stub
+		return this.countryMapper.getByName(name);
+	}
 }

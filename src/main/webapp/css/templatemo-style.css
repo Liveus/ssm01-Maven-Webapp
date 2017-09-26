@@ -82,13 +82,13 @@ footer { padding: 15px; }
 /* 2. Left Column
 -----------------------------*/
 .templatemo-sidebar { width: 300px; }
-.square {
+/*.square {
 	width: 25px;
 	height: 25px;
 	border: 3px solid #13895F;
 	display: inline-block;
 	vertical-align: middle;
-}
+}*/
 .circle {
 	width: 15px;
 	height: 15px;
@@ -389,10 +389,10 @@ footer { padding: 15px; }
 	margin-right: auto;
 	padding: 50px;
 }
-.templatemo-login-widget .square {
+/*.templatemo-login-widget .square {
 	width: 18px;
 	height: 18px;
-}
+}*/
 .templatemo-login-widget header { margin-bottom: 40px; }
 .templatemo-login-widget h1 {
 	display: inline-block;
@@ -766,10 +766,10 @@ input[type="radio"]:checked + label span {
 	}
 	.templatemo-sidebar { width: 200px; } 
 	.templatemo-site-header h1 { font-size: 1.6em; }
-	.square { 
+	/*.square { 
 		width: 20px; 
 		height: 20px;
-	}
+	}*/
 	.templatemo-left-nav a.active,
 	.templatemo-left-nav a:hover {
 		border-left: 6px solid #13895F;		

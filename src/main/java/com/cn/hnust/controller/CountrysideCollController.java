@@ -63,32 +63,9 @@ public class CountrysideCollController {
 	@ApiOperation(value = "收藏新的乡村", httpMethod = "GET", notes = "new collected countryside", response = java.lang.String.class)
 	@ResponseBody
 	@RequestMapping(value="/newColl",produces = "text/json;charset=UTF-8")
-	public String newColl(HttpServletRequest request){
-		StringBuffer requestBody;
+	public String newColl(@RequestParam("id")Integer id,@RequestParam("name")String name,@RequestParam("remark")String remark,@RequestParam("mainPic")String mainPic,HttpServletRequest request){
 		User user = (User)request.getSession().getAttribute("user");
-		String name = "";
-		String remark = "";
-		String mainPic = "";
-		Integer id = 1;
-		try {
-			BufferedReader reader = request.getReader();
-			String input = null;
-			requestBody = new StringBuffer();
-			while ((input = reader.readLine()) != null) {
-				requestBody.append(input);
-				JSONObject jsonObject = new JSONObject(input);
-				id = Integer.valueOf(jsonObject.get("id").toString());
-				name = jsonObject.get("name").toString();
-				remark = jsonObject.get("remark").toString();
-				mainPic = jsonObject.get("mainPic").toString();
-			}
-		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		mainPic = mainPic.substring(mainPic.lastIndexOf("/")+1);
 		CountrysideColl coll = new CountrysideColl();
 		coll.setColltime(Calendar.getInstance().getTime());
 		coll.setCountryId(id);
@@ -96,6 +73,7 @@ public class CountrysideCollController {
 		coll.setMainpic(mainPic);
 		coll.setRemark(remark);
 		coll.setUserUserid(user.getUserid());
+		System.out.println(coll.toString());
 		if(this.countrysideCollService.newColl(coll)==1){
 			return "收藏成功";
 		}else{
