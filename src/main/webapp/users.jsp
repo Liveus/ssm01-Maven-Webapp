@@ -11,6 +11,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="static/favicon.ico" mce_href="favicon.ico" type="image/x-icon">
   <link href="css/templatemo-style.css" rel="stylesheet">
 </head>
 
@@ -19,10 +20,10 @@
     <div class="templatemo-sidebar">
       <header class="templatemo-site-header">
         <div class="square"></div>
-        <h1>LOGO</h1>
+        <h1>郷野 · 故事</h1>
       </header>
       <div class="profile-photo-container">
-        <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">
+        <img src="img/headpic/moren.jpg" alt="Profile Photo" class="img-responsive">
         <div class="profile-photo-overlay"></div>
       </div>
       <!-- <div class="templatemo-search-number">
@@ -90,8 +91,6 @@
             <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li>
               <a href="#" aria-label="Next">
                   <span aria-hidden="true"><i class="fa fa-play"></i></span>
@@ -110,7 +109,7 @@
                   <img class="media-object img-circle templatemo-img-bordered" src="images/person.jpg" alt="Sunset"></a>
               </div>
               <div class="media-body">
-                <h2 class="media-heading text-uppercase blue-text">John Barnet</h2>
+                <h2 class="media-heading text-uppercase blue-text">阿水1234</h2>
                 <p>我就是我，不一样的烟火。</p>
               </div>
             </div>
@@ -122,14 +121,14 @@
                       <div class="circle green-bg"></div>
                     </td>
                     <td style="width:100px;">手机</td>
-                    <td>15058760873</td>
+                    <td>15058330873</td>
                   </tr>
                   <tr>
                     <td style="width:50px;">
                       <div class="circle pink-bg"></div>
                     </td>
                     <td style="width:100px;">邮箱</td>
-                    <td>1694886641@qq.com</td>
+                    <td>1694886651@qq.com</td>
                   </tr>
                   <tr>
                     <td style="width:50px;">
@@ -172,23 +171,9 @@
                     <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset"></a>
                 </div>
                 <div class="media-body">
-                  <h2 class="media-heading text-uppercase">和他说走就走的旅行</h2>
+                  <h2 class="media-heading text-uppercase">和他说走就走</h2>
                   <p>
-                    2017-08-15
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="templatemo-content-widget orange-bg"> 
-              <div class="media">
-                <div class="media-left">
-                  <a href="#">
-                    <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset"></a>
-                </div>
-                <div class="media-body">
-                  <h2 class="media-heading text-uppercase">Consectur Fusce Enim</h2>
-                  <p>
-                    Phasellus dapibus nulla 
+                    2017-09-22
                   </p>
                 </div>
               </div>
@@ -196,11 +181,11 @@
           </div>
           <!-- 用户的收藏 -->
           <div class="templatemo-content-widget white-bg col-1 templatemo-content-img-bg" id="show_shoucang">
-            <img src="images/sunset-big.jpg" alt="Sunset" class="img-responsive content-bg-img">        
+            <img src="img/scienspot/cover/c5.jpg" alt="Sunset" class="img-responsive content-bg-img">        
             <i class="fa fa-heart" title="已收藏"></i>
             <h2 class="templatemo-position-relative white-text">安吉竹博园</h2>
             <div class="view-img-btn-wrap">
-              <a href="" class="btn btn-default templatemo-view-img-btn">View</a>
+              <a href="" class="btn btn-default templatemo-view-img-btn">查看</a>
             </div>
           </div>
         </div>
@@ -252,26 +237,25 @@
           $.each(jsonArray,function(i,value){
             var jsonCell = value;
             var addFormatTime = dateFormat(jsonCell.lasttime);
-            outStr2 += "<tr><td class='user_id_box'>" + jsonCell.userid + "</td><td class='user_line_box'>" + jsonCell.username + "</td><td>" + jsonCell.articles + "</td><td>" + jsonCell.alltime + "</td><td>" + addFormatTime + "</td></tr>";
+            var outStr3 = jsonCell.articles;
+            var outStr4 = jsonCell.alltime;
+            var outStr5 = addFormatTime;
+            if(jsonCell.articles == undefined){
+              outStr3 = 0;
+            }
+            if(jsonCell.alltime == undefined){
+              outStr4 = "00:00:00";
+            }
+            if(addFormatTime == "NaN-NaN-NaN NaN:NaN:NaN"){
+              outStr5 = "00-00-00 00:00:00";
+            }
+            outStr2 += "<tr><td class='user_id_box'>" + jsonCell.userid + "</td><td class='user_line_box'>" + jsonCell.username + "</td><td>" + outStr3 + "</td><td>" + outStr4 + "</td><td>" + outStr5 + "</td></tr>";
           });
           $("#total_count").html(outStr1);
           $("#user_list").html(outStr2);
         },
         error : function(){
           console.log("服务器被天狗吃掉了，获取数据失败~");
-          var data = '{"list1":[{"userid":"001","username":"qianyierin","articles":"14","alltime":"00:20:15","lasttime":"2017-11-15 00:02:35","type":"普通用户"},{"userid":"002","username":"qianyierin","articles":"14","alltime":"00:20:15","lasttime":"2017-11-15 00:02:35","type":"普通用户"},{"userid":"003","username":"qianyierin","articles":"14","alltime":"00:20:15","lasttime":"2017-11-15 00:02:35","type":"普通用户"},{"userid":"004","username":"qianyierin","articles":"14","alltime":"00:20:15","lasttime":"2017-11-15 00:02:35","type":"普通用户"},{"userid":"005","username":"qianyierin","articles":"14","alltime":"00:20:15","lasttime":"2017-11-15 00:02:35","type":"普通用户"}],"list2":"58","list3":"99"}';
-          var jsonArray = JSON.parse(data).list1;
-          var userCount = JSON.parse(data).list2;
-          var youjiCount = JSON.parse(data).list3;
-          var outStr1  = "本站已注册用户有" + userCount + "名，发表游记总计" + youjiCount + "篇";
-          var outStr2 = "";
-          $.each(jsonArray,function(i,value){
-            var jsonCell = value;
-            var addFormatTime = dateFormat(jsonCell.lasttime);
-            outStr2 += "<tr><td class='user_id_box'>" + jsonCell.userid + "</td><td class='user_line_box'>" + jsonCell.username + "</td><td>" + jsonCell.articles + "</td><td>" + jsonCell.alltime + "</td><td>" + addFormatTime + "</td></tr>";
-          });
-          $("#total_count").html(outStr1);
-          $("#user_list").html(outStr2);
         }
       });
     });
@@ -295,8 +279,12 @@
             var list2Long = 3;
             outStr1 += "<div class='media-left padding-right-25'><a href='#'><img class='media-object img-circle templatemo-img-bordered' src='" + jsonCell.headpic + "' alt='Sunset'></a></div><div class='media-body'><h2 class='media-heading text-uppercase blue-text'>" + jsonCell.username + "</h2><p>" + jsonCell.jianjie + "</p></div>";
             outStr2 = "<tr><td style='width:50px;'><div class='circle green-bg'></div></td><td style='width:100px;'>手机</td><td>" + jsonCell.phone + "</td></tr><tr><td style='width:50px;'><div class='circle pink-bg'></div></td><td style='width:100px;'>邮箱</td><td>" + jsonCell.useremail + "</td></tr><tr><td style='width:50px;'><div class='circle blue-bg'></div></td><td style='width:100px;'>微信</td><td>" + jsonCell.wechat + "</td></tr><tr><td style='width:50px;'><div class='circle yellow-bg'></div></td><td style='width:100px;'>爱好</td><td>" + jsonCell.favorite + "</td></tr>"
-            if(jsonCell.list2.length < list2Long){
-              list2Long = jsonCell.list2.length
+            if(jsonCell.list2 == undefined || jsonCell.list2 == null || jsonCell.list2 == 0){
+              list2Long = 0
+            } else {
+              if(jsonCell.list2.length < list2Long){
+                list2Long = jsonCell.list2.length
+              }
             }
             if(list2Long == 0){
               outStr3 += "<div class='templatemo-content-widget white-bg'><div class='media'>该用户未留下一点蛛丝马迹</div></div>";

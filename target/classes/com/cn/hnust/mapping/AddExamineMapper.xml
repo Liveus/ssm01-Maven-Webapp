@@ -30,7 +30,7 @@
    <id column="scenicspotid" property="scenicspotid" jdbcType="INTEGER"/>
    <result column="scenicspot_id" property="scenicspotid" jdbcType="INTEGER"/>
    <result column="name" property="name" jdbcType="VARCHAR" />
-   <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
+   <result column="synosis" property="synosis" jdbcType="VARCHAR" />
    <result column="location" property="location" jdbcType="VARCHAR" />
    <result column="price" property="price" jdbcType="INTEGER" />
    <result column="cinformation" property="cinformation" jdbcType="VARCHAR" />
@@ -47,7 +47,7 @@
   <resultMap id="RestaurantMap" type="com.cn.hnust.pojo.Restaurant" >
    <id column="restaurantid" property="restaurantid" jdbcType="INTEGER"/>
    <result column="name" property="name" jdbcType="VARCHAR" />
-   <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
+   <result column="synosis" property="synopsis" jdbcType="VARCHAR" />
    <result column="location" property="location" jdbcType="VARCHAR" />
    <result column="perprice" property="perprice" jdbcType="INTEGER" />
    <result column="cinformation" property="cinformation" jdbcType="VARCHAR" />
@@ -66,13 +66,13 @@
    <id column="idhotel" property="idhotel" jdbcType="INTEGER"/>
    <result column="hotelname" property="hotelname" jdbcType="VARCHAR" />
    <result column="score" property="score" jdbcType="VARCHAR" />
-   <result column="mainPic" property="mainPic" jdbcType="VARCHAR" />
-   <result column="lowPrice" property="lowPrice" jdbcType="VARCHAR" />
+   <result column="mainPic" property="mainpic" jdbcType="VARCHAR" />
+   <result column="lowPrice" property="lowprice" jdbcType="VARCHAR" />
    <result column="location" property="location" jdbcType="VARCHAR" />
    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
    <result column="phone" property="phone" jdbcType="VARCHAR" />
    <result column="video" property="video" jdbcType="VARCHAR" />
-   <result column="detailLocation" property="detailLocation" jdbcType="VARCHAR" />
+   <result column="detailLocation" property="detaillocation" jdbcType="VARCHAR" />
    <result column="addtime" property="addtime" jdbcType="DATE" />
    <result column="examine" property="examine" jdbcType="INTEGER" />
      <result column="userid" property="userid" jdbcType="INTEGER" /> 
@@ -128,7 +128,7 @@
   </select>
   
   <select id="showScenicspotInExamine" resultMap="ScenicspotMap"  parameterType="java.lang.String">
-  select scenicspotid,name,synopsis,location,price,cinformation,address,cover,pices,video
+  select scenicspotid,name,synosis,location,price,cinformation,address,cover,pices,video
   from scenicspot
   where name=#{sname,jdbcType=VARCHAR}
   </select>

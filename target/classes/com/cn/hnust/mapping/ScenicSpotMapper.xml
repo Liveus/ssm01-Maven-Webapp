@@ -16,6 +16,8 @@
 		<result column="examine" property="examine" jdbcType="INTEGER" />
 		<result column="userid" property="userid" jdbcType="INTEGER" />
 		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="tag1" property="tag1" jdbcType="CHAR" />
+		<result column="tag2" property="tag2" jdbcType="CHAR" />
 	</resultMap>
 	<resultMap id="ResultMapWithBLOBs" type="com.cn.hnust.pojo.ScenicSpot"
 		extends="BaseResultMap">
@@ -23,7 +25,7 @@
 	</resultMap>
 	<sql id="Base_Column_List">
 		scenicspotid, name, location, price, cinformation, address, cover, pices, video,
-		country_id, addtime, examine, userid, username
+		country_id, addtime, examine, userid, username, tag1, tag2
 	</sql>
 	<sql id="Blob_Column_List">
 		synosis
@@ -50,24 +52,26 @@
 		parameterType="java.lang.Integer">
 		select name from scenicspot
 	</select>
-
+	
+	<select id="getSpotsByTag1" resultMap="ResultMapWithBLOBs" parameterType="Map">
+		select * from scenicspot where FIND_IN_SET(#{type},tag1)
+	</select>
+	
+	<select id="getSpotsByTag2" resultMap="ResultMapWithBLOBs" parameterType="Map">
+		select * from scenicspot where FIND_IN_SET(#{type},tag2)
+	</select>
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from scenicspot
 		where scenicspotid = #{scenicspotid,jdbcType=INTEGER}
 	</delete>
-	<delete id="deleteBycountrysideId" parameterType="java.lang.Integer">
-		delete from scenicspot
-		where country_id = #{countrysideId,jdbcType=INTEGER}
-	</delete>
-
 	<insert id="insert" parameterType="com.cn.hnust.pojo.ScenicSpot">
 		insert into scenicspot (scenicspotid, name, location,
 		price, cinformation, address,
 		cover, pices, video,
 		country_id, addtime, examine,
-		userid, username, synosis
-		)
+		userid, username, tag1,
+		tag2, synosis)
 		values (#{scenicspotid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
 		#{location,jdbcType=VARCHAR},
 		#{price,jdbcType=INTEGER}, #{cinformation,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
@@ -75,8 +79,8 @@
 		#{video,jdbcType=VARCHAR},
 		#{countryId,jdbcType=INTEGER}, #{addtime,jdbcType=VARCHAR}, #{examine,jdbcType=INTEGER},
 		#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
-		#{synosis,jdbcType=LONGVARCHAR}
-		)
+		#{tag1,jdbcType=CHAR},
+		#{tag2,jdbcType=CHAR}, #{synosis,jdbcType=LONGVARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.ScenicSpot">
 		insert into scenicspot
@@ -122,6 +126,12 @@
 			</if>
 			<if test="username != null">
 				username,
+			</if>
+			<if test="tag1 != null">
+				tag1,
+			</if>
+			<if test="tag2 != null">
+				tag2,
 			</if>
 			<if test="synosis != null">
 				synosis,
@@ -170,6 +180,12 @@
 			<if test="username != null">
 				#{username,jdbcType=VARCHAR},
 			</if>
+			<if test="tag1 != null">
+				#{tag1,jdbcType=CHAR},
+			</if>
+			<if test="tag2 != null">
+				#{tag2,jdbcType=CHAR},
+			</if>
 			<if test="synosis != null">
 				#{synosis,jdbcType=LONGVARCHAR},
 			</if>
@@ -217,6 +233,12 @@
 			<if test="username != null">
 				username = #{username,jdbcType=VARCHAR},
 			</if>
+			<if test="tag1 != null">
+				tag1 = #{tag1,jdbcType=CHAR},
+			</if>
+			<if test="tag2 != null">
+				tag2 = #{tag2,jdbcType=CHAR},
+			</if>
 			<if test="synosis != null">
 				synosis = #{synosis,jdbcType=LONGVARCHAR},
 			</if>
@@ -238,6 +260,8 @@
 		examine = #{examine,jdbcType=INTEGER},
 		userid = #{userid,jdbcType=INTEGER},
 		username = #{username,jdbcType=VARCHAR},
+		tag1 = #{tag1,jdbcType=CHAR},
+		tag2 = #{tag2,jdbcType=CHAR},
 		synosis = #{synosis,jdbcType=LONGVARCHAR}
 		where scenicspotid = #{scenicspotid,jdbcType=INTEGER}
 	</update>
@@ -255,7 +279,9 @@
 		addtime = #{addtime,jdbcType=VARCHAR},
 		examine = #{examine,jdbcType=INTEGER},
 		userid = #{userid,jdbcType=INTEGER},
-		username = #{username,jdbcType=VARCHAR}
+		username = #{username,jdbcType=VARCHAR},
+		tag1 = #{tag1,jdbcType=CHAR},
+		tag2 = #{tag2,jdbcType=CHAR}
 		where scenicspotid = #{scenicspotid,jdbcType=INTEGER}
 	</update>
 </mapper>

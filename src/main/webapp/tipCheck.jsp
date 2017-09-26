@@ -12,6 +12,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="static/favicon.ico" mce_href="favicon.ico" type="image/x-icon">
   <link href="css/templatemo-style.css" rel="stylesheet">
 </head>
 
@@ -20,10 +21,10 @@
     <div class="templatemo-sidebar">
       <header class="templatemo-site-header">
         <div class="square"></div>
-        <h1>LOGO</h1>
+        <h1>郷野 · 故事</h1>
       </header>
       <div class="profile-photo-container">
-        <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">
+        <img src="img/headpic/moren.jpg" alt="Profile Photo" class="img-responsive">
         <div class="profile-photo-overlay"></div>
       </div>
       <!-- <div class="templatemo-search-number">
@@ -68,23 +69,6 @@
                 </tr>
               </thead>
               <tbody id="jb_list">
-                <!-- <tr>
-                  <td>http://fncoh?cnqieocbqefopbefbefxacqw</td>
-                  <td>Silence12344</td>
-                  <td>部分内容表述有误</td>
-                  <td>2017-08-14</td>
-                  <td>
-                    <input type="button" name="" class="table-input-view" value="查看原因">
-                    <input type="button" name="" class="table-input-view" value="提交审查结果">
-                  </td>
-                  <td>
-                    <select class="table-select">
-                      <option value="0">未处理</option>
-                      <option value="1">未通过</option>
-                      <option value="2">通过</option>
-                    </select>
-                  </td>
-                </tr> -->
               </tbody>
             </table>
           </div>
@@ -93,10 +77,6 @@
         <div class="pagination-wrap">
           <ul class="pagination">
             <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li>
               <a href="#" aria-label="Next">
                   <span aria-hidden="true"><i class="fa fa-play"></i></span>
@@ -129,7 +109,7 @@
               <div class="templatemo-flex-row flex-content-row">
                 <div class="col-1">
                   <div id="gauge_div" class="templatemo-chart">
-                    <img src="images/map.png" style="height:100%;">
+                    <img src="static/wrroypagepic.png" style="height:100%;">
                   </div>
                 </div>
               </div>
@@ -186,7 +166,7 @@
             } else {
               select2 = "selected";
             }
-            outStr += "<tr><td class='jb_adress'>" + jsonCell.jbAdress + "</td><td>" + jsonCell.byUser + "</td><td>" + jsonCell.jbquestion + "</td><td>" + jsonCell.jbTime + "</td><td><input type='button' class='table-input-view jb-infor-view' value='查看原因' style='outline:none;margin-right:10px;'><input type='button' class='table-input-view jb-result-sub' value='提交审查结果' style='outline:none;'></td><td><select class='table-select jb-select'><option value='0' " + select0 + ">未处理</option><option value='1' " + select1 + ">未通过</option><option value='2' " + select2 + ">通过</option></select></td></tr>";
+            outStr += "<tr><td class='jb_adress'><a href='" + jsonCell.jbAdress + "'>" + jsonCell.jbAdress + "</a></td><td>" + jsonCell.byUser + "</td><td>" + jsonCell.jbquestion + "</td><td>" + jsonCell.jbTime + "</td><td><input type='button' class='table-input-view jb-infor-view' value='查看原因' style='outline:none;margin-right:10px;'><input type='button' class='table-input-view jb-result-sub' value='提交审查结果' style='outline:none;'></td><td><select class='table-select jb-select'><option value='0' " + select0 + ">未处理</option><option value='1' " + select1 + ">未通过</option><option value='2' " + select2 + ">通过</option></select></td></tr>";
           });
           $("#jb_list").html(outStr);
           $("#timeline_div").html(outStr1);
@@ -196,7 +176,7 @@
         error : function(){
           console.log("服务器被天狗吃掉了,获取数据失败~");
           // 0 未处理  1 未通过  2 通过
-          var data = '{"list":[{"jbAdress":"1http://fncoh?cnqieocbqefopvewgevwgqegw","byUser":"某某某","jbTime":"2017-08-14","jbstate":"0","jbquestion":" 部分内容表述有误","jbImg":" images/map.png","jbContext":" 部分分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表内容表述有误"},{"jbAdress":"2http://fncoh?cnqieocbqefopvewgevwgqegw","byUser":"某某某","jbTime":"2017-08-14","jbstate":"0","jbquestion":" 部分内容表述有误"},{"jbAdress":"3http://fncoh?cnqieocbqefopvewgevwgqegw","byUser":"某某某","jbTime":"2017-08-14","jbstate":"0","jbquestion":" 部分内容表述有误"},{"jbAdress":"4http://fncoh?cnqieocbqefopvewgevwgqegw","byUser":"某某某","jbTime":"2017-08-14","jbstate":"0","jbquestion":" 部分内容表述有误"},{"jbAdress":"5http://fncoh?cnqieocbqefopvewgevwgqegw","byUser":"某某某","jbTime":"2017-08-14","jbstate":"0","jbquestion":" 部分内容表述有误"}]}';
+          var data = '{"list":[{"jbAdress":"http://ssm01/index.html#/show/countryside/id=1","byUser":"阿水12344","jbTime":"2017-09-22","jbstate":"0","jbquestion":" 照片集不属实","jbImg":"/ssm01/static/wrroypagepic.png","jbContext":" 这个乡村照片集的中的一张照片我在其他一个地方看到过，在那个地方它指的是另外一个乡村的某个景点的风景图，所以这张照片是否这个村的风景还有待考证"},{"jbAdress":"http://ssm01/index.html#/show/sight/id?=4","byUser":"一个人的粉红豹","jbTime":"2017-09-13","jbstate":"1","jbquestion":" 景点门票错误"},{"jbAdress":"http://ssm01/index.html#/show/hotel/id=2","byUser":"小虎牙-墨墨","jbTime":"2017-08-30","jbstate":"2","jbquestion":" 住宿联系方式有误"},{"jbAdress":"http://ssm01/index.html#/show/sight/id=2","byUser":"多米。先生","jbTime":"2017-08-14","jbstate":"2","jbquestion":" 照片集不属实"}]}';
           var jsonArray = JSON.parse(data).list;
           var outStr = "";
           var outStr1 = "";
@@ -219,7 +199,7 @@
             } else {
               select2 = "selected";
             }
-            outStr += "<tr><td class='jb_adress'>" + jsonCell.jbAdress + "</td><td>" + jsonCell.byUser + "</td><td>" + jsonCell.jbquestion + "</td><td>" + jsonCell.jbTime + "</td><td><input type='button' class='table-input-view jb-infor-view' value='查看原因' style='outline:none;margin-right:10px;'><input type='button' class='table-input-view jb-result-sub' value='提交审查结果' style='outline:none;'></td><td><select class='table-select jb-select'><option value='0' " + select0 + ">未处理</option><option value='1' " + select1 + ">未通过</option><option value='2' " + select2 + ">通过</option></select></td></tr>";
+            outStr += "<tr><td class='jb_adress'><a href='" + jsonCell.jbAdress + "'>" + jsonCell.jbAdress + "</a></td><td>" + jsonCell.byUser + "</td><td>" + jsonCell.jbquestion + "</td><td>" + jsonCell.jbTime + "</td><td><input type='button' class='table-input-view jb-infor-view' value='查看原因' style='outline:none;margin-right:10px;'><input type='button' class='table-input-view jb-result-sub' value='提交审查结果' style='outline:none;'></td><td><select class='table-select jb-select'><option value='0' " + select0 + ">未处理</option><option value='1' " + select1 + ">未通过</option><option value='2' " + select2 + ">通过</option></select></td></tr>";
           });
           $("#jb_list").html(outStr);
           $("#timeline_div").html(outStr1);
@@ -259,7 +239,7 @@
         error : function(){
           console.log("服务器被天狗吃掉了,获取数据失败~");
           // 0 未处理  1 未通过  2 通过
-          var data = '{"list":[{"jbquestion":"1部分内容表述有误","jbImg":" images/map.png","jbContext":" 部分分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表分内容表内容表述有误"}]}';
+          var data = '{"list":[{"jbAdress":"http://ssm01/index.html#/show/countryside/id=1","byUser":"阿水12344","jbTime":"2017-09-22","jbstate":"0","jbquestion":" 照片集的照片不属实","jbImg":"static/wrroypagepic.png","jbContext":" 这个乡村照片集的中的一张照片我在其他一个地方看到过，在那个地方它指的是另外一个乡村的某个景点的风景图，所以这张照片是否这个村的风景还有待考证"}]}';
           var jsonArray = JSON.parse(data).list;
           var outStr1 = "";
           var outStr2 = "";

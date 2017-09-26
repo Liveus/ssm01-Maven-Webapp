@@ -132,6 +132,46 @@
       </if>
     </trim>
   </insert>
+  
+  <insert id="insertnewUser" parameterType="com.cn.hnust.pojo.CountrysideUser" >
+    insert into countrysideuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idcountrysideuser != null" >
+        idcountrysideUser,
+      </if>
+      <if test="useremail != null" >
+        useremail,
+      </if>
+      <if test="userpassword != null" >
+        userpassword,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="userphone != null" >
+        userphone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idcountrysideuser != null" >
+        #{idcountrysideuser,jdbcType=INTEGER},
+      </if>
+      <if test="useremail != null" >
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+ 
   <update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.CountrysideUser" >
     update countrysideuser
     <set >
